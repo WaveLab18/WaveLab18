@@ -3,146 +3,1084 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WaveLab18 | Financial Media & Market Commentary</title>
-  <meta name="description" content="WaveLab18 is an independent non-financial media channel providing informational and educational content about markets, economics, technology, and publicly traded companies." />
+  <title>WaveLab18 | Media Brand Landing Page</title>
+  <meta name="description" content="WaveLab18 is an independent media brand operating market analysis and comedy-entertainment YouTube channels." />
   <style>
     :root {
-      --bg: #0b1220;
-      --panel: #121b2e;
-      --text: #e8eefc;
-      --muted: #aab6d3;
-      --line: #26314d;
-      --accent: #7fb0ff;
-      --accent2: #d7e5ff;
+      --bg: #09111a;
+      --bg-soft: #101b27;
+      --card: rgba(255,255,255,0.05);
+      --card-strong: rgba(255,255,255,0.08);
+      --line: rgba(255,255,255,0.10);
+      --text: #f5f7fb;
+      --muted: #b8c2cf;
+      --accent: #d1ad72;
+      --accent-soft: #7caebe;
+      --shadow: 0 20px 55px rgba(0,0,0,0.34);
+      --radius: 26px;
+      --max: 1180px;
     }
+
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, #08101d 0%, #0d1527 100%);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
-      line-height: 1.65;
+      background:
+        radial-gradient(circle at top left, rgba(124,174,190,0.14), transparent 30%),
+        radial-gradient(circle at top right, rgba(209,173,114,0.10), transparent 28%),
+        linear-gradient(180deg, #0a1118 0%, #0b141d 48%, #081019 100%);
+      line-height: 1.6;
     }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
     .wrap {
-      max-width: 960px;
+      width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
-      padding: 48px 20px 72px;
     }
-    .hero {
-      border: 1px solid var(--line);
-      background: rgba(18, 27, 46, 0.92);
-      border-radius: 18px;
-      padding: 36px 28px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.28);
-    }
-    h1, h2, h3 { margin: 0 0 14px; }
-    h1 { font-size: 2.3rem; letter-spacing: 0.2px; }
-    h2 { font-size: 1.35rem; margin-top: 34px; }
-    p { margin: 0 0 14px; color: var(--accent2); }
-    .lead { font-size: 1.06rem; color: var(--text); }
-    .tag {
-      display: inline-block;
-      padding: 6px 10px;
-      border: 1px solid var(--line);
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border: 1px solid rgba(209,173,114,0.28);
       border-radius: 999px;
-      color: var(--muted);
-      font-size: 0.92rem;
-      margin-bottom: 14px;
-      background: rgba(255,255,255,0.02);
+      color: var(--accent);
+      background: rgba(255,255,255,0.03);
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      margin-bottom: 16px;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin-top: 18px;
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      gap: 8px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.18s ease;
     }
-    .card {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
-      border-radius: 14px;
-      padding: 18px;
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      color: #11161c;
+      background: linear-gradient(135deg, var(--accent), #e4c48f);
+      box-shadow: 0 14px 30px rgba(209,173,114,0.18);
     }
-    .card h3 { font-size: 1.02rem; }
-    ul {
-      margin: 10px 0 0 20px;
-      color: var(--accent2);
-    }
-    li { margin-bottom: 8px; }
-    .notice {
-      margin-top: 24px;
-      padding: 18px;
-      border-left: 4px solid var(--accent);
-      background: rgba(127, 176, 255, 0.08);
-      border-radius: 10px;
+
+    .btn-secondary {
       color: var(--text);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.14);
     }
-    .contact {
-      margin-top: 24px;
-      border-top: 1px solid var(--line);
-      padding-top: 20px;
-    }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .footer {
-      margin-top: 36px;
+
+    .btn-ghost {
       color: var(--muted);
-      font-size: 0.93rem;
+      background: transparent;
+      border-color: rgba(255,255,255,0.14);
     }
-    .small { color: var(--muted); font-size: 0.95rem; }
+
+    .lang-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        linear-gradient(180deg, rgba(7,12,18,0.78), rgba(7,12,18,0.93)),
+        url('images/hero-main.jpg') center/cover no-repeat;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .lang-gate.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .gate-card {
+      width: min(760px, 100%);
+      padding: 42px 28px;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: rgba(10,16,24,0.72);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .gate-title {
+      margin: 0 0 12px;
+      font-size: clamp(34px, 5.8vw, 64px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .gate-desc {
+      max-width: 560px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .lang-buttons,
+    .hero-actions,
+    .nav-actions,
+    .section-actions,
+    .channel-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .lang-buttons { justify-content: center; }
+
+    .site-shell {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .site-shell.ready {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(7,12,18,0.76);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .topbar-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(209,173,114,0.24), rgba(124,174,190,0.18));
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    section { padding: 28px 0; }
+
+    .panel {
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 42px 0 24px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      padding: 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 560px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)),
+        radial-gradient(circle at top right, rgba(209,173,114,0.09), transparent 24%),
+        radial-gradient(circle at bottom left, rgba(124,174,190,0.11), transparent 28%);
+    }
+
+    .hero-copy h1 {
+      margin: 0 0 18px;
+      max-width: 10ch;
+      font-size: clamp(30px, 4.8vw, 62px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      text-wrap: balance;
+      word-break: keep-all;
+    }
+
+    .hero-copy h1.only-ko {
+      max-width: 9ch;
+      font-size: clamp(28px, 4.2vw, 56px);
+      line-height: 1.06;
+    }
+
+    .hero-copy p {
+      margin: 0 0 22px;
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .mini-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 19px;
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hero-image {
+      padding: 16px;
+      display: flex;
+      align-items: stretch;
+      min-height: 560px;
+    }
+
+    .hero-frame {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, #243244, #111a24);
+    }
+
+    .hero-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 6px;
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: -0.04em;
+    }
+
+    .section-head p {
+      margin: 0;
+      max-width: 720px;
+      color: var(--muted);
+    }
+
+    .grid-3,
+    .media-grid,
+    .notice-grid,
+    .studio-grid,
+    .gallery,
+    .video-modal-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .media-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .notice-grid,
+    .studio-grid,
+    .video-modal-grid { grid-template-columns: 1fr 1fr; }
+    .gallery { grid-template-columns: repeat(2, minmax(0,1fr)); }
+
+    .card {
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+
+    .basic-card { padding: 22px; }
+    .basic-card h3 { margin: 0 0 8px; font-size: 21px; letter-spacing: -0.03em; }
+    .basic-card p { margin: 0; color: var(--muted); }
+
+    .studio-card,
+    .notice-card,
+    .media-card {
+      padding: 18px;
+      overflow: hidden;
+    }
+
+    .image-shell,
+    .video-thumb {
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .image-shell img,
+    .video-thumb img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .studio-copy,
+    .notice-copy,
+    .media-meta {
+      padding: 10px 6px 6px;
+    }
+
+    .studio-copy h3,
+    .notice-copy h3,
+    .media-meta h3 {
+      margin: 0 0 10px;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+
+    .studio-copy p,
+    .notice-copy p,
+    .notice-copy li,
+    .media-meta p,
+    .media-meta li {
+      color: var(--muted);
+    }
+
+    .notice-copy ul,
+    .media-meta ul {
+      margin: 14px 0 0;
+      padding-left: 18px;
+    }
+
+    .media-tile {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      color: inherit;
+      text-align: left;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .media-card {
+      height: 100%;
+      transition: transform 0.18s ease, border-color 0.18s ease;
+    }
+
+    .media-tile:hover .media-card {
+      transform: translateY(-3px);
+      border-color: rgba(209,173,114,0.34);
+    }
+
+    .video-thumb {
+      position: relative;
+      margin-bottom: 16px;
+    }
+
+    .video-thumb::after {
+      content: "▶";
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(10,16,24,0.80);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      font-size: 20px;
+    }
+
+    .channel-tag {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer {
+      padding: 36px 0 60px;
+      color: var(--muted);
+    }
+
+    .footer-box {
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9998;
+      padding: 20px;
+      background: rgba(7,10,15,0.80);
+      backdrop-filter: blur(10px);
+    }
+
+    .modal.show { display: flex; }
+
+    .modal-dialog {
+      width: min(1120px, 100%);
+      max-height: calc(100vh - 40px);
+      overflow: auto;
+      padding: 18px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, #121b26, #0d141c);
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: var(--shadow);
+    }
+
+    .modal-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .modal-top h3 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: -0.04em;
+    }
+
+    .gallery figure {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .gallery figcaption {
+      padding: 12px 14px 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .video-frame {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #0b1118;
+    }
+
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .video-panel {
+      padding: 20px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .video-panel h4 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      letter-spacing: -0.04em;
+    }
+
+    .video-panel p,
+    .video-panel li {
+      color: var(--muted);
+    }
+
+    .video-panel ul {
+      margin: 14px 0 0;
+      padding-left: 18px;
+    }
+
+    [data-lang="ko"] .only-en,
+    [data-lang="en"] .only-ko {
+      display: none !important;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-copy h1 {
+        max-width: 9.5ch;
+        font-size: clamp(28px, 4.4vw, 54px);
+      }
+
+      .hero-copy h1.only-ko {
+        max-width: 8.5ch;
+        font-size: clamp(26px, 4vw, 48px);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-3,
+      .media-grid,
+      .notice-grid,
+      .studio-grid,
+      .gallery,
+      .video-modal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy,
+      .hero-image {
+        min-height: unset;
+      }
+
+      .mini-stats { grid-template-columns: 1fr; }
+      .section-head { flex-direction: column; align-items: start; }
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner { min-height: 68px; }
+      .hero-copy { padding: 24px; }
+      .hero-copy h1,
+      .hero-copy h1.only-ko {
+        max-width: 100%;
+        font-size: clamp(24px, 7.2vw, 40px);
+        line-height: 1.1;
+      }
+      .hero-copy p { font-size: 15px; }
+      .mini-stats .stat strong { font-size: 18px; }
+      .gate-card { padding: 34px 20px; }
+      .btn { width: 100%; }
+      .lang-buttons,
+      .hero-actions,
+      .nav-actions,
+      .section-actions,
+      .channel-actions { flex-direction: column; }
+    }
   </style>
 </head>
-<body>
-  <div class="wrap">
-    <section class="hero">
-      <div class="tag">Independent Media Channel</div>
-      <h1>WaveLab18</h1>
-      <p class="lead">WaveLab18 is an independent media and content channel that publishes informational and educational content about stock markets, economics, technology, and publicly traded companies.</p>
-      <p>We produce market commentary, public-information-based analysis, and educational media for viewers interested in financial and economic topics.</p>
-
-      <h2>Business Description</h2>
-      <p>WaveLab18 operates as a non-financial media/content business. Our content is intended for general information, commentary, and education.</p>
-
-      <div class="grid">
-        <div class="card">
-          <h3>What We Do</h3>
-          <ul>
-            <li>Publish financial and economic commentary</li>
-            <li>Create educational media content</li>
-            <li>Discuss public market, macro, and technology topics</li>
-            <li>Promote our media channel and content publications</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>What We Do Not Do</h3>
-          <ul>
-            <li>Do not provide brokerage services</li>
-            <li>Do not provide lending or payment services</li>
-            <li>Do not handle customer funds or accounts</li>
-            <li>Do not offer regulated financial products or services</li>
-          </ul>
-        </div>
+<body data-lang="en">
+  <div class="lang-gate" id="langGate" aria-label="Language selection">
+    <div class="gate-card">
+      <div class="eyebrow">WaveLab18</div>
+      <h1 class="gate-title only-en">Choose Your Version</h1>
+      <h1 class="gate-title only-ko">언어를 선택해 주십시오</h1>
+      <p class="gate-desc only-en">A cleaner front page for your media brand. Choose English or Korean to enter.</p>
+      <p class="gate-desc only-ko">미디어 브랜드에 맞는 정리된 첫 화면입니다. 영어 또는 한국어 버전을 선택해 주십시오.</p>
+      <div class="lang-buttons">
+        <button class="btn btn-primary" onclick="enterSite('en')">English Version</button>
+        <button class="btn btn-secondary" onclick="enterSite('ko')">한국어 버전</button>
       </div>
-
-      <div class="notice">
-        <strong>Important Notice:</strong> WaveLab18 does not provide investment advisory, brokerage, lending, insurance, payment processing, debt collection, asset management, financial intermediation, or any other regulated financial service. Content on this website and related channels is for informational and educational purposes only.
-      </div>
-
-      <h2>Advertising Purpose</h2>
-      <p>Any advertising associated with WaveLab18 is used solely to promote our media channel, videos, and informational content. We do not advertise financial services or regulated financial products.</p>
-
-      <h2>Official Channel</h2>
-      <p>YouTube: <a href="https://www.youtube.com/@wavelab18" target="_blank" rel="noopener noreferrer">https://www.youtube.com/@wavelab18</a></p>
-
-      <h2>Contact</h2>
-      <div class="contact">
-        <p>Email: <a href="mailto:treebow85@gmail.com">treebow85@gmail.com</a></p>
-        <p class="small">Business name used publicly: WaveLab18</p>
-      </div>
-
-      <div class="footer">
-        <p>© WaveLab18. All rights reserved.</p>
-      </div>
-    </section>
+    </div>
   </div>
+
+  <div class="site-shell" id="siteShell">
+    <header class="topbar">
+      <div class="wrap topbar-inner">
+        <a href="#top" class="brand" aria-label="WaveLab18 home">
+          <span class="brand-mark">WL18</span>
+          <span>WaveLab18</span>
+        </a>
+        <div class="nav-actions">
+          <button class="btn btn-ghost" onclick="setLanguage('en')">EN</button>
+          <button class="btn btn-ghost" onclick="setLanguage('ko')">KR</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div class="panel hero-copy">
+            <div class="eyebrow only-en">Independent Media Brand</div>
+            <div class="eyebrow only-ko">독립 미디어 브랜드</div>
+
+            <h1 class="only-en">Research, storytelling, and media with identity.</h1>
+            <h1 class="only-ko">리서치와 스토리, 그리고 정체성을 가진 미디어.</h1>
+
+            <p class="only-en">WaveLab18 operates a market-intelligence channel and an entertainment spin-off channel, connecting analysis and creative media under one brand structure.</p>
+            <p class="only-ko">WaveLab18는 미국증시 분석 채널과 예능 스핀오프 채널을 함께 운영하며, 리서치와 크리에이티브 미디어를 하나의 브랜드 구조로 연결합니다.</p>
+
+            <div class="hero-actions">
+              <button class="btn btn-primary only-en" onclick="openStudio()">Studio Tour</button>
+              <button class="btn btn-primary only-ko" onclick="openStudio()">스튜디오 둘러보기</button>
+              <a class="btn btn-secondary only-en" href="#channels">Browse Media</a>
+              <a class="btn btn-secondary only-ko" href="#channels">운영 채널 보기</a>
+              <a class="btn btn-ghost" href="mailto:treebow85@gmail.com">treebow85@gmail.com</a>
+            </div>
+
+            <div class="mini-stats">
+              <div class="stat">
+                <strong class="only-en">WaveLAB18</strong>
+                <strong class="only-ko">WaveLAB18</strong>
+                <span class="only-en">U.S. stock market research media</span>
+                <span class="only-ko">미국증시 분석 리포트 미디어</span>
+              </div>
+              <div class="stat">
+                <strong class="only-en">Comedy Bureau</strong>
+                <strong class="only-ko">코미디 뷰로</strong>
+                <span class="only-en">Sitcom-style and entertainment content</span>
+                <span class="only-ko">시트콤형 예능·엔터테인먼트 콘텐츠</span>
+              </div>
+              <div class="stat">
+                <strong class="only-en">Bilingual</strong>
+                <strong class="only-ko">한영 지원</strong>
+                <span class="only-en">English and Korean front-page selection</span>
+                <span class="only-ko">영문·한글 선택형 랜딩 구조</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel hero-image">
+            <div class="hero-frame">
+              <img src="images/hero-right.jpg" alt="WaveLab18 featured visual" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <h2 class="only-en">What changed</h2>
+              <h2 class="only-ko">변경 포인트</h2>
+              <p class="only-en">This version removes the extra channel-guide image section and turns the active media area into the main interaction zone.</p>
+              <p class="only-ko">채널 안내 이미지를 제거하고, 운영 중인 미디어 영역 자체가 핵심 인터랙션이 되도록 구조를 바꿨습니다.</p>
+            </div>
+          </div>
+
+          <div class="grid-3">
+            <article class="card basic-card">
+              <h3 class="only-en">Less clutter</h3>
+              <h3 class="only-ko">덜 복잡한 구조</h3>
+              <p class="only-en">The guide image section is removed so the site feels tighter and more intentional.</p>
+              <p class="only-ko">채널 안내 이미지 섹션을 빼고 핵심 콘텐츠 중심으로 정리했습니다.</p>
+            </article>
+            <article class="card basic-card">
+              <h3 class="only-en">Better channel identity</h3>
+              <h3 class="only-ko">채널별 정체성 강화</h3>
+              <p class="only-en">Each channel now has its own representative image card and its own preview flow.</p>
+              <p class="only-ko">각 채널마다 대표 이미지를 따로 두고, 채널별 미리보기 흐름을 분리했습니다.</p>
+            </article>
+            <article class="card basic-card">
+              <h3 class="only-en">Clickable actions</h3>
+              <h3 class="only-ko">클릭 기능 강화</h3>
+              <p class="only-en">Visitors can open the studio gallery, preview a YouTube video, and jump directly to the channel.</p>
+              <p class="only-ko">스튜디오 갤러리, 유튜브 미리보기, 채널 바로가기 기능을 넣었습니다.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <h2 class="only-en">Studio section</h2>
+              <h2 class="only-ko">스튜디오 섹션</h2>
+              <p class="only-en">Use the button to open your two studio images in a modal gallery.</p>
+              <p class="only-ko">버튼을 누르면 스튜디오 이미지 두 장이 모달 갤러리로 열립니다.</p>
+            </div>
+            <div class="section-actions">
+              <button class="btn btn-primary only-en" onclick="openStudio()">Open Studio Gallery</button>
+              <button class="btn btn-primary only-ko" onclick="openStudio()">스튜디오 갤러리 열기</button>
+            </div>
+          </div>
+
+          <div class="card studio-card">
+            <div class="studio-grid">
+              <div class="image-shell">
+                <img src="images/studio-1.jpg" alt="WaveLab18 studio preview" />
+              </div>
+              <div class="studio-copy">
+                <h3 class="only-en">The first screen stays clean, while the gallery still feels interactive.</h3>
+                <h3 class="only-ko">첫 화면은 깔끔하게 유지하고, 갤러리는 눌러보는 재미를 살렸습니다.</h3>
+                <p class="only-en">This is cleaner than stacking all images directly on the page and gives the site a more finished, branded feel.</p>
+                <p class="only-ko">이미지를 한꺼번에 나열하는 방식보다 훨씬 정돈되어 보이고, 브랜드 사이트 같은 완성도를 줍니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="channels">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <h2 class="only-en">Active media channels</h2>
+              <h2 class="only-ko">운영 중인 미디어</h2>
+              <p class="only-en">Click a channel card to open a YouTube preview modal. From there, visitors can go straight into the full channel page.</p>
+              <p class="only-ko">채널 카드를 클릭하면 유튜브 미리보기 모달이 열리고, 그 상태에서 채널로 바로 이동할 수 있습니다.</p>
+            </div>
+          </div>
+
+          <div class="media-grid">
+            <button class="media-tile" onclick="openMedia('market')" aria-label="Open WaveLAB18 preview">
+              <article class="card media-card">
+                <div class="video-thumb">
+                  <img src="images/media-wavelab18.jpg" alt="WaveLAB18 representative image" loading="lazy" />
+                </div>
+                <div class="media-meta">
+                  <span class="channel-tag only-en">Main Media</span>
+                  <span class="channel-tag only-ko">메인 채널</span>
+                  <h3>WaveLAB18</h3>
+                  <strong class="only-en">U.S. stock market analysis report media channel</strong>
+                  <strong class="only-ko">미국증시 분석 리포트 미디어 채널</strong>
+                  <p class="only-en">Click to open a YouTube preview and visit the full channel.</p>
+                  <p class="only-ko">클릭하면 유튜브 미리보기가 열리고, 전체 채널로 바로 들어갈 수 있습니다.</p>
+                </div>
+              </article>
+            </button>
+
+            <button class="media-tile" onclick="openMedia('comedy')" aria-label="Open Wall Street Observatory Comedy Bureau preview">
+              <article class="card media-card">
+                <div class="video-thumb">
+                  <img src="images/media-wallstreet-comedy.jpg" alt="Wall Street Observatory Comedy Bureau representative image" loading="lazy" />
+                </div>
+                <div class="media-meta">
+                  <span class="channel-tag only-en">Entertainment</span>
+                  <span class="channel-tag only-ko">예능 채널</span>
+                  <h3>Wall Street Observatory Comedy Bureau</h3>
+                  <strong class="only-en">Comedy and entertainment channel</strong>
+                  <strong class="only-ko">예능·코미디 채널</strong>
+                  <p class="only-en">Click to preview the channel and move into the YouTube page.</p>
+                  <p class="only-ko">클릭하면 채널 미리보기를 보고 유튜브 페이지로 바로 이동할 수 있습니다.</p>
+                </div>
+              </article>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <h2 class="only-en">Business description & notice</h2>
+              <h2 class="only-ko">사업 설명 및 안내문</h2>
+              <p class="only-en">The compliance message stays, but it is presented in a cleaner media-brand format.</p>
+              <p class="only-ko">필수 안내문은 유지하되, 더 정리된 브랜드 형식으로 보이게 구성했습니다.</p>
+            </div>
+          </div>
+
+          <div class="card notice-card">
+            <div class="notice-grid">
+              <div class="notice-copy">
+                <h3 class="only-en">Independent media, not a financial service</h3>
+                <h3 class="only-ko">금융서비스가 아닌 독립 미디어 채널</h3>
+                <ul class="only-en">
+                  <li>Publishes informational and educational media content</li>
+                  <li>Discusses markets, economics, technology, and public companies</li>
+                  <li>Promotes media publications and YouTube channel content</li>
+                </ul>
+                <ul class="only-ko">
+                  <li>정보성·교육형 미디어 콘텐츠를 제작합니다</li>
+                  <li>시장, 경제, 기술, 상장기업 이슈를 다룹니다</li>
+                  <li>유튜브 채널 및 미디어 발행물을 홍보합니다</li>
+                </ul>
+              </div>
+              <div class="notice-copy">
+                <h3 class="only-en">Important notice</h3>
+                <h3 class="only-ko">중요 안내</h3>
+                <p class="only-en">WaveLab18 does not provide investment advisory, brokerage, lending, insurance, payment processing, asset management, or other regulated financial services. This website and related channels are for informational and educational purposes only.</p>
+                <p class="only-ko">WaveLab18는 투자자문, 중개, 대출, 보험, 결제처리, 자산관리 등 규제 대상 금융서비스를 제공하지 않습니다. 본 웹사이트와 연계 채널의 모든 내용은 정보 제공 및 교육 목적입니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer-box">
+          <div>
+            <strong>WaveLab18</strong><br />
+            <span class="only-en">Independent media brand for market research and creative entertainment.</span>
+            <span class="only-ko">시장 리서치와 크리에이티브 엔터테인먼트를 아우르는 독립 미디어 브랜드입니다.</span>
+          </div>
+          <div>
+            <a href="https://www.youtube.com/@WaveLAB18" target="_blank" rel="noopener">WaveLAB18</a><br />
+            <a href="https://www.youtube.com/@WallStreetObservatoryComedyBur" target="_blank" rel="noopener">Comedy Bureau</a><br />
+            <a href="mailto:treebow85@gmail.com">treebow85@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="modal" id="studioModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-top">
+        <div>
+          <h3 class="only-en">WaveLab18 Studio Gallery</h3>
+          <h3 class="only-ko">WaveLab18 스튜디오 갤러리</h3>
+        </div>
+        <button class="btn btn-ghost only-en" onclick="closeStudio()">Close</button>
+        <button class="btn btn-ghost only-ko" onclick="closeStudio()">닫기</button>
+      </div>
+      <div class="gallery">
+        <figure>
+          <img src="images/studio-1.jpg" alt="WaveLab18 studio image one" />
+          <figcaption class="only-en">Studio image 1</figcaption>
+          <figcaption class="only-ko">스튜디오 이미지 1</figcaption>
+        </figure>
+        <figure>
+          <img src="images/studio-2.jpg" alt="WaveLab18 studio image two" />
+          <figcaption class="only-en">Studio image 2</figcaption>
+          <figcaption class="only-ko">스튜디오 이미지 2</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="mediaModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-top">
+        <div>
+          <h3 id="mediaModalTitle">Media Preview</h3>
+        </div>
+        <button class="btn btn-ghost only-en" onclick="closeMedia()">Close</button>
+        <button class="btn btn-ghost only-ko" onclick="closeMedia()">닫기</button>
+      </div>
+      <div class="video-modal-grid">
+        <div class="video-frame">
+          <iframe id="mediaIframe" src="" title="YouTube media preview" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <aside class="video-panel">
+          <div class="only-en">
+            <h4 id="mediaTitleEn"></h4>
+            <p id="mediaDescEn"></p>
+            <ul id="mediaBulletsEn"></ul>
+            <div class="channel-actions" style="margin-top:18px;">
+              <a id="mediaWatchBtnEn" class="btn btn-secondary" href="#" target="_blank" rel="noopener">Watch on YouTube</a>
+              <a id="mediaChannelBtnEn" class="btn btn-primary" href="#" target="_blank" rel="noopener">Visit Channel</a>
+            </div>
+            <p style="margin-top:14px; font-size:14px;">If the preview does not load, use <strong>Watch on YouTube</strong>.</p>
+          </div>
+          <div class="only-ko">
+            <h4 id="mediaTitleKo"></h4>
+            <p id="mediaDescKo"></p>
+            <ul id="mediaBulletsKo"></ul>
+            <div class="channel-actions" style="margin-top:18px;">
+              <a id="mediaWatchBtnKo" class="btn btn-secondary" href="#" target="_blank" rel="noopener">유튜브에서 보기</a>
+              <a id="mediaChannelBtnKo" class="btn btn-primary" href="#" target="_blank" rel="noopener">채널 바로가기</a>
+            </div>
+            <p style="margin-top:14px; font-size:14px;">미리보기가 열리지 않으면 <strong>유튜브에서 보기</strong>를 누르십시오.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /*
+      이미지 파일명
+      - images/hero-main.jpg  (언어 선택 첫 화면 배경)
+      - images/hero-right.jpg (메인 본문 오른쪽 대표 이미지)
+      - images/studio-1.jpg
+      - images/studio-2.jpg
+      - images/media-wavelab18.jpg
+      - images/media-wallstreet-comedy.jpg
+
+      아래 previewVideoId는 채널 대표 영상 ID로 바꾸면 됩니다.
+      현재 값은 예시/임시값입니다.
+    */
+
+    const mediaConfig = {
+      market: {
+        previewVideoId: 'lHx1-VwfcYQ',
+        channel: 'https://www.youtube.com/@WaveLAB18/',
+        watchUrl: 'https://youtu.be/lHx1-VwfcYQ?si=B3N1d5SCgaEwmqOF',
+        modalTitle: 'WaveLAB18',
+        en: {
+          title: 'WaveLAB18',
+          desc: 'Main media channel focused on U.S. stock analysis, macro interpretation, and public-company themes.',
+          bullets: [
+            'U.S. stock market reports',
+            'Macro and sector commentary',
+            'Technology and public-company coverage'
+          ]
+        },
+        ko: {
+          title: 'WaveLAB18',
+          desc: '미국증시 분석, 매크로 해석, 상장기업·기술 테마를 다루는 메인 미디어 채널입니다.',
+          bullets: [
+            '미국증시 분석 리포트',
+            '매크로·섹터 해설',
+            '기술 및 상장기업 이슈 분석'
+          ]
+        }
+      },
+      comedy: {
+        previewVideoId: 'aMqlc1dMnEk',
+        channel: 'https://www.youtube.com/@WallStreetObservatoryComedyBur',
+        watchUrl: 'https://youtu.be/aMqlc1dMnEk?si=sxnbcQvjjK9idv4U',
+        modalTitle: 'Wall Street Observatory Comedy Bureau',
+        en: {
+          title: 'Wall Street Observatory Comedy Bureau',
+          desc: 'Entertainment spin-off channel built around sitcom-style comedy, characters, and playful media content.',
+          bullets: [
+            'Comedy and skit content',
+            'Character-driven episodes',
+            'Fun spin-off media under the same brand'
+          ]
+        },
+        ko: {
+          title: 'Wall Street Observatory Comedy Bureau',
+          desc: '시트콤형 코미디, 캐릭터 중심 에피소드, 병맛 예능 콘텐츠를 담는 스핀오프 채널입니다.',
+          bullets: [
+            '코미디 및 스킷 콘텐츠',
+            '캐릭터 중심 에피소드',
+            '같은 브랜드 세계관의 예능 확장 채널'
+          ]
+        }
+      }
+    };
+
+    function setLanguage(lang) {
+      document.body.setAttribute('data-lang', lang);
+      document.documentElement.lang = lang === 'ko' ? 'ko' : 'en';
+    }
+
+    function enterSite(lang) {
+      setLanguage(lang);
+      document.getElementById('langGate').classList.add('hidden');
+      document.getElementById('siteShell').classList.add('ready');
+    }
+
+    function buildEmbedUrl(videoId) {
+      return `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`;
+    }
+
+    function openStudio() {
+      const modal = document.getElementById('studioModal');
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeStudio() {
+      const modal = document.getElementById('studioModal');
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    function openMedia(key) {
+      const media = mediaConfig[key];
+      if (!media) return;
+
+      document.getElementById('mediaModalTitle').textContent = media.modalTitle;
+      document.getElementById('mediaIframe').src = buildEmbedUrl(media.previewVideoId);
+
+      document.getElementById('mediaTitleEn').textContent = media.en.title;
+      document.getElementById('mediaDescEn').textContent = media.en.desc;
+      document.getElementById('mediaTitleKo').textContent = media.ko.title;
+      document.getElementById('mediaDescKo').textContent = media.ko.desc;
+
+      const enList = document.getElementById('mediaBulletsEn');
+      const koList = document.getElementById('mediaBulletsKo');
+      enList.innerHTML = media.en.bullets.map(item => `<li>${item}</li>`).join('');
+      koList.innerHTML = media.ko.bullets.map(item => `<li>${item}</li>`).join('');
+
+      document.getElementById('mediaChannelBtnEn').href = media.channel;
+      document.getElementById('mediaChannelBtnKo').href = media.channel;
+      document.getElementById('mediaWatchBtnEn').href = media.watchUrl;
+      document.getElementById('mediaWatchBtnKo').href = media.watchUrl;
+
+      const modal = document.getElementById('mediaModal');
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeMedia() {
+      const modal = document.getElementById('mediaModal');
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden', 'true');
+      document.getElementById('mediaIframe').src = '';
+    }
+
+    document.getElementById('studioModal').addEventListener('click', function (e) {
+      if (e.target === this) closeStudio();
+    });
+
+    document.getElementById('mediaModal').addEventListener('click', function (e) {
+      if (e.target === this) closeMedia();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeStudio();
+        closeMedia();
+      }
+    });
+  </script>
 </body>
 </html>
