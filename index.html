@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WaveLab18 | Media Brand Landing Page</title>
-  <meta name="description" content="WaveLab18 is an independent media brand operating market analysis and comedy-entertainment YouTube channels." />
+  <meta name="description" content="WaveLab18 is an independent media brand for U.S. market research and original comedy-entertainment channels." />
   <style>
     :root {
       --bg: #09111a;
@@ -16,6 +16,9 @@
       --muted: #b8c2cf;
       --accent: #d1ad72;
       --accent-soft: #7caebe;
+      --hl-yellow: #efff63;
+      --hl-green: #79ff8b;
+      --hl-red: #ff677a;
       --shadow: 0 20px 55px rgba(0,0,0,0.34);
       --radius: 26px;
       --max: 1180px;
@@ -251,6 +254,25 @@
       font-size: 18px;
     }
 
+    .hl-yellow {
+      color: var(--hl-yellow);
+      text-shadow: 0 0 18px rgba(239,255,99,0.22);
+    }
+
+    .hl-green {
+      color: var(--hl-green);
+      text-shadow: 0 0 18px rgba(121,255,139,0.18);
+    }
+
+    .hl-red {
+      color: var(--hl-red);
+      text-shadow: 0 0 18px rgba(255,103,122,0.14);
+    }
+
+    .muted-short {
+      max-width: 560px;
+    }
+
     .mini-stats {
       display: grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -259,11 +281,29 @@
     }
 
     .stat {
+      position: relative;
       padding: 16px;
       border-radius: 18px;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
     }
+
+    .stat::before {
+      content: "";
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      top: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.85), rgba(255,255,255,0));
+      opacity: 0.26;
+    }
+
+    .stat.stat-yellow::before { background: linear-gradient(90deg, rgba(239,255,99,0), rgba(239,255,99,0.95), rgba(239,255,99,0)); opacity: 0.8; }
+    .stat.stat-green::before { background: linear-gradient(90deg, rgba(121,255,139,0), rgba(121,255,139,0.95), rgba(121,255,139,0)); opacity: 0.8; }
+    .stat.stat-red::before { background: linear-gradient(90deg, rgba(255,103,122,0), rgba(255,103,122,0.95), rgba(255,103,122,0)); opacity: 0.8; }
 
     .stat strong {
       display: block;
@@ -383,6 +423,11 @@
       letter-spacing: -0.04em;
     }
 
+    .notice-emphasis h3 {
+      color: var(--hl-red);
+      text-shadow: 0 0 16px rgba(255,103,122,0.16);
+    }
+
     .studio-copy p,
     .notice-copy p,
     .notice-copy li,
@@ -452,6 +497,24 @@
       font-size: 12px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+    }
+
+    .tag-yellow {
+      color: var(--hl-yellow);
+      border-color: rgba(239,255,99,0.24);
+      background: rgba(239,255,99,0.06);
+    }
+
+    .tag-green {
+      color: var(--hl-green);
+      border-color: rgba(121,255,139,0.24);
+      background: rgba(121,255,139,0.06);
+    }
+
+    .tag-red {
+      color: var(--hl-red);
+      border-color: rgba(255,103,122,0.22);
+      background: rgba(255,103,122,0.06);
     }
 
     .footer {
@@ -632,8 +695,8 @@
       <div class="eyebrow">WaveLab18</div>
       <h1 class="gate-title only-en">Choose Your Version</h1>
       <h1 class="gate-title only-ko">언어를 선택해 주십시오</h1>
-      <p class="gate-desc only-en">A cleaner front page for your media brand. Choose English or Korean to enter.</p>
-      <p class="gate-desc only-ko">미디어 브랜드에 맞는 정리된 첫 화면입니다. 영어 또는 한국어 버전을 선택해 주십시오.</p>
+      <p class="gate-desc only-en">Choose English or Korean to enter.</p>
+      <p class="gate-desc only-ko">영어 또는 한국어를 선택해 주십시오.</p>
       <div class="lang-buttons">
         <button class="btn btn-primary" onclick="enterSite('en')">English Version</button>
         <button class="btn btn-secondary" onclick="enterSite('ko')">한국어 버전</button>
@@ -662,38 +725,38 @@
             <div class="eyebrow only-en">Independent Media Brand</div>
             <div class="eyebrow only-ko">독립 미디어 브랜드</div>
 
-            <h1 class="only-en">Research, storytelling, and media with identity.</h1>
-            <h1 class="only-ko">리서치와 스토리, 그리고 정체성을 가진 미디어.</h1>
+            <h1 class="only-en"><span class="hl-yellow">Research</span>, <span class="hl-green">story</span>, media.</h1>
+            <h1 class="only-ko"><span class="hl-yellow">리서치</span>, <span class="hl-green">스토리</span>, 미디어.</h1>
 
-            <p class="only-en">WaveLab18 operates a market-intelligence channel and an entertainment spin-off channel, connecting analysis and creative media under one brand structure.</p>
-            <p class="only-ko">WaveLab18는 미국증시 분석 채널과 예능 스핀오프 채널을 함께 운영하며, 리서치와 크리에이티브 미디어를 하나의 브랜드 구조로 연결합니다.</p>
+            <p class="only-en muted-short">Market insight and original entertainment under one brand.</p>
+            <p class="only-ko muted-short">시장 인사이트와 오리지널 엔터테인먼트를 하나의 브랜드로 운영합니다.</p>
 
             <div class="hero-actions">
-              <button class="btn btn-primary only-en" onclick="openStudio()">Studio Tour</button>
-              <button class="btn btn-primary only-ko" onclick="openStudio()">스튜디오 둘러보기</button>
-              <a class="btn btn-secondary only-en" href="#channels">Browse Media</a>
-              <a class="btn btn-secondary only-ko" href="#channels">운영 채널 보기</a>
+              <button class="btn btn-primary only-en" onclick="openStudio()">Studio</button>
+              <button class="btn btn-primary only-ko" onclick="openStudio()">스튜디오</button>
+              <a class="btn btn-secondary only-en" href="#channels">Channels</a>
+              <a class="btn btn-secondary only-ko" href="#channels">채널 보기</a>
               <a class="btn btn-ghost" href="mailto:treebow85@gmail.com">treebow85@gmail.com</a>
             </div>
 
             <div class="mini-stats">
-              <div class="stat">
+              <div class="stat stat-yellow">
                 <strong class="only-en">WaveLAB18</strong>
                 <strong class="only-ko">WaveLAB18</strong>
-                <span class="only-en">U.S. stock market research media</span>
-                <span class="only-ko">미국증시 분석 리포트 미디어</span>
+                <span class="only-en">U.S. market intelligence</span>
+                <span class="only-ko">미국 증시 인사이트</span>
               </div>
-              <div class="stat">
+              <div class="stat stat-green">
                 <strong class="only-en">Comedy Bureau</strong>
                 <strong class="only-ko">코미디 뷰로</strong>
-                <span class="only-en">Sitcom-style and entertainment content</span>
-                <span class="only-ko">시트콤형 예능·엔터테인먼트 콘텐츠</span>
+                <span class="only-en">Original comedy content</span>
+                <span class="only-ko">오리지널 코믹 콘텐츠</span>
               </div>
-              <div class="stat">
-                <strong class="only-en">Bilingual</strong>
-                <strong class="only-ko">한영 지원</strong>
-                <span class="only-en">English and Korean front-page selection</span>
-                <span class="only-ko">영문·한글 선택형 랜딩 구조</span>
+              <div class="stat stat-red">
+                <strong class="only-en">EN + KR</strong>
+                <strong class="only-ko">EN + KR</strong>
+                <span class="only-en">English and Korean selection</span>
+                <span class="only-ko">영문·한글 선택</span>
               </div>
             </div>
           </div>
@@ -712,8 +775,8 @@
             <div>
               <h2 class="only-en">Studio</h2>
               <h2 class="only-ko">스튜디오</h2>
-              <p class="only-en">Click</p>
-              <p class="only-ko">클릭</p>
+              <p class="only-en">Gallery</p>
+              <p class="only-ko">갤러리</p>
             </div>
             <div class="section-actions">
               <button class="btn btn-primary only-en" onclick="openStudio()">Click</button>
@@ -729,7 +792,7 @@
               <div class="studio-copy">
                 <h3 class="only-en">This is the Wall Street Observatory studio.</h3>
                 <h3 class="only-ko">월가관측소 스튜디오 현장입니다.</h3>
-                <p class="only-en">WaveLAB18 keeps working to improve every day.</p>
+                <p class="only-en">WaveLab18 keeps improving every day.</p>
                 <p class="only-ko">매일 개선하기 위해 노력하는 월가관측소입니다.</p>
               </div>
             </div>
@@ -743,8 +806,8 @@
             <div>
               <h2 class="only-en">Active media channels</h2>
               <h2 class="only-ko">운영 중인 미디어</h2>
-              <p class="only-en">Click a channel card to open a YouTube preview modal. From there, visitors can go straight into the full channel page.</p>
-              <p class="only-ko">채널 카드를 클릭하면 유튜브 미리보기 모달이 열리고, 그 상태에서 채널로 바로 이동할 수 있습니다.</p>
+              <p class="only-en">Two channels, one brand structure.</p>
+              <p class="only-ko">하나의 브랜드 아래 두 개의 채널을 운영합니다.</p>
             </div>
           </div>
 
@@ -755,13 +818,13 @@
                   <img src="images/media-wavelab18.jpg" alt="WaveLAB18 representative image" loading="lazy" />
                 </div>
                 <div class="media-meta">
-                  <span class="channel-tag only-en">Main Media</span>
-                  <span class="channel-tag only-ko">메인 채널</span>
+                  <span class="channel-tag tag-yellow only-en">Main Media</span>
+                  <span class="channel-tag tag-yellow only-ko">메인 채널</span>
                   <h3>WaveLAB18</h3>
-                  <strong class="only-en">U.S. stock market analysis report media channel</strong>
-                  <strong class="only-ko">미국증시 분석 리포트 미디어 채널</strong>
-                  <p class="only-en">Click to open a YouTube preview and visit the full channel.</p>
-                  <p class="only-ko">클릭하면 유튜브 미리보기가 열리고, 전체 채널로 바로 들어갈 수 있습니다.</p>
+                  <strong class="only-en">U.S. market intelligence media</strong>
+                  <strong class="only-ko">미국 증시 인사이트 채널</strong>
+                  <p class="only-en">Macro, themes, and public-company reports.</p>
+                  <p class="only-ko">매크로, 테마, 상장기업 이슈를 다룹니다.</p>
                 </div>
               </article>
             </button>
@@ -772,13 +835,13 @@
                   <img src="images/media-wallstreet-comedy.jpg" alt="Wall Street Observatory Comedy Bureau representative image" loading="lazy" />
                 </div>
                 <div class="media-meta">
-                  <span class="channel-tag only-en">Entertainment</span>
-                  <span class="channel-tag only-ko">예능 채널</span>
+                  <span class="channel-tag tag-green only-en">Entertainment</span>
+                  <span class="channel-tag tag-green only-ko">예능 채널</span>
                   <h3>Wall Street Observatory Comedy Bureau</h3>
-                  <strong class="only-en">Comedy and entertainment channel</strong>
-                  <strong class="only-ko">예능·코미디 채널</strong>
-                  <p class="only-en">Click to preview the channel and move into the YouTube page.</p>
-                  <p class="only-ko">클릭하면 채널 미리보기를 보고 유튜브 페이지로 바로 이동할 수 있습니다.</p>
+                  <strong class="only-en">Original comedy spin-off</strong>
+                  <strong class="only-ko">오리지널 코미디 스핀오프</strong>
+                  <p class="only-en">Characters, skits, and satire from the same universe.</p>
+                  <p class="only-ko">같은 세계관에서 캐릭터, 스킷, 풍자를 전개합니다.</p>
                 </div>
               </article>
             </button>
@@ -790,18 +853,18 @@
         <div class="wrap">
           <div class="section-head">
             <div>
-              <h2 class="only-en">Business description & notice</h2>
-              <h2 class="only-ko">사업 설명 및 안내문</h2>
-              <p class="only-en">Official information</p>
-              <p class="only-ko">공식 안내</p>
+              <h2 class="only-en">Notice</h2>
+              <h2 class="only-ko">안내문</h2>
+              <p class="only-en">Required information</p>
+              <p class="only-ko">필수 안내</p>
             </div>
           </div>
 
           <div class="card notice-card">
             <div class="notice-grid">
               <div class="notice-copy">
-                <h3 class="only-en">Independent media, not a financial service</h3>
-                <h3 class="only-ko">금융서비스가 아닌 독립 미디어 채널</h3>
+                <h3 class="only-en">Independent media, not financial services</h3>
+                <h3 class="only-ko">금융서비스가 아닌 독립 미디어</h3>
                 <ul class="only-en">
                   <li>Publishes informational and educational media content</li>
                   <li>Discusses markets, economics, technology, and public companies</li>
@@ -813,7 +876,7 @@
                   <li>유튜브 채널 및 미디어 발행물을 홍보합니다</li>
                 </ul>
               </div>
-              <div class="notice-copy">
+              <div class="notice-copy notice-emphasis">
                 <h3 class="only-en">Important notice</h3>
                 <h3 class="only-ko">중요 안내</h3>
                 <p class="only-en">WaveLab18 does not provide investment advisory, brokerage, lending, insurance, payment processing, asset management, or other regulated financial services. This website and related channels are for informational and educational purposes only.</p>
@@ -830,8 +893,8 @@
         <div class="footer-box">
           <div>
             <strong>WaveLab18</strong><br />
-            <span class="only-en">Independent media brand for market research and creative entertainment.</span>
-            <span class="only-ko">시장 리서치와 크리에이티브 엔터테인먼트를 아우르는 독립 미디어 브랜드입니다.</span>
+            <span class="only-en">Independent media brand for market research and original entertainment.</span>
+            <span class="only-ko">시장 리서치와 오리지널 엔터테인먼트를 아우르는 독립 미디어 브랜드입니다.</span>
           </div>
           <div>
             <a href="https://www.youtube.com/@WaveLAB18" target="_blank" rel="noopener">WaveLAB18</a><br />
@@ -929,20 +992,20 @@
         modalTitle: 'WaveLAB18',
         en: {
           title: 'WaveLAB18',
-          desc: 'Main media channel focused on U.S. stock analysis, macro interpretation, and public-company themes.',
+          desc: 'Daily U.S. market reports covering macro, sectors, and listed-company themes.',
           bullets: [
-            'U.S. stock market reports',
-            'Macro and sector commentary',
-            'Technology and public-company coverage'
+            'Daily market reports',
+            'Macro and sector themes',
+            'Listed-company coverage'
           ]
         },
         ko: {
           title: 'WaveLAB18',
-          desc: '미국증시 분석, 매크로 해석, 상장기업·기술 테마를 다루는 메인 미디어 채널입니다.',
+          desc: '매크로, 섹터, 상장기업 이슈를 다루는 미국 증시 리포트 채널입니다.',
           bullets: [
-            '미국증시 분석 리포트',
+            '미국증시 리포트',
             '매크로·섹터 해설',
-            '기술 및 상장기업 이슈 분석'
+            '상장기업 이슈'
           ]
         }
       },
@@ -953,20 +1016,20 @@
         modalTitle: 'Wall Street Observatory Comedy Bureau',
         en: {
           title: 'Wall Street Observatory Comedy Bureau',
-          desc: 'Entertainment spin-off channel built around sitcom-style comedy, characters, and playful media content.',
+          desc: 'Original comedy spin-off built with recurring characters and sketch-driven episodes.',
           bullets: [
-            'Comedy and skit content',
+            'Comedy and sketch content',
             'Character-driven episodes',
-            'Fun spin-off media under the same brand'
+            'Spin-off channel under the same brand'
           ]
         },
         ko: {
           title: 'Wall Street Observatory Comedy Bureau',
-          desc: '시트콤형 코미디, 캐릭터 중심 에피소드, 병맛 예능 콘텐츠를 담는 스핀오프 채널입니다.',
+          desc: '캐릭터와 스킷 중심으로 전개되는 오리지널 코미디 스핀오프 채널입니다.',
           bullets: [
-            '코미디 및 스킷 콘텐츠',
+            '코미디·스킷 콘텐츠',
             '캐릭터 중심 에피소드',
-            '같은 브랜드 세계관의 예능 확장 채널'
+            '같은 브랜드의 스핀오프 채널'
           ]
         }
       }
