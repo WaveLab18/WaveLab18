@@ -789,14 +789,12 @@
 
   </style>
 </head>
-<body data-lang="en">
+<body data-lang="ko">
   <div class="lang-gate" id="langGate" aria-label="Language selection">
     <div class="gate-card">
       <div class="eyebrow">WaveLab18</div>
-      <h1 class="only-en">U.S. Market Research Media</h1>
-      <h1 class="only-ko">미국 증시 리서치 미디어</h1>
-      <p class="only-en">Select English or Korean to enter the WaveLab18 research site.</p>
-      <p class="only-ko">WaveLab18 리서치 사이트에 입장할 언어를 선택해 주십시오.</p>
+      <h1>미국 증시 리서치 미디어</h1>
+      <p>WaveLab18 리서치 사이트에 입장할 언어를 선택해 주십시오.</p>
       <div class="btn-row">
         <button class="btn btn-primary" onclick="enterSite('en')">English</button>
         <button class="btn btn-secondary" onclick="enterSite('ko')">한국어</button>
@@ -1422,12 +1420,11 @@
       setLanguage(lang);
       const gate = document.getElementById('langGate');
       const shell = document.getElementById('siteShell');
-      localStorage.setItem('wavelab18-entered', 'yes');
       gate.classList.add('hidden');
       shell.classList.add('ready');
     }
 
-    function renderMediaModalfunction renderMediaModal(key) {
+    function renderMediaModal(key) {
       const item = mediaLibrary[key];
       if (!item) return;
       const lang = currentLang();
@@ -1472,13 +1469,10 @@
     });
 
     (function boot() {
-      const savedLang = localStorage.getItem('wavelab18-lang') || 'en';
-      const visited = localStorage.getItem('wavelab18-entered');
+      const savedLang = localStorage.getItem('wavelab18-lang') || 'ko';
       setLanguage(savedLang);
-      if (visited === 'yes') {
-        document.getElementById('langGate').classList.add('hidden');
-        document.getElementById('siteShell').classList.add('ready');
-      }
+      document.getElementById('langGate').classList.remove('hidden');
+      document.getElementById('siteShell').classList.remove('ready');
     })();
   </script>
 </body>
