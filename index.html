@@ -23,7 +23,7 @@
       --accent-red: #ff6b6b;
       --shadow: 0 26px 56px rgba(0,0,0,0.34);
       --radius: 26px;
-      --max: 1520px;
+      --max: 1760px;
     }
 
     * { box-sizing: border-box; }
@@ -40,7 +40,7 @@
     }
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
-    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .wrap { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
 
     .only-ko { display: none; }
     body[data-lang="ko"] .only-en { display: none !important; }
@@ -128,6 +128,10 @@
       transition: transform .18s ease, background .18s ease, border-color .18s ease;
       letter-spacing: -0.01em;
     }
+    .btn small {
+      font-size: 12px;
+      opacity: 0.85;
+    }
     .btn:hover { transform: translateY(-1px); }
     .btn { line-height: 1; text-align: center; }
     .btn-primary {
@@ -171,6 +175,11 @@
       justify-content: space-between;
       gap: 16px;
     }
+    .topbar-aux {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
     .brand {
       display: flex;
       align-items: center;
@@ -212,13 +221,13 @@
     .hero { padding: 42px 0 24px; }
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(420px, 0.92fr);
-      gap: 24px;
+      grid-template-columns: minmax(0, 0.98fr) minmax(520px, 1.02fr);
+      gap: 26px;
       align-items: stretch;
     }
     .hero-copy {
-      padding: 38px;
-      min-height: 680px;
+      padding: 42px;
+      min-height: 720px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -274,17 +283,30 @@
     .hero-frame,
     .image-frame {
       width: 100%;
+      height: 100%;
       overflow: hidden;
       border-radius: 22px;
       border: 1px solid rgba(255,255,255,0.08);
       background: linear-gradient(180deg, #223244, #0f1721);
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 20px 36px rgba(0,0,0,0.28);
+      position: relative;
+      isolation: isolate;
+    }
+    .hero-frame::after,
+    .image-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
     }
     .hero-frame img,
     .image-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
     }
 
     .grid-2,
@@ -364,6 +386,8 @@
     .policy-copy .lead,
     .report-note {
       color: var(--text);
+      overflow-wrap: anywhere;
+      word-break: keep-all;
     }
 
     .research-card {
@@ -386,14 +410,13 @@
       margin-top: 22px;
     }
     .flow-item {
-      padding: 18px;
+      padding: 20px 18px;
       border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.08);
       background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.025));
-      min-height: 148px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      min-height: 160px;
+      display: grid;
+      place-content: center;
       text-align: center;
     }
     .flow-item h4 {
@@ -510,11 +533,169 @@
       gap: 14px;
     }
 
+    
+    .media-section { padding: 8px 0 8px; }
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 18px;
+    }
+    .media-card {
+      padding: 16px;
+      display: grid;
+      grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.1fr);
+      gap: 18px;
+      align-items: stretch;
+      cursor: pointer;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.025)),
+        radial-gradient(circle at top right, rgba(140,183,255,0.08), transparent 28%);
+    }
+    .media-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.16);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.03)),
+        radial-gradient(circle at top right, rgba(140,183,255,0.11), transparent 28%);
+    }
+    .media-thumb {
+      min-height: 240px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, #223244, #0f1721);
+    }
+    .media-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .media-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .media-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .media-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      font-size: 12px;
+      letter-spacing: .04em;
+      color: var(--white-soft);
+    }
+    .media-card h3 {
+      margin: 0;
+      font-size: clamp(24px, 2vw, 30px);
+      letter-spacing: -0.04em;
+    }
+    .media-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .media-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 2px;
+    }
+    .media-mini {
+      color: var(--muted-2);
+      font-size: 14px;
+    }
+    .media-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 12000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(3,8,14,0.76);
+      backdrop-filter: blur(10px);
+    }
+    .media-modal.open { display: flex; }
+    .media-modal-card {
+      width: min(1180px, 100%);
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background:
+        linear-gradient(180deg, rgba(8,15,24,0.96), rgba(8,15,24,0.92)),
+        radial-gradient(circle at top right, rgba(140,183,255,0.10), transparent 24%);
+      box-shadow: 0 28px 80px rgba(0,0,0,0.46);
+      overflow: hidden;
+    }
+    .media-modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 22px 22px 0;
+    }
+    .media-modal-head h3 {
+      margin: 0;
+      font-size: clamp(28px, 3vw, 40px);
+      letter-spacing: -0.04em;
+    }
+    .media-modal-close {
+      min-width: 92px;
+    }
+    .media-modal-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 22px;
+      padding: 18px 22px 22px;
+    }
+    .media-video {
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.09);
+      background: #0a111a;
+      aspect-ratio: 16 / 9;
+      min-width: 0;
+    }
+    .media-video iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+    .media-modal-copy {
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .media-modal-copy p,
+    .media-modal-copy li { color: var(--muted); }
+    .media-modal-copy ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
     @media (max-width: 1280px) {
-      :root { --max: 1340px; }
-      .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(360px, 0.88fr); }
+      :root { --max: 1560px; }
+      .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(420px, 0.92fr); }
       .hero-copy h1 { max-width: 10.2ch; font-size: clamp(34px, 4.1vw, 62px); }
       .hero-copy h1.only-ko { max-width: 9.4ch; font-size: clamp(32px, 3.9vw, 58px); }
+      .media-card { grid-template-columns: minmax(200px, 0.86fr) minmax(0, 1.14fr); }
     }
     @media (max-width: 1080px) {
       .wrap { width: min(var(--max), calc(100% - 28px)); }
@@ -530,17 +711,21 @@
       .research-grid,
       .scenario-grid,
       .report-grid,
-      .market-flows { grid-template-columns: 1fr; }
+      .market-flows,
+      .media-grid,
+      .media-modal-body { grid-template-columns: 1fr; }
       .hero-copy,
       .hero-image { min-height: unset; }
       .section-head { flex-direction: column; align-items: start; }
       .topbar-inner { flex-wrap: wrap; padding: 12px 0; }
       .hero-image { order: -1; }
-      .hero-frame { aspect-ratio: 4 / 4.3; }
+      .hero-frame { aspect-ratio: 4 / 4.25; }
       .image-frame { aspect-ratio: 4 / 3; }
+      .media-card { grid-template-columns: 1fr; }
+      .media-thumb { min-height: 220px; }
     }
     @media (max-width: 720px) {
-      .wrap { width: min(var(--max), calc(100% - 20px)); }
+      .wrap { width: min(var(--max), calc(100% - 18px)); }
       .hero-copy { padding: 24px; }
       .hero-copy h1,
       .hero-copy h1.only-ko {
@@ -550,18 +735,26 @@
       }
       .hero-copy p { font-size: 15px; }
       .gate-card { padding: 34px 20px; }
-      .btn, .nav-links, .lang-switch { width: 100%; }
+      .btn, .nav-links, .lang-switch, .topbar-aux { width: 100%; }
       .btn-row,
       .nav-links,
       .lang-switch,
+      .topbar-aux,
       .hero-actions,
       .contact-actions,
       .policy-links,
-      .report-meta { flex-direction: column; }
+      .report-meta,
+      .media-actions { flex-direction: column; }
       .hero-actions .btn,
       .contact-actions .btn,
-      .policy-links .btn { width: 100%; min-width: 0; }
+      .policy-links .btn,
+      .media-actions .btn,
+      .topbar-aux .btn { width: 100%; min-width: 0; }
       .flow-item { min-height: unset; }
+      .media-modal { padding: 12px; }
+      .media-modal-head { padding: 16px 16px 0; }
+      .media-modal-body { padding: 14px 16px 16px; gap: 14px; }
+      .media-modal-copy { padding: 16px; }
     }
   </style>
 </head>
@@ -596,9 +789,12 @@
           <a href="#policy">Policy</a>
         </nav>
 
-        <div class="lang-switch">
-          <button class="btn btn-ghost" onclick="setLanguage('en')">EN</button>
-          <button class="btn btn-ghost" onclick="setLanguage('ko')">KR</button>
+        <div class="topbar-aux">
+          <button class="btn btn-ghost" onclick="openIntro()"><span class="only-en">Intro</span><span class="only-ko">대문</span></button>
+          <div class="lang-switch">
+            <button class="btn btn-ghost" onclick="setLanguage('en')">EN</button>
+            <button class="btn btn-ghost" onclick="setLanguage('ko')">KR</button>
+          </div>
         </div>
       </div>
     </header>
@@ -638,6 +834,8 @@
               <a class="btn btn-primary only-ko" href="#research">리서치 보기</a>
               <a class="btn btn-secondary only-en" href="#about">About WaveLab18</a>
               <a class="btn btn-secondary only-ko" href="#about">WaveLab18 소개</a>
+              <a class="btn btn-secondary only-en" href="#media">Associated Media</a>
+              <a class="btn btn-secondary only-ko" href="#media">운영 미디어</a>
               <a class="btn btn-ghost" href="mailto:WaveLAB18@gmail.com">WaveLAB18@gmail.com</a>
             </div>
 
@@ -711,6 +909,76 @@
           </div>
         </div>
       </section>
+
+      <section id="media" class="media-section">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <h2 class="only-en">Associated Media</h2>
+              <h2 class="only-ko">운영 미디어</h2>
+            </div>
+            <p class="only-en">WaveLab18 operates a primary research label and a separate comedy spin-off. Click a card to view a sample video and go to the channel.</p>
+            <p class="only-ko">WaveLab18은 핵심 리서치 채널과 별도 코믹 스핀오프 채널을 함께 운영합니다. 카드를 클릭하면 샘플 영상과 채널 이동 버튼이 열립니다.</p>
+          </div>
+
+          <div class="media-grid">
+            <article class="card media-card" role="button" tabindex="0"
+              onclick="openMediaModal('wavelab18')"
+              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openMediaModal('wavelab18');}">
+              <div class="media-thumb">
+                <img src="images/media-wavelab18.jpg" alt="WaveLab18 media channel" onerror="this.onerror=null;this.src='images/hero-right.jpg'">
+              </div>
+              <div class="media-info">
+                <div class="media-tag-row">
+                  <span class="media-tag only-en">Research Label</span>
+                  <span class="media-tag only-ko">리서치 레이블</span>
+                  <span class="media-tag accent-yellow only-en">U.S. market</span>
+                  <span class="media-tag accent-yellow only-ko">미국 증시</span>
+                </div>
+                <h3>Wall Street Observatory</h3>
+                <p class="only-en">Primary research media focused on U.S. market structure, macro interpretation, sector change, and listed-company relevance.</p>
+                <p class="only-ko">미국 시장 구조, 거시 해석, 섹터 변화, 상장기업 중요도에 집중하는 핵심 리서치 미디어입니다.</p>
+                <div class="media-actions">
+                  <span class="btn btn-primary only-en">Preview Video</span>
+                  <span class="btn btn-primary only-ko">영상 보기</span>
+                  <span class="btn btn-ghost only-en">Open Channel</span>
+                  <span class="btn btn-ghost only-ko">채널 이동</span>
+                </div>
+                <div class="media-mini only-en">WaveLAB18 YouTube channel</div>
+                <div class="media-mini only-ko">WaveLAB18 유튜브 채널</div>
+              </div>
+            </article>
+
+            <article class="card media-card" role="button" tabindex="0"
+              onclick="openMediaModal('comedy')"
+              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openMediaModal('comedy');}">
+              <div class="media-thumb">
+                <img src="images/media-wallstreet-comedy.jpg" alt="Wall Street Observatory Comedy Bureau" onerror="this.onerror=null;this.src='images/studio-2.jpg'">
+              </div>
+              <div class="media-info">
+                <div class="media-tag-row">
+                  <span class="media-tag only-en">Comedy Spin-off</span>
+                  <span class="media-tag only-ko">코믹 스핀오프</span>
+                  <span class="media-tag accent-green only-en">Original skits</span>
+                  <span class="media-tag accent-green only-ko">오리지널 스킷</span>
+                </div>
+                <h3>Wall Street Observatory Comedy Bureau</h3>
+                <p class="only-en">Separate entertainment label built around characters, office satire, and original comedy shorts connected to the WaveLab18 brand.</p>
+                <p class="only-ko">WaveLab18 브랜드와 연결된 캐릭터, 오피스 풍자, 오리지널 코미디 쇼츠 중심의 별도 엔터테인먼트 레이블입니다.</p>
+                <div class="media-actions">
+                  <span class="btn btn-primary only-en">Preview Video</span>
+                  <span class="btn btn-primary only-ko">영상 보기</span>
+                  <span class="btn btn-ghost only-en">Open Channel</span>
+                  <span class="btn btn-ghost only-ko">채널 이동</span>
+                </div>
+                <div class="media-mini only-en">Comedy Bureau YouTube channel</div>
+                <div class="media-mini only-ko">월가관측소 코믹부 유튜브 채널</div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
 
       <section id="research">
         <div class="wrap">
@@ -998,10 +1266,100 @@
     </footer>
   </div>
 
-  <script>
+  
+
+  <div class="media-modal" id="mediaModal" aria-hidden="true">
+    <div class="media-modal-card" role="dialog" aria-modal="true" aria-labelledby="mediaModalTitle">
+      <div class="media-modal-head">
+        <div>
+          <div class="kicker only-en">Associated Media</div>
+          <div class="kicker only-ko">운영 미디어</div>
+          <h3 id="mediaModalTitle">WaveLab18 Media</h3>
+        </div>
+        <button class="btn btn-ghost media-modal-close" onclick="closeMediaModal()">
+          <span class="only-en">Close</span>
+          <span class="only-ko">닫기</span>
+        </button>
+      </div>
+
+      <div class="media-modal-body">
+        <div class="media-video">
+          <iframe id="mediaModalFrame" src="" title="WaveLab18 media preview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+
+        <div class="media-modal-copy">
+          <div class="media-tag-row" id="mediaModalTags"></div>
+          <p id="mediaModalDesc"></p>
+          <ul id="mediaModalBullets"></ul>
+          <div class="media-actions">
+            <a class="btn btn-primary" id="mediaModalChannelLink" href="#" target="_blank" rel="noopener">
+              <span class="only-en">Open Channel</span>
+              <span class="only-ko">채널 이동</span>
+            </a>
+            <a class="btn btn-ghost" id="mediaModalVideoLink" href="#" target="_blank" rel="noopener">
+              <span class="only-en">Open Video on YouTube</span>
+              <span class="only-ko">유튜브에서 보기</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<script>
+    const mediaLibrary = {
+      wavelab18: {
+        title: 'Wall Street Observatory',
+        embed: 'https://www.youtube.com/embed/lHx1-VwfcYQ?rel=0',
+        video: 'https://youtu.be/lHx1-VwfcYQ?si=B3N1d5SCgaEwmqOF',
+        channel: 'https://www.youtube.com/@WaveLAB18/',
+        descEn: 'Primary research channel focused on U.S. market data, structural interpretation, sector rotation, and listed-company relevance.',
+        descKo: '미국 시장 데이터, 구조 해석, 섹터 순환, 상장기업 중요도에 집중하는 핵심 리서치 채널입니다.',
+        bulletsEn: [
+          'U.S. market structure and macro interpretation',
+          'Sector and company relevance through data',
+          'Scenario-based reading instead of recommendation language'
+        ],
+        bulletsKo: [
+          '미국 시장 구조와 거시 해석',
+          '데이터 기반 섹터 및 기업 중요도 정리',
+          '추천 문구 대신 시나리오 기반 해석'
+        ],
+        tagsEn: ['Research Label', 'U.S. Market'],
+        tagsKo: ['리서치 레이블', '미국 증시']
+      },
+      comedy: {
+        title: 'Wall Street Observatory Comedy Bureau',
+        embed: 'https://www.youtube.com/embed/aMqlc1dMnEk?rel=0',
+        video: 'https://youtu.be/aMqlc1dMnEk?si=sxnbcQvjjK9idv4U',
+        channel: 'https://www.youtube.com/@WallStreetObservatoryComedyBur',
+        descEn: 'Separate comedy spin-off channel built around characters, office satire, and original entertainment linked to the WaveLab18 brand.',
+        descKo: 'WaveLab18 브랜드와 연결된 캐릭터, 오피스 풍자, 오리지널 엔터테인먼트 중심의 코믹 스핀오프 채널입니다.',
+        bulletsEn: [
+          'Original skits and office-comedy format',
+          'Separate entertainment label under the same brand',
+          'Designed to complement, not replace, the research label'
+        ],
+        bulletsKo: [
+          '오리지널 스킷과 오피스 코미디 형식',
+          '같은 브랜드 아래 별도 엔터테인먼트 레이블',
+          '리서치 레이블을 대체하지 않고 보완하는 구조'
+        ],
+        tagsEn: ['Comedy Spin-off', 'Original Skits'],
+        tagsKo: ['코믹 스핀오프', '오리지널 스킷']
+      }
+    };
+
+    function currentLang() {
+      return document.body.getAttribute('data-lang') === 'ko' ? 'ko' : 'en';
+    }
+
     function setLanguage(lang) {
       document.body.setAttribute('data-lang', lang);
       localStorage.setItem('wavelab18-lang', lang);
+      const modal = document.getElementById('mediaModal');
+      if (modal.classList.contains('open') && modal.dataset.key) {
+        renderMediaModal(modal.dataset.key);
+      }
     }
 
     function enterSite(lang) {
@@ -1012,6 +1370,57 @@
       gate.classList.add('hidden');
       shell.classList.add('ready');
     }
+
+    function openIntro() {
+      localStorage.removeItem('wavelab18-entered');
+      document.getElementById('langGate').classList.remove('hidden');
+      document.getElementById('siteShell').classList.remove('ready');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderMediaModal(key) {
+      const item = mediaLibrary[key];
+      if (!item) return;
+      const lang = currentLang();
+      const tags = lang === 'ko' ? item.tagsKo : item.tagsEn;
+      const bullets = lang === 'ko' ? item.bulletsKo : item.bulletsEn;
+      document.getElementById('mediaModalTitle').textContent = item.title;
+      document.getElementById('mediaModalDesc').textContent = lang === 'ko' ? item.descKo : item.descEn;
+      document.getElementById('mediaModalChannelLink').href = item.channel;
+      document.getElementById('mediaModalVideoLink').href = item.video;
+      document.getElementById('mediaModalFrame').src = item.embed;
+      const tagsBox = document.getElementById('mediaModalTags');
+      tagsBox.innerHTML = tags.map(tag => `<span class="media-tag">${tag}</span>`).join('');
+      const bulletsBox = document.getElementById('mediaModalBullets');
+      bulletsBox.innerHTML = bullets.map(line => `<li>${line}</li>`).join('');
+    }
+
+    function openMediaModal(key) {
+      const modal = document.getElementById('mediaModal');
+      modal.dataset.key = key;
+      renderMediaModal(key);
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMediaModal() {
+      const modal = document.getElementById('mediaModal');
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      modal.dataset.key = '';
+      document.getElementById('mediaModalFrame').src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('click', function (event) {
+      const modal = document.getElementById('mediaModal');
+      if (event.target === modal) closeMediaModal();
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeMediaModal();
+    });
 
     (function boot() {
       const savedLang = localStorage.getItem('wavelab18-lang');
