@@ -42,10 +42,7 @@
     img { display: block; max-width: 100%; }
     .wrap { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
 
-    .only-ko { display: none; }
-    body[data-lang="ko"] .only-en { display: none !important; }
-    body[data-lang="ko"] .only-ko { display: revert !important; }
-    body[data-lang="en"] .only-en { display: revert !important; }
+    .only-en, .only-ko { display: none !important; }
 
     .accent-yellow { color: var(--accent-yellow); text-shadow: 0 0 16px rgba(234,255,87,0.18); }
     .accent-green { color: var(--accent-green); text-shadow: 0 0 16px rgba(112,255,154,0.16); }
@@ -81,9 +78,11 @@
     .eyebrow {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       min-height: 34px;
       padding: 0 12px;
+      line-height: 1;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.10);
       background: rgba(255,255,255,0.03);
@@ -133,7 +132,18 @@
       opacity: 0.85;
     }
     .btn:hover { transform: translateY(-1px); }
-    .btn { line-height: 1; text-align: center; }
+    .btn { line-height: 1; text-align: center; white-space: nowrap; }
+    .hero-actions,
+    .media-actions,
+    .contact-actions,
+    .policy-links,
+    .report-meta,
+    .lang-switch { align-items: center; justify-content: center; }
+    .hero-actions .btn,
+    .media-actions .btn,
+    .contact-actions .btn { min-width: 138px; }
+    .topbar-aux .btn,
+    .lang-switch .btn { min-width: 64px; }
     .btn-primary {
       color: #08111b;
       background: #f5f8fc;
@@ -178,6 +188,7 @@
     .topbar-aux {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
     }
     .brand {
@@ -576,6 +587,8 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+      text-align: center;
       gap: 12px;
       min-width: 0;
     }
@@ -583,6 +596,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      justify-content: center;
     }
     .media-tag {
       display: inline-flex;
@@ -756,6 +770,23 @@
       .media-modal-body { padding: 14px 16px 16px; gap: 14px; }
       .media-modal-copy { padding: 16px; }
     }
+  
+    .hero-actions,
+    .media-actions,
+    .contact-actions,
+    .policy-links,
+    .report-meta,
+    .lang-switch { justify-content: center; }
+
+    .media-info,
+    .media-mini { text-align: center; }
+
+    .media-tag-row { justify-content: center; }
+
+    @media (min-width: 1100px) {
+      .hero-grid { grid-template-columns: minmax(0, 1.04fr) minmax(420px, 0.96fr); }
+    }
+
   </style>
 </head>
 <body data-lang="en">
@@ -782,15 +813,14 @@
         </a>
 
         <nav class="nav-links" aria-label="Main navigation">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#research">Research</a>
-          <a href="#contact">Contact</a>
-          <a href="#policy">Policy</a>
+          <a href="#home"><span class="only-en">Home</span><span class="only-ko">홈</span></a>
+          <a href="#about"><span class="only-en">About</span><span class="only-ko">소개</span></a>
+          <a href="#research"><span class="only-en">Research</span><span class="only-ko">리서치</span></a>
+          <a href="#contact"><span class="only-en">Contact</span><span class="only-ko">문의</span></a>
+          <a href="#policy"><span class="only-en">Policy</span><span class="only-ko">정책</span></a>
         </nav>
 
         <div class="topbar-aux">
-          <button class="btn btn-ghost" onclick="openIntro()"><span class="only-en">Intro</span><span class="only-ko">대문</span></button>
           <div class="lang-switch">
             <button class="btn btn-ghost" onclick="setLanguage('en')">EN</button>
             <button class="btn btn-ghost" onclick="setLanguage('ko')">KR</button>
@@ -873,7 +903,7 @@
         <div class="wrap">
           <div class="section-head">
             <div>
-              <h2>About</h2>
+              <h2><span class="only-en">About</span><span class="only-ko">소개</span></h2>
             </div>
             <p class="only-en">Research-based media focused on U.S. market structure, sector change, and company-level relevance.</p>
             <p class="only-ko">미국 시장 구조, 섹터 변화, 기업 단위 중요도에 집중하는 리서치 기반 미디어입니다.</p>
@@ -984,7 +1014,7 @@
         <div class="wrap">
           <div class="section-head">
             <div>
-              <h2>Research</h2>
+              <h2><span class="only-en">Research</span><span class="only-ko">리서치</span></h2>
             </div>
             <p class="only-en">Research categories are separated into market analysis, sector analysis, and data insights.</p>
             <p class="only-ko">리서치 카테고리는 시장 분석, 섹터 분석, 데이터 인사이트로 분리됩니다.</p>
@@ -992,7 +1022,7 @@
 
           <div class="research-grid">
             <article class="card research-card">
-              <div class="kicker">Market Analysis</div>
+              <div class="kicker"><span class="only-en">Market Analysis</span><span class="only-ko">시장 분석</span></div>
               <h3 class="only-en">Macro, liquidity, and cross-market interpretation.</h3>
               <h3 class="only-ko">거시, 유동성, 자산 간 해석.</h3>
               <p class="only-en">We track rates, policy, risk appetite, and how those variables shape capital flow across the U.S. market.</p>
@@ -1000,7 +1030,7 @@
             </article>
 
             <article class="card research-card">
-              <div class="kicker">Sector Analysis</div>
+              <div class="kicker"><span class="only-en">Sector Analysis</span><span class="only-ko">섹터 분석</span></div>
               <h3 class="only-en">Where the industrial map is being redrawn.</h3>
               <h3 class="only-ko">산업 지도가 다시 그려지는 지점.</h3>
               <p class="only-en">We study which sectors benefit, stall, or gain strategic relevance when structural bottlenecks and policy shifts appear.</p>
@@ -1008,7 +1038,7 @@
             </article>
 
             <article class="card research-card">
-              <div class="kicker">Data Insights</div>
+              <div class="kicker"><span class="only-en">Data Insights</span><span class="only-ko">데이터 인사이트</span></div>
               <h3 class="only-en">Company relevance through data and positioning.</h3>
               <h3 class="only-ko">데이터와 포지셔닝으로 보는 기업 중요도.</h3>
               <p class="only-en">We organize public-company exposure, chain position, and scenario relevance without using buy/sell language.</p>
@@ -1037,17 +1067,17 @@
               <span>•</span>
               <span class="only-en">Scenario Analysis</span><span class="only-ko">Scenario Analysis</span>
               <span>•</span>
-              <span class="only-en">Conclusion</span><span class="only-ko">Conclusion</span>
+              <span class="only-en">Conclusion</span><span class="only-ko">결론</span>
             </div>
 
             <div class="report-section">
-              <h4>1. Title</h4>
+              <h4><span class="only-en">1. Title</span><span class="only-ko">1. 제목</span></h4>
               <p class="report-note only-en">U.S. Power Infrastructure and Grid Constraint</p>
               <p class="report-note only-ko">미국 전력 인프라와 그리드 병목</p>
             </div>
 
             <div class="report-section">
-              <h4>2. Executive Summary</h4>
+              <h4><span class="only-en">2. Executive Summary</span><span class="only-ko">2. 핵심 요약</span></h4>
               <div class="report-note only-en">
                 Grid capacity is becoming a structural constraint where AI infrastructure, electrification, and industrial expansion overlap.<br>
                 Capital may continue to focus on transmission, power equipment, automation, and resilience layers rather than on one narrow headline.<br>
@@ -1063,13 +1093,13 @@
             <div class="report-grid report-body">
               <div>
                 <div class="report-section">
-                  <h4>3. Macro Analysis</h4>
+                  <h4><span class="only-en">3. Macro Analysis</span><span class="only-ko">3. 거시 분석</span></h4>
                   <p class="only-en">The macro backdrop combines data-center power demand, slow utility upgrade cycles, and policy-driven manufacturing expansion. Even when broad market sentiment changes, the need for grid modernization and reliability spending tends to persist.</p>
                   <p class="only-ko">거시 배경은 데이터센터 전력 수요, 느린 유틸리티 업그레이드 주기, 정책 기반 제조업 확장이 결합된 구조입니다. 광범위한 시장 심리가 바뀌더라도 그리드 현대화와 안정성 투자는 계속 필요해질 가능성이 높습니다.</p>
                 </div>
 
                 <div class="report-section">
-                  <h4>4. Sector Analysis</h4>
+                  <h4><span class="only-en">4. Sector Analysis</span><span class="only-ko">4. 섹터 분석</span></h4>
                   <p class="only-en">The relevant map is not one single theme. It spans grid hardware, transmission and distribution, industrial automation, power management, backup generation, and selective storage. Bottlenecks often redirect value across adjacent subsectors.</p>
                   <p class="only-ko">핵심 지도는 단일 테마가 아닙니다. 그리드 하드웨어, 송배전, 산업 자동화, 전력 관리, 백업 발전, 선택적 저장까지 이어집니다. 병목은 가치가 인접 하위 섹터로 이동하게 만드는 경우가 많습니다.</p>
                 </div>
@@ -1077,7 +1107,7 @@
 
               <div class="report-body">
                 <div class="report-section">
-                  <h4>5. Company Insights</h4>
+                  <h4><span class="only-en">5. Company Insights</span><span class="only-ko">5. 기업 인사이트</span></h4>
                   <ul class="only-en">
                     <li>Track companies with durable exposure to utility capex and replacement cycles.</li>
                     <li>Review firms tied to efficiency, reliability, and power-quality management.</li>
@@ -1093,7 +1123,7 @@
             </div>
 
             <div class="report-section">
-              <h4>6. Scenario Analysis (Bull / Base / Bear)</h4>
+              <h4><span class="only-en">6. Scenario Analysis (Bull / Base / Bear)</span><span class="only-ko">6. 시나리오 분석 (Bull / Base / Bear)</span></h4>
               <div class="scenario-grid">
                 <div class="scenario-card">
                   <h5>Bull</h5>
@@ -1114,7 +1144,7 @@
             </div>
 
             <div class="report-section report-body">
-              <h4>7. Conclusion</h4>
+              <h4><span class="only-en">7. Conclusion</span><span class="only-ko">7. 결론</span></h4>
               <p class="only-en">This report frames a research problem rather than issuing a recommendation. The working conclusion is that reliable electricity remains a recurring constraint across multiple macro paths, making U.S. power infrastructure a useful field for continued observation.</p>
               <p class="only-ko">이 리포트는 추천이 아니라 리서치 문제를 구조화하기 위한 문서입니다. 현재의 결론은 안정적 전력이 여러 거시 경로에서 반복적으로 제약 요인으로 등장한다는 점이며, 따라서 미국 전력 인프라는 계속 관찰할 가치가 있는 영역입니다.</p>
             </div>
@@ -1126,7 +1156,7 @@
         <div class="wrap">
           <div class="section-head">
             <div>
-              <h2>Contact</h2>
+              <h2><span class="only-en">Contact</span><span class="only-ko">문의</span></h2>
             </div>
             <p class="only-en">For research publication, business, collaboration, or site inquiries.</p>
             <p class="only-ko">리서치 발행, 비즈니스, 협업, 사이트 관련 문의용입니다.</p>
@@ -1167,7 +1197,7 @@
         <div class="wrap">
           <div class="section-head">
             <div>
-              <h2>Policy</h2>
+              <h2><span class="only-en">Policy</span><span class="only-ko">정책</span></h2>
             </div>
             <p class="only-en">Disclaimer, privacy, and terms for a research-based media site.</p>
             <p class="only-ko">리서치 기반 미디어 사이트를 위한 면책, 개인정보, 이용 원칙입니다.</p>
@@ -1175,13 +1205,20 @@
 
           <div class="policy-grid">
             <article class="card card-pad policy-copy">
-              <div class="kicker">Disclaimer</div>
+              <div class="kicker"><span class="only-en">Disclaimer</span><span class="only-ko">면책 안내</span></div>
               <h3 class="only-en">Research and educational use only.</h3>
               <h3 class="only-ko">연구 및 교육 목적 전용.</h3>
               <div class="policy-box">
-                <p>This website provides information for research and educational purposes only.</p>
-                <p>It does not constitute financial advice, investment recommendation, or solicitation.</p>
-                <p>We analyze market data, trends, and structural changes in the U.S. stock market.</p>
+                <div class="only-en">
+                  <p>This website provides information for research and educational purposes only.</p>
+                  <p>It does not constitute financial advice, investment recommendation, or solicitation.</p>
+                  <p>We analyze market data, trends, and structural changes in the U.S. stock market.</p>
+                </div>
+                <div class="only-ko">
+                  <p>이 웹사이트는 리서치 및 교육 목적의 정보만 제공합니다.</p>
+                  <p>재무 조언, 투자 추천 또는 권유에 해당하지 않습니다.</p>
+                  <p>당사는 미국 증시의 시장 데이터, 흐름, 구조 변화를 분석합니다.</p>
+                </div>
               </div>
               <ul class="only-en">
                 <li>No buy or sell recommendations are provided.</li>
@@ -1196,7 +1233,7 @@
             </article>
 
             <article class="card card-pad policy-copy">
-              <div class="kicker">Privacy Policy</div>
+              <div class="kicker"><span class="only-en">Privacy Policy</span><span class="only-ko">개인정보 정책</span></div>
               <h3 class="only-en">Basic privacy handling.</h3>
               <h3 class="only-ko">기본 개인정보 처리 원칙.</h3>
               <p class="lead only-en">WaveLab18 does not request sensitive financial information through this website.</p>
@@ -1216,7 +1253,7 @@
 
           <div class="policy-grid" style="margin-top:18px;">
             <article class="card card-pad policy-copy">
-              <div class="kicker">Terms of Use</div>
+              <div class="kicker"><span class="only-en">Terms of Use</span><span class="only-ko">이용 약관</span></div>
               <h3 class="only-en">Use of site content.</h3>
               <h3 class="only-ko">사이트 콘텐츠 이용 원칙.</h3>
               <ul class="only-en">
@@ -1353,9 +1390,28 @@
       return document.body.getAttribute('data-lang') === 'ko' ? 'ko' : 'en';
     }
 
+    function getVisibleDisplay(el) {
+      if (el.classList.contains('btn')) return 'inline-flex';
+      const tag = el.tagName;
+      if (tag === 'SPAN' || tag === 'SMALL' || tag === 'STRONG' || tag === 'EM' || tag === 'B') return 'inline';
+      if (tag === 'LI') return 'list-item';
+      if (tag === 'A') return el.classList.contains('btn') ? 'inline-flex' : 'inline';
+      return 'block';
+    }
+
+    function applyLanguage(lang) {
+      document.querySelectorAll('.only-en').forEach((el) => {
+        el.style.display = lang === 'en' ? getVisibleDisplay(el) : 'none';
+      });
+      document.querySelectorAll('.only-ko').forEach((el) => {
+        el.style.display = lang === 'ko' ? getVisibleDisplay(el) : 'none';
+      });
+    }
+
     function setLanguage(lang) {
       document.body.setAttribute('data-lang', lang);
       localStorage.setItem('wavelab18-lang', lang);
+      applyLanguage(lang);
       const modal = document.getElementById('mediaModal');
       if (modal.classList.contains('open') && modal.dataset.key) {
         renderMediaModal(modal.dataset.key);
@@ -1371,14 +1427,7 @@
       shell.classList.add('ready');
     }
 
-    function openIntro() {
-      localStorage.removeItem('wavelab18-entered');
-      document.getElementById('langGate').classList.remove('hidden');
-      document.getElementById('siteShell').classList.remove('ready');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function renderMediaModal(key) {
+    function renderMediaModalfunction renderMediaModal(key) {
       const item = mediaLibrary[key];
       if (!item) return;
       const lang = currentLang();
@@ -1423,9 +1472,9 @@
     });
 
     (function boot() {
-      const savedLang = localStorage.getItem('wavelab18-lang');
+      const savedLang = localStorage.getItem('wavelab18-lang') || 'en';
       const visited = localStorage.getItem('wavelab18-entered');
-      if (savedLang) document.body.setAttribute('data-lang', savedLang);
+      setLanguage(savedLang);
       if (visited === 'yes') {
         document.getElementById('langGate').classList.add('hidden');
         document.getElementById('siteShell').classList.add('ready');
