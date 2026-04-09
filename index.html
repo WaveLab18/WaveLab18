@@ -18,9 +18,12 @@
       --muted-2: #7f93aa;
       --white-soft: #dce8f5;
       --navy-light: #8cb7ff;
+      --accent-yellow: #eaff57;
+      --accent-green: #70ff9a;
+      --accent-red: #ff6b6b;
       --shadow: 0 26px 56px rgba(0,0,0,0.34);
       --radius: 26px;
-      --max: 1180px;
+      --max: 1520px;
     }
 
     * { box-sizing: border-box; }
@@ -37,12 +40,16 @@
     }
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
-    .wrap { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
 
     .only-ko { display: none; }
     body[data-lang="ko"] .only-en { display: none !important; }
-    body[data-lang="ko"] .only-ko { display: initial; }
-    body[data-lang="en"] .only-en { display: initial; }
+    body[data-lang="ko"] .only-ko { display: revert !important; }
+    body[data-lang="en"] .only-en { display: revert !important; }
+
+    .accent-yellow { color: var(--accent-yellow); text-shadow: 0 0 16px rgba(234,255,87,0.18); }
+    .accent-green { color: var(--accent-green); text-shadow: 0 0 16px rgba(112,255,154,0.16); }
+    .accent-red { color: var(--accent-red); text-shadow: 0 0 14px rgba(255,107,107,0.16); }
 
     .lang-gate {
       position: fixed;
@@ -122,6 +129,7 @@
       letter-spacing: -0.01em;
     }
     .btn:hover { transform: translateY(-1px); }
+    .btn { line-height: 1; text-align: center; }
     .btn-primary {
       color: #08111b;
       background: #f5f8fc;
@@ -204,13 +212,13 @@
     .hero { padding: 42px 0 24px; }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.06fr 0.94fr;
-      gap: 22px;
+      grid-template-columns: minmax(0, 1.08fr) minmax(420px, 0.92fr);
+      gap: 24px;
       align-items: stretch;
     }
     .hero-copy {
-      padding: 34px;
-      min-height: 620px;
+      padding: 38px;
+      min-height: 680px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -221,21 +229,21 @@
     }
     .hero-copy h1 {
       margin: 0 0 18px;
-      max-width: 11ch;
-      font-size: clamp(34px, 5vw, 64px);
+      max-width: 11.5ch;
+      font-size: clamp(38px, 4.6vw, 76px);
       line-height: 1.02;
       letter-spacing: -0.06em;
       text-wrap: balance;
       word-break: keep-all;
     }
     .hero-copy h1.only-ko {
-      max-width: 9.7ch;
-      font-size: clamp(32px, 4.7vw, 54px);
+      max-width: 10ch;
+      font-size: clamp(36px, 4.2vw, 68px);
       line-height: 1.08;
     }
     .hero-copy p {
       margin: 0 0 22px;
-      max-width: 640px;
+      max-width: 720px;
       color: var(--muted);
       font-size: 18px;
     }
@@ -259,7 +267,7 @@
     }
     .hero-image {
       padding: 16px;
-      min-height: 620px;
+      min-height: 680px;
       display: flex;
       align-items: stretch;
     }
@@ -270,6 +278,7 @@
       border-radius: 22px;
       border: 1px solid rgba(255,255,255,0.08);
       background: linear-gradient(180deg, #223244, #0f1721);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 20px 36px rgba(0,0,0,0.28);
     }
     .hero-frame img,
     .image-frame img {
@@ -373,22 +382,28 @@
     .market-flows {
       display: grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 12px;
+      gap: 14px;
       margin-top: 22px;
     }
     .flow-item {
-      padding: 16px;
+      padding: 18px;
       border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.04);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.025));
+      min-height: 148px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
     }
     .flow-item h4 {
-      margin: 0 0 8px;
+      margin: 0 0 10px;
       font-size: 17px;
       letter-spacing: -0.02em;
     }
     .flow-item p {
-      margin: 0;
+      margin: 0 auto;
+      max-width: 26ch;
       color: var(--muted);
       font-size: 14px;
     }
@@ -428,6 +443,11 @@
       border: 1px solid var(--line-strong);
       background: rgba(255,255,255,0.04);
     }
+    .report-note {
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+      line-height: 1.8;
+    }
     .report-section {
       padding-top: 18px;
       margin-top: 18px;
@@ -455,6 +475,26 @@
       color: var(--text);
     }
 
+    .hero-actions {
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-actions .btn {
+      min-width: 148px;
+      min-height: 48px;
+      justify-content: center;
+      text-align: center;
+      padding: 0 18px;
+    }
+
+    .hero-copy .eyebrow + .eyebrow { margin-top: -6px; }
+
+    .report-body,
+    .report-body p,
+    .report-body li,
+    .report-section,
+    .report-note { min-width: 0; }
+
     .footer {
       padding: 22px 0 56px;
       color: var(--muted);
@@ -470,7 +510,14 @@
       gap: 14px;
     }
 
+    @media (max-width: 1280px) {
+      :root { --max: 1340px; }
+      .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(360px, 0.88fr); }
+      .hero-copy h1 { max-width: 10.2ch; font-size: clamp(34px, 4.1vw, 62px); }
+      .hero-copy h1.only-ko { max-width: 9.4ch; font-size: clamp(32px, 3.9vw, 58px); }
+    }
     @media (max-width: 1080px) {
+      .wrap { width: min(var(--max), calc(100% - 28px)); }
       .hero-copy h1 { max-width: 10ch; font-size: clamp(31px, 4.4vw, 56px); }
       .hero-copy h1.only-ko { max-width: 9ch; font-size: clamp(29px, 4.1vw, 50px); }
     }
@@ -488,8 +535,12 @@
       .hero-image { min-height: unset; }
       .section-head { flex-direction: column; align-items: start; }
       .topbar-inner { flex-wrap: wrap; padding: 12px 0; }
+      .hero-image { order: -1; }
+      .hero-frame { aspect-ratio: 4 / 4.3; }
+      .image-frame { aspect-ratio: 4 / 3; }
     }
     @media (max-width: 720px) {
+      .wrap { width: min(var(--max), calc(100% - 20px)); }
       .hero-copy { padding: 24px; }
       .hero-copy h1,
       .hero-copy h1.only-ko {
@@ -507,6 +558,10 @@
       .contact-actions,
       .policy-links,
       .report-meta { flex-direction: column; }
+      .hero-actions .btn,
+      .contact-actions .btn,
+      .policy-links .btn { width: 100%; min-width: 0; }
+      .flow-item { min-height: unset; }
     }
   </style>
 </head>
@@ -555,14 +610,14 @@
             <div class="eyebrow only-en">WaveLab18 Research Desk</div>
             <div class="eyebrow only-ko">WaveLab18 리서치 데스크</div>
 
-            <h1 class="only-en">Market data, structural change, and scenario-based interpretation.</h1>
-            <h1 class="only-ko">시장 데이터, 구조 변화, 시나리오 기반 해석.</h1>
+            <h1 class="only-en">Market data, <span class="accent-yellow">structural change</span>, and <span class="accent-green">scenario-based</span> interpretation.</h1>
+            <h1 class="only-ko">시장 데이터, <span class="accent-yellow">구조 변화</span>, <span class="accent-green">시나리오</span> 기반 해석.</h1>
 
             <p class="only-en">WaveLab18 is a research media platform focused on U.S. market data, trend interpretation, sector rotation, and structural change. We organize market signals into readable reports for research and educational use.</p>
             <p class="only-ko">WaveLab18은 미국 증시 데이터, 흐름 해석, 섹터 순환, 구조 변화에 집중하는 리서치 미디어입니다. 시장 신호를 연구 및 교육용으로 읽기 쉬운 리포트로 정리합니다.</p>
 
             <div class="hero-summary only-en">
-              <strong>Latest focus</strong>
+              <strong><span class="accent-yellow">Latest</span> focus</strong>
               <ul>
                 <li>Where capital is moving across power, automation, and AI infrastructure</li>
                 <li>How geopolitics is reshaping sector positioning and company relevance</li>
@@ -570,7 +625,7 @@
               </ul>
             </div>
             <div class="hero-summary only-ko">
-              <strong>최신 분석 초점</strong>
+              <strong><span class="accent-yellow">최신</span> 분석 초점</strong>
               <ul>
                 <li>전력, 자동화, AI 인프라 체인으로 자금이 어떻게 이동하는가</li>
                 <li>지정학이 섹터 포지셔닝과 기업 중요도를 어떻게 바꾸는가</li>
@@ -588,20 +643,20 @@
 
             <div class="market-flows">
               <div class="flow-item">
-                <h4 class="only-en">Data first</h4>
-                <h4 class="only-ko">데이터 우선</h4>
+                <h4 class="only-en"><span class="accent-yellow">Data</span> first</h4>
+                <h4 class="only-ko"><span class="accent-yellow">데이터</span> 우선</h4>
                 <p class="only-en">Market interpretation begins with observable data, not urgency or hype.</p>
                 <p class="only-ko">시장 해석은 조급한 문구가 아니라 관측 가능한 데이터에서 시작합니다.</p>
               </div>
               <div class="flow-item">
-                <h4 class="only-en">Structure over noise</h4>
-                <h4 class="only-ko">소음보다 구조</h4>
+                <h4 class="only-en"><span class="accent-green">Structure</span> over noise</h4>
+                <h4 class="only-ko">소음보다 <span class="accent-green">구조</span></h4>
                 <p class="only-en">We focus on why a move happens and which layer of the market it changes.</p>
                 <p class="only-ko">무슨 일이 일어났는지보다 왜 일어났고 어느 층위를 바꾸는지에 집중합니다.</p>
               </div>
               <div class="flow-item">
-                <h4 class="only-en">Scenario discipline</h4>
-                <h4 class="only-ko">시나리오 규율</h4>
+                <h4 class="only-en"><span class="accent-red">Scenario</span> discipline</h4>
+                <h4 class="only-ko"><span class="accent-red">시나리오</span> 규율</h4>
                 <p class="only-en">Reports are organized around bull, base, and bear paths rather than recommendation language.</p>
                 <p class="only-ko">리포트는 추천 문구가 아니라 Bull, Base, Bear 시나리오 기준으로 정리합니다.</p>
               </div>
@@ -697,8 +752,8 @@
             <div class="report-head">
               <div class="kicker only-en">Featured Research</div>
               <div class="kicker only-ko">대표 리서치</div>
-              <h3 class="only-en">U.S. Power Infrastructure and Grid Constraint</h3>
-              <h3 class="only-ko">미국 전력 인프라와 그리드 병목</h3>
+              <h3 class="only-en">U.S. Power Infrastructure and <span class="accent-yellow">Grid Constraint</span></h3>
+              <h3 class="only-ko">미국 전력 인프라와 <span class="accent-yellow">그리드 병목</span></h3>
             </div>
 
             <div class="report-meta">
