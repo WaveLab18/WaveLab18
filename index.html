@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WaveLab18 | Media Brand Landing Page</title>
-  <meta name="description" content="WaveLab18 is an independent media brand for U.S. market research and original comedy-entertainment channels." />
+  <title>WaveLab18 | U.S. Market Research Media</title>
+  <meta name="description" content="WaveLab18 is a U.S. market research media platform focused on market data, sector rotation, structural change, and scenario-based analysis." />
   <style>
     :root {
-      --bg: #09111a;
-      --bg-soft: #101b27;
-      --card: rgba(255,255,255,0.05);
-      --card-strong: rgba(255,255,255,0.08);
-      --line: rgba(255,255,255,0.10);
-      --text: #f5f7fb;
-      --muted: #b8c2cf;
-      --accent: #d1ad72;
-      --accent-soft: #7caebe;
-      --hl-yellow: #efff63;
-      --hl-green: #79ff8b;
-      --hl-red: #ff677a;
-      --shadow: 0 20px 55px rgba(0,0,0,0.34);
+      --bg: #06101a;
+      --bg-2: #091626;
+      --panel: rgba(255,255,255,0.045);
+      --panel-strong: rgba(255,255,255,0.065);
+      --line: rgba(255,255,255,0.09);
+      --line-strong: rgba(255,255,255,0.14);
+      --text: #f5f8fc;
+      --muted: #9db0c4;
+      --muted-2: #7f93aa;
+      --white-soft: #dce8f5;
+      --navy-light: #8cb7ff;
+      --shadow: 0 26px 56px rgba(0,0,0,0.34);
       --radius: 26px;
       --max: 1180px;
     }
@@ -30,68 +29,20 @@
       margin: 0;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
+      line-height: 1.65;
       background:
-        radial-gradient(circle at top left, rgba(124,174,190,0.14), transparent 30%),
-        radial-gradient(circle at top right, rgba(209,173,114,0.10), transparent 28%),
-        linear-gradient(180deg, #0a1118 0%, #0b141d 48%, #081019 100%);
-      line-height: 1.6;
+        radial-gradient(circle at top left, rgba(140,183,255,0.08), transparent 24%),
+        radial-gradient(circle at top right, rgba(255,255,255,0.04), transparent 18%),
+        linear-gradient(180deg, #050d15 0%, #08121d 48%, #050d15 100%);
     }
-
     a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
 
-    .wrap {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 12px;
-      border: 1px solid rgba(209,173,114,0.28);
-      border-radius: 999px;
-      color: var(--accent);
-      background: rgba(255,255,255,0.03);
-      text-transform: uppercase;
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      margin-bottom: 16px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      gap: 8px;
-      padding: 0 18px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      font-weight: 700;
-      cursor: pointer;
-      transition: 0.18s ease;
-    }
-
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary {
-      color: #11161c;
-      background: linear-gradient(135deg, var(--accent), #e4c48f);
-      box-shadow: 0 14px 30px rgba(209,173,114,0.18);
-    }
-
-    .btn-secondary {
-      color: var(--text);
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.14);
-    }
-
-    .btn-ghost {
-      color: var(--muted);
-      background: transparent;
-      border-color: rgba(255,255,255,0.14);
-    }
+    .only-ko { display: none; }
+    body[data-lang="ko"] .only-en { display: none !important; }
+    body[data-lang="ko"] .only-ko { display: initial; }
+    body[data-lang="en"] .only-en { display: initial; }
 
     .lang-gate {
       position: fixed;
@@ -101,60 +52,97 @@
       place-items: center;
       padding: 24px;
       background:
-        linear-gradient(180deg, rgba(7,12,18,0.78), rgba(7,12,18,0.93)),
+        linear-gradient(180deg, rgba(4,10,16,0.72), rgba(4,10,16,0.92)),
         url('images/hero-main.jpg') center/cover no-repeat;
-      transition: opacity 0.35s ease, visibility 0.35s ease;
+      transition: opacity .28s ease, visibility .28s ease;
     }
-
     .lang-gate.hidden {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
     }
-
     .gate-card {
-      width: min(760px, 100%);
-      padding: 42px 28px;
+      width: min(740px, 100%);
+      padding: 40px 28px;
+      text-align: center;
       border-radius: 30px;
       border: 1px solid var(--line);
-      background: rgba(10,16,24,0.72);
-      backdrop-filter: blur(16px);
+      background: rgba(8,15,24,0.82);
+      backdrop-filter: blur(14px);
       box-shadow: var(--shadow);
-      text-align: center;
     }
-
-    .gate-title {
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      color: var(--white-soft);
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: .12em;
+      margin-bottom: 16px;
+    }
+    .gate-card h1 {
       margin: 0 0 12px;
-      font-size: clamp(34px, 5.8vw, 64px);
-      line-height: 1.02;
-      letter-spacing: -0.04em;
+      font-size: clamp(34px, 5.6vw, 58px);
+      line-height: 1.03;
+      letter-spacing: -0.05em;
     }
-
-    .gate-desc {
-      max-width: 560px;
+    .gate-card p {
       margin: 0 auto 28px;
+      max-width: 560px;
       color: var(--muted);
       font-size: 16px;
     }
 
-    .lang-buttons,
+    .btn-row,
+    .nav-links,
+    .lang-switch,
     .hero-actions,
-    .nav-actions,
-    .section-actions,
-    .channel-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+    .contact-actions,
+    .policy-links,
+    .report-meta { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn-row { justify-content: center; }
 
-    .lang-buttons { justify-content: center; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      letter-spacing: -0.01em;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      color: #08111b;
+      background: #f5f8fc;
+      box-shadow: 0 12px 30px rgba(255,255,255,0.10);
+    }
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.12);
+    }
+    .btn-ghost {
+      color: var(--muted);
+      background: transparent;
+      border-color: rgba(255,255,255,0.12);
+    }
 
     .site-shell {
       opacity: 0;
       transform: translateY(10px);
-      transition: opacity 0.35s ease, transform 0.35s ease;
+      transition: opacity .35s ease, transform .35s ease;
     }
-
     .site-shell.ready {
       opacity: 1;
       transform: translateY(0);
@@ -164,11 +152,10 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      backdrop-filter: blur(10px);
-      background: rgba(7,12,18,0.76);
+      backdrop-filter: blur(12px);
+      background: rgba(6,12,20,0.84);
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-
     .topbar-inner {
       min-height: 76px;
       display: flex;
@@ -176,7 +163,6 @@
       justify-content: space-between;
       gap: 16px;
     }
-
     .brand {
       display: flex;
       align-items: center;
@@ -184,160 +170,128 @@
       font-weight: 800;
       letter-spacing: -0.03em;
     }
-
     .brand-mark {
       width: 42px;
       height: 42px;
       display: grid;
       place-items: center;
       border-radius: 14px;
-      background: linear-gradient(135deg, rgba(209,173,114,0.24), rgba(124,174,190,0.18));
+      background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(140,183,255,0.14));
       border: 1px solid rgba(255,255,255,0.08);
-      color: var(--accent);
+      color: var(--text);
       font-size: 13px;
       font-weight: 900;
     }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      transition: color .18s ease;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .lang-switch .btn { min-height: 40px; padding: 0 14px; }
 
-    section { padding: 28px 0; }
-
-    .panel {
+    section { padding: 34px 0; }
+    .panel,
+    .card {
       border-radius: var(--radius);
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
+      background: var(--panel);
       box-shadow: var(--shadow);
     }
+    .card-pad { padding: 24px; }
 
-    .hero {
-      padding: 42px 0 24px;
-    }
-
+    .hero { padding: 42px 0 24px; }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
+      grid-template-columns: 1.06fr 0.94fr;
       gap: 22px;
       align-items: stretch;
     }
-
     .hero-copy {
       padding: 34px;
+      min-height: 620px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      min-height: 560px;
-      overflow: hidden;
       background:
         linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)),
-        radial-gradient(circle at top right, rgba(209,173,114,0.09), transparent 24%),
-        radial-gradient(circle at bottom left, rgba(124,174,190,0.11), transparent 28%);
+        radial-gradient(circle at top right, rgba(140,183,255,0.10), transparent 24%),
+        radial-gradient(circle at bottom left, rgba(255,255,255,0.04), transparent 24%);
     }
-
     .hero-copy h1 {
       margin: 0 0 18px;
-      max-width: 10ch;
-      font-size: clamp(30px, 4.8vw, 62px);
+      max-width: 11ch;
+      font-size: clamp(34px, 5vw, 64px);
       line-height: 1.02;
-      letter-spacing: -0.05em;
+      letter-spacing: -0.06em;
       text-wrap: balance;
       word-break: keep-all;
     }
-
     .hero-copy h1.only-ko {
-      max-width: 9ch;
-      font-size: clamp(28px, 4.2vw, 56px);
-      line-height: 1.06;
+      max-width: 9.7ch;
+      font-size: clamp(32px, 4.7vw, 54px);
+      line-height: 1.08;
     }
-
     .hero-copy p {
       margin: 0 0 22px;
-      max-width: 620px;
+      max-width: 640px;
       color: var(--muted);
       font-size: 18px;
     }
-
-    .hl-yellow {
-      color: var(--hl-yellow);
-      text-shadow: 0 0 18px rgba(239,255,99,0.22);
+    .hero-summary {
+      margin: 8px 0 24px;
+      padding: 16px 18px;
+      border-radius: 20px;
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,0.04);
     }
-
-    .hl-green {
-      color: var(--hl-green);
-      text-shadow: 0 0 18px rgba(121,255,139,0.18);
-    }
-
-    .hl-red {
-      color: var(--hl-red);
-      text-shadow: 0 0 18px rgba(255,103,122,0.14);
-    }
-
-    .muted-short {
-      max-width: 560px;
-    }
-
-    .mini-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .stat {
-      position: relative;
-      padding: 16px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      overflow: hidden;
-    }
-
-    .stat::before {
-      content: "";
-      position: absolute;
-      left: 16px;
-      right: 16px;
-      top: 0;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.85), rgba(255,255,255,0));
-      opacity: 0.26;
-    }
-
-    .stat.stat-yellow::before { background: linear-gradient(90deg, rgba(239,255,99,0), rgba(239,255,99,0.95), rgba(239,255,99,0)); opacity: 0.8; }
-    .stat.stat-green::before { background: linear-gradient(90deg, rgba(121,255,139,0), rgba(121,255,139,0.95), rgba(121,255,139,0)); opacity: 0.8; }
-    .stat.stat-red::before { background: linear-gradient(90deg, rgba(255,103,122,0), rgba(255,103,122,0.95), rgba(255,103,122,0)); opacity: 0.8; }
-
-    .stat strong {
+    .hero-summary strong {
       display: block;
-      margin-bottom: 4px;
-      font-size: 19px;
+      margin-bottom: 8px;
+      font-size: 15px;
+      color: var(--text);
     }
-
-    .stat span {
-      display: block;
+    .hero-summary ul {
+      margin: 0;
+      padding-left: 18px;
       color: var(--muted);
-      font-size: 13px;
     }
-
     .hero-image {
       padding: 16px;
+      min-height: 620px;
       display: flex;
       align-items: stretch;
-      min-height: 560px;
     }
-
-    .hero-frame {
-      position: relative;
+    .hero-frame,
+    .image-frame {
       width: 100%;
       overflow: hidden;
       border-radius: 22px;
       border: 1px solid rgba(255,255,255,0.08);
-      background: linear-gradient(180deg, #243244, #111a24);
+      background: linear-gradient(180deg, #223244, #0f1721);
     }
-
-    .hero-frame img {
+    .hero-frame img,
+    .image-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
+
+    .grid-2,
+    .grid-3,
+    .contact-grid,
+    .policy-grid,
+    .research-grid,
+    .scenario-grid,
+    .report-grid { display: grid; gap: 18px; }
+    .grid-2,
+    .contact-grid,
+    .policy-grid,
+    .report-grid { grid-template-columns: 1fr 1fr; }
+    .grid-3,
+    .research-grid,
+    .scenario-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
 
     .section-head {
       display: flex;
@@ -346,346 +300,213 @@
       gap: 18px;
       margin-bottom: 18px;
     }
-
     .section-head h2 {
       margin: 0 0 6px;
       font-size: clamp(28px, 4vw, 42px);
       letter-spacing: -0.04em;
     }
-
     .section-head p {
       margin: 0;
-      max-width: 720px;
+      max-width: 760px;
       color: var(--muted);
     }
 
-    .grid-3,
-    .media-grid,
-    .notice-grid,
-    .studio-grid,
-    .gallery,
-    .video-modal-grid {
-      display: grid;
-      gap: 18px;
-    }
-
-    .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
-    .media-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-    .notice-grid,
-    .studio-grid,
-    .video-modal-grid { grid-template-columns: 1fr 1fr; }
-    .gallery { grid-template-columns: repeat(2, minmax(0,1fr)); }
-
-    .card {
-      border-radius: 24px;
-      border: 1px solid var(--line);
-      background: var(--card);
-      box-shadow: var(--shadow);
-    }
-
-    .basic-card { padding: 22px; }
-    .basic-card h3 { margin: 0 0 8px; font-size: 21px; letter-spacing: -0.03em; }
-    .basic-card p { margin: 0; color: var(--muted); }
-
-    .studio-card,
-    .notice-card,
-    .media-card {
-      padding: 18px;
-      overflow: hidden;
-    }
-
-    .image-shell,
-    .video-thumb {
-      overflow: hidden;
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .image-shell img,
-    .video-thumb img {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-    }
-
-    .studio-copy,
-    .notice-copy,
-    .media-meta {
-      padding: 10px 6px 6px;
-    }
-
-    .studio-copy h3,
-    .notice-copy h3,
-    .media-meta h3 {
-      margin: 0 0 10px;
-      font-size: 30px;
-      letter-spacing: -0.04em;
-    }
-
-    .notice-emphasis h3 {
-      color: var(--hl-red);
-      text-shadow: 0 0 16px rgba(255,103,122,0.16);
-    }
-
-    .studio-copy p,
-    .notice-copy p,
-    .notice-copy li,
-    .media-meta p,
-    .media-meta li {
-      color: var(--muted);
-    }
-
-    .notice-copy ul,
-    .media-meta ul {
-      margin: 14px 0 0;
-      padding-left: 18px;
-    }
-
-    .media-tile {
-      display: block;
-      width: 100%;
-      padding: 0;
-      border: 0;
-      color: inherit;
-      text-align: left;
-      background: transparent;
-      cursor: pointer;
-    }
-
-    .media-card {
-      height: 100%;
-      transition: transform 0.18s ease, border-color 0.18s ease;
-    }
-
-    .media-tile:hover .media-card {
-      transform: translateY(-3px);
-      border-color: rgba(209,173,114,0.34);
-    }
-
-    .video-thumb {
-      position: relative;
-      margin-bottom: 16px;
-    }
-
-    .video-thumb::after {
-      content: "▶";
-      position: absolute;
-      left: 16px;
-      bottom: 16px;
-      width: 54px;
-      height: 54px;
-      display: grid;
-      place-items: center;
-      border-radius: 999px;
-      background: rgba(10,16,24,0.80);
-      border: 1px solid rgba(255,255,255,0.12);
-      backdrop-filter: blur(10px);
-      color: #fff;
-      font-size: 20px;
-    }
-
-    .channel-tag {
+    .kicker {
       display: inline-flex;
       align-items: center;
-      margin-bottom: 10px;
-      padding: 7px 11px;
+      gap: 8px;
+      min-height: 34px;
+      padding: 0 11px;
       border-radius: 999px;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.08);
-      color: var(--accent);
       font-size: 12px;
-      letter-spacing: 0.08em;
+      letter-spacing: .08em;
       text-transform: uppercase;
+      color: var(--white-soft);
     }
 
-    .tag-yellow {
-      color: var(--hl-yellow);
-      border-color: rgba(239,255,99,0.24);
-      background: rgba(239,255,99,0.06);
-    }
-
-    .tag-green {
-      color: var(--hl-green);
-      border-color: rgba(121,255,139,0.24);
-      background: rgba(121,255,139,0.06);
-    }
-
-    .tag-red {
-      color: var(--hl-red);
-      border-color: rgba(255,103,122,0.22);
-      background: rgba(255,103,122,0.06);
-    }
-
-    .footer {
-      padding: 36px 0 60px;
+    .list,
+    .policy-copy ul,
+    .contact-card ul,
+    .report-body ul {
+      margin: 14px 0 0;
+      padding-left: 18px;
       color: var(--muted);
     }
 
+    .about-copy h3,
+    .research-card h3,
+    .contact-card h3,
+    .policy-copy h3,
+    .report-head h3 {
+      margin: 14px 0 10px;
+      font-size: 28px;
+      letter-spacing: -0.04em;
+    }
+    .about-copy p,
+    .research-card p,
+    .contact-card p,
+    .policy-copy p,
+    .report-body p,
+    .report-body li { color: var(--muted); }
+
+    .about-copy .lead,
+    .policy-copy .lead,
+    .report-note {
+      color: var(--text);
+    }
+
+    .research-card {
+      padding: 24px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)),
+        radial-gradient(circle at top right, rgba(140,183,255,0.08), transparent 26%);
+    }
+    .research-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+      color: var(--text);
+    }
+
+    .market-flows {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .flow-item {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+    }
+    .flow-item h4 {
+      margin: 0 0 8px;
+      font-size: 17px;
+      letter-spacing: -0.02em;
+    }
+    .flow-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .image-card { padding: 16px; }
+    .image-card .image-frame { aspect-ratio: 4 / 3; }
+
+    .report-article {
+      padding: 28px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)),
+        radial-gradient(circle at top right, rgba(140,183,255,0.08), transparent 24%);
+    }
+    .report-head {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .report-head h3 {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 38px);
+      letter-spacing: -0.05em;
+    }
+    .report-meta {
+      margin-top: 10px;
+      color: var(--muted-2);
+      font-size: 13px;
+    }
+    .report-note,
+    .policy-box,
+    .scenario-card,
+    .contact-panel {
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,0.04);
+    }
+    .report-section {
+      padding-top: 18px;
+      margin-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .report-section h4 {
+      margin: 0 0 10px;
+      font-size: 19px;
+      letter-spacing: -0.03em;
+    }
+    .scenario-card h5 {
+      margin: 0 0 8px;
+      font-size: 17px;
+      letter-spacing: -0.02em;
+    }
+    .scenario-card p,
+    .policy-box p { margin: 0; color: var(--muted); }
+    .policy-box p + p { margin-top: 10px; }
+    .policy-links { margin-top: 18px; }
+
+    .contact-panel strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 17px;
+      color: var(--text);
+    }
+
+    .footer {
+      padding: 22px 0 56px;
+      color: var(--muted);
+    }
     .footer-box {
       padding: 22px;
       border-radius: 24px;
-      background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       gap: 14px;
     }
 
-    .modal {
-      position: fixed;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9998;
-      padding: 20px;
-      background: rgba(7,10,15,0.80);
-      backdrop-filter: blur(10px);
+    @media (max-width: 1080px) {
+      .hero-copy h1 { max-width: 10ch; font-size: clamp(31px, 4.4vw, 56px); }
+      .hero-copy h1.only-ko { max-width: 9ch; font-size: clamp(29px, 4.1vw, 50px); }
     }
-
-    .modal.show { display: flex; }
-
-    .modal-dialog {
-      width: min(1120px, 100%);
-      max-height: calc(100vh - 40px);
-      overflow: auto;
-      padding: 18px;
-      border-radius: 28px;
-      background: linear-gradient(180deg, #121b26, #0d141c);
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: var(--shadow);
-    }
-
-    .modal-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .modal-top h3 {
-      margin: 0;
-      font-size: 28px;
-      letter-spacing: -0.04em;
-    }
-
-    .gallery figure {
-      margin: 0;
-      overflow: hidden;
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .gallery img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-    }
-
-    .gallery figcaption {
-      padding: 12px 14px 16px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .video-frame {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: #0b1118;
-    }
-
-    .video-frame iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-    }
-
-    .video-panel {
-      padding: 20px;
-      border-radius: 24px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .video-panel h4 {
-      margin: 0 0 10px;
-      font-size: 28px;
-      letter-spacing: -0.04em;
-    }
-
-    .video-panel p,
-    .video-panel li {
-      color: var(--muted);
-    }
-
-    .video-panel ul {
-      margin: 14px 0 0;
-      padding-left: 18px;
-    }
-
-    [data-lang="ko"] .only-en,
-    [data-lang="en"] .only-ko {
-      display: none !important;
-    }
-
-    @media (max-width: 1100px) {
-      .hero-copy h1 {
-        max-width: 9.5ch;
-        font-size: clamp(28px, 4.4vw, 54px);
-      }
-
-      .hero-copy h1.only-ko {
-        max-width: 8.5ch;
-        font-size: clamp(26px, 4vw, 48px);
-      }
-    }
-
     @media (max-width: 980px) {
       .hero-grid,
+      .grid-2,
       .grid-3,
-      .media-grid,
-      .notice-grid,
-      .studio-grid,
-      .gallery,
-      .video-modal-grid {
-        grid-template-columns: 1fr;
-      }
-
+      .contact-grid,
+      .policy-grid,
+      .research-grid,
+      .scenario-grid,
+      .report-grid,
+      .market-flows { grid-template-columns: 1fr; }
       .hero-copy,
-      .hero-image {
-        min-height: unset;
-      }
-
-      .mini-stats { grid-template-columns: 1fr; }
+      .hero-image { min-height: unset; }
       .section-head { flex-direction: column; align-items: start; }
+      .topbar-inner { flex-wrap: wrap; padding: 12px 0; }
     }
-
     @media (max-width: 720px) {
-      .topbar-inner { min-height: 68px; }
       .hero-copy { padding: 24px; }
       .hero-copy h1,
       .hero-copy h1.only-ko {
         max-width: 100%;
-        font-size: clamp(24px, 7.2vw, 40px);
+        font-size: clamp(24px, 7vw, 40px);
         line-height: 1.1;
       }
       .hero-copy p { font-size: 15px; }
-      .mini-stats .stat strong { font-size: 18px; }
       .gate-card { padding: 34px 20px; }
-      .btn { width: 100%; }
-      .lang-buttons,
+      .btn, .nav-links, .lang-switch { width: 100%; }
+      .btn-row,
+      .nav-links,
+      .lang-switch,
       .hero-actions,
-      .nav-actions,
-      .section-actions,
-      .channel-actions { flex-direction: column; }
+      .contact-actions,
+      .policy-links,
+      .report-meta { flex-direction: column; }
     }
   </style>
 </head>
@@ -693,13 +514,13 @@
   <div class="lang-gate" id="langGate" aria-label="Language selection">
     <div class="gate-card">
       <div class="eyebrow">WaveLab18</div>
-      <h1 class="gate-title only-en">Choose Your Version</h1>
-      <h1 class="gate-title only-ko">언어를 선택해 주십시오</h1>
-      <p class="gate-desc only-en">Choose English or Korean to enter.</p>
-      <p class="gate-desc only-ko">영어 또는 한국어를 선택해 주십시오.</p>
-      <div class="lang-buttons">
-        <button class="btn btn-primary" onclick="enterSite('en')">English Version</button>
-        <button class="btn btn-secondary" onclick="enterSite('ko')">한국어 버전</button>
+      <h1 class="only-en">U.S. Market Research Media</h1>
+      <h1 class="only-ko">미국 증시 리서치 미디어</h1>
+      <p class="only-en">Select English or Korean to enter the WaveLab18 research site.</p>
+      <p class="only-ko">WaveLab18 리서치 사이트에 입장할 언어를 선택해 주십시오.</p>
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="enterSite('en')">English</button>
+        <button class="btn btn-secondary" onclick="enterSite('ko')">한국어</button>
       </div>
     </div>
   </div>
@@ -707,181 +528,398 @@
   <div class="site-shell" id="siteShell">
     <header class="topbar">
       <div class="wrap topbar-inner">
-        <a href="#top" class="brand" aria-label="WaveLab18 home">
+        <a href="#home" class="brand" aria-label="WaveLab18 home">
           <span class="brand-mark">WL18</span>
           <span>WaveLab18</span>
         </a>
-        <div class="nav-actions">
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="#contact">Contact</a>
+          <a href="#policy">Policy</a>
+        </nav>
+
+        <div class="lang-switch">
           <button class="btn btn-ghost" onclick="setLanguage('en')">EN</button>
           <button class="btn btn-ghost" onclick="setLanguage('ko')">KR</button>
         </div>
       </div>
     </header>
 
-    <main id="top">
+    <main id="home">
       <section class="hero">
         <div class="wrap hero-grid">
           <div class="panel hero-copy">
-            <div class="eyebrow only-en">Independent Media Brand</div>
-            <div class="eyebrow only-ko">독립 미디어 브랜드</div>
+            <div class="eyebrow only-en">WaveLab18 Research Desk</div>
+            <div class="eyebrow only-ko">WaveLab18 리서치 데스크</div>
 
-            <h1 class="only-en"><span class="hl-yellow">Research</span>, <span class="hl-green">story</span>, media.</h1>
-            <h1 class="only-ko"><span class="hl-yellow">리서치</span>, <span class="hl-green">스토리</span>, 미디어.</h1>
+            <h1 class="only-en">Market data, structural change, and scenario-based interpretation.</h1>
+            <h1 class="only-ko">시장 데이터, 구조 변화, 시나리오 기반 해석.</h1>
 
-            <p class="only-en muted-short">Market insight and original entertainment under one brand.</p>
-            <p class="only-ko muted-short">시장 인사이트와 오리지널 엔터테인먼트를 하나의 브랜드로 운영합니다.</p>
+            <p class="only-en">WaveLab18 is a research media platform focused on U.S. market data, trend interpretation, sector rotation, and structural change. We organize market signals into readable reports for research and educational use.</p>
+            <p class="only-ko">WaveLab18은 미국 증시 데이터, 흐름 해석, 섹터 순환, 구조 변화에 집중하는 리서치 미디어입니다. 시장 신호를 연구 및 교육용으로 읽기 쉬운 리포트로 정리합니다.</p>
+
+            <div class="hero-summary only-en">
+              <strong>Latest focus</strong>
+              <ul>
+                <li>Where capital is moving across power, automation, and AI infrastructure</li>
+                <li>How geopolitics is reshaping sector positioning and company relevance</li>
+                <li>Why structural bottlenecks matter more than short-term headlines</li>
+              </ul>
+            </div>
+            <div class="hero-summary only-ko">
+              <strong>최신 분석 초점</strong>
+              <ul>
+                <li>전력, 자동화, AI 인프라 체인으로 자금이 어떻게 이동하는가</li>
+                <li>지정학이 섹터 포지셔닝과 기업 중요도를 어떻게 바꾸는가</li>
+                <li>단기 뉴스보다 구조적 병목이 왜 더 중요한가</li>
+              </ul>
+            </div>
 
             <div class="hero-actions">
-              <button class="btn btn-primary only-en" onclick="openStudio()">Studio</button>
-              <button class="btn btn-primary only-ko" onclick="openStudio()">스튜디오</button>
-              <a class="btn btn-secondary only-en" href="#channels">Channels</a>
-              <a class="btn btn-secondary only-ko" href="#channels">채널 보기</a>
+              <a class="btn btn-primary only-en" href="#research">View Research</a>
+              <a class="btn btn-primary only-ko" href="#research">리서치 보기</a>
+              <a class="btn btn-secondary only-en" href="#about">About WaveLab18</a>
+              <a class="btn btn-secondary only-ko" href="#about">WaveLab18 소개</a>
               <a class="btn btn-ghost" href="mailto:treebow85@gmail.com">treebow85@gmail.com</a>
             </div>
 
-            <div class="mini-stats">
-              <div class="stat stat-yellow">
-                <strong class="only-en">WaveLAB18</strong>
-                <strong class="only-ko">WaveLAB18</strong>
-                <span class="only-en">U.S. market intelligence</span>
-                <span class="only-ko">미국 증시 인사이트</span>
+            <div class="market-flows">
+              <div class="flow-item">
+                <h4 class="only-en">Data first</h4>
+                <h4 class="only-ko">데이터 우선</h4>
+                <p class="only-en">Market interpretation begins with observable data, not urgency or hype.</p>
+                <p class="only-ko">시장 해석은 조급한 문구가 아니라 관측 가능한 데이터에서 시작합니다.</p>
               </div>
-              <div class="stat stat-green">
-                <strong class="only-en">Comedy Bureau</strong>
-                <strong class="only-ko">코미디 뷰로</strong>
-                <span class="only-en">Original comedy content</span>
-                <span class="only-ko">오리지널 코믹 콘텐츠</span>
+              <div class="flow-item">
+                <h4 class="only-en">Structure over noise</h4>
+                <h4 class="only-ko">소음보다 구조</h4>
+                <p class="only-en">We focus on why a move happens and which layer of the market it changes.</p>
+                <p class="only-ko">무슨 일이 일어났는지보다 왜 일어났고 어느 층위를 바꾸는지에 집중합니다.</p>
               </div>
-              <div class="stat stat-red">
-                <strong class="only-en">EN + KR</strong>
-                <strong class="only-ko">EN + KR</strong>
-                <span class="only-en">English and Korean selection</span>
-                <span class="only-ko">영문·한글 선택</span>
+              <div class="flow-item">
+                <h4 class="only-en">Scenario discipline</h4>
+                <h4 class="only-ko">시나리오 규율</h4>
+                <p class="only-en">Reports are organized around bull, base, and bear paths rather than recommendation language.</p>
+                <p class="only-ko">리포트는 추천 문구가 아니라 Bull, Base, Bear 시나리오 기준으로 정리합니다.</p>
               </div>
             </div>
           </div>
 
           <div class="panel hero-image">
             <div class="hero-frame">
-              <img src="images/hero-right.jpg" alt="WaveLab18 featured visual" />
+              <img src="images/hero-right.jpg" alt="WaveLab18 research visual" onerror="this.onerror=null;this.src='images/hero-main.jpg'">
             </div>
           </div>
         </div>
       </section>
 
-      <section>
+      <section id="about">
         <div class="wrap">
           <div class="section-head">
             <div>
-              <h2 class="only-en">Studio</h2>
-              <h2 class="only-ko">스튜디오</h2>
-              
+              <h2>About</h2>
             </div>
-            <div class="section-actions">
-              <button class="btn btn-primary only-en" onclick="openStudio()">Click</button>
-              <button class="btn btn-primary only-ko" onclick="openStudio()">클릭</button>
-            </div>
+            <p class="only-en">Research-based media focused on U.S. market structure, sector change, and company-level relevance.</p>
+            <p class="only-ko">미국 시장 구조, 섹터 변화, 기업 단위 중요도에 집중하는 리서치 기반 미디어입니다.</p>
           </div>
 
-          <div class="card studio-card">
-            <div class="studio-grid">
-              <div class="image-shell">
-                <img src="images/studio-1.jpg" alt="WaveLab18 studio preview" />
+          <div class="grid-2">
+            <article class="card card-pad about-copy">
+              <div class="kicker only-en">Positioning</div>
+              <div class="kicker only-ko">포지셔닝</div>
+              <h3 class="only-en">WaveLab18 is a research media platform, not an advisory service.</h3>
+              <h3 class="only-ko">WaveLab18은 자문 서비스가 아닌 리서치 미디어입니다.</h3>
+              <p class="lead only-en">This website provides information for research and educational purposes only. It does not constitute financial advice, investment recommendation, or solicitation.</p>
+              <p class="lead only-ko">이 웹사이트는 연구 및 교육 목적의 정보 제공용입니다. 금융 자문, 투자 추천, 권유에 해당하지 않습니다.</p>
+              <p class="only-en">The core editorial line is simple: analyze why a market event is happening, where capital is moving, and how industry structure may be changing. WaveLab18 operates Wall Street Observatory as its primary research label and keeps research publications separate from entertainment content.</p>
+              <p class="only-ko">핵심 편집 방향은 분명합니다. 왜 이 현상이 발생하는지, 돈이 어디로 이동하는지, 산업 구조가 어떻게 바뀌는지를 해석합니다. WaveLab18은 월가관측소를 핵심 리서치 레이블로 운영하며, 리서치 발행물과 엔터테인먼트성 콘텐츠는 분리합니다.</p>
+              <ul class="list only-en">
+                <li>Independent market research media</li>
+                <li>Scenario-based interpretation over recommendation language</li>
+                <li>Macro → sector → company research flow</li>
+              </ul>
+              <ul class="list only-ko">
+                <li>독립 시장 리서치 미디어</li>
+                <li>추천 문구보다 시나리오 기반 해석</li>
+                <li>거시 → 섹터 → 기업 흐름의 리서치 구조</li>
+              </ul>
+            </article>
+
+            <article class="card image-card">
+              <div class="image-frame">
+                <img src="images/studio-1.jpg" alt="WaveLab18 research environment" onerror="this.onerror=null;this.src='images/hero-right.jpg'">
               </div>
-              <div class="studio-copy">
-                <h3 class="only-en">This is the Wall Street Observatory studio.</h3>
-                <h3 class="only-ko">월가관측소 스튜디오 현장입니다.</h3>
-                <p class="only-en">WaveLab18 keeps improving every day.</p>
-                <p class="only-ko">매일 개선하기 위해 노력하는 월가관측소입니다.</p>
-              </div>
-            </div>
+            </article>
           </div>
         </div>
       </section>
 
-      <section id="channels">
+      <section id="research">
         <div class="wrap">
           <div class="section-head">
             <div>
-              <h2 class="only-en">Active media channels</h2>
-              <h2 class="only-ko">운영 중인 미디어</h2>
-              <p class="only-en">Two channels, one brand structure.</p>
-              <p class="only-ko">하나의 브랜드 아래 두 개의 채널을 운영합니다.</p>
+              <h2>Research</h2>
             </div>
+            <p class="only-en">Research categories are separated into market analysis, sector analysis, and data insights.</p>
+            <p class="only-ko">리서치 카테고리는 시장 분석, 섹터 분석, 데이터 인사이트로 분리됩니다.</p>
           </div>
 
-          <div class="media-grid">
-            <button class="media-tile" onclick="openMedia('market')" aria-label="Open WaveLAB18 preview">
-              <article class="card media-card">
-                <div class="video-thumb">
-                  <img src="images/media-wavelab18.jpg" alt="WaveLAB18 representative image" loading="lazy" />
-                </div>
-                <div class="media-meta">
-                  <span class="channel-tag tag-yellow only-en">Main Media</span>
-                  <span class="channel-tag tag-yellow only-ko">메인 채널</span>
-                  <h3>WaveLAB18</h3>
-                  <strong class="only-en">U.S. market intelligence media</strong>
-                  <strong class="only-ko">미국 증시 인사이트 채널</strong>
-                  <p class="only-en">Macro, themes, and public-company reports.</p>
-                  <p class="only-ko">매크로, 테마, 상장기업 이슈를 다룹니다.</p>
-                </div>
-              </article>
-            </button>
+          <div class="research-grid">
+            <article class="card research-card">
+              <div class="kicker">Market Analysis</div>
+              <h3 class="only-en">Macro, liquidity, and cross-market interpretation.</h3>
+              <h3 class="only-ko">거시, 유동성, 자산 간 해석.</h3>
+              <p class="only-en">We track rates, policy, risk appetite, and how those variables shape capital flow across the U.S. market.</p>
+              <p class="only-ko">금리, 정책, 위험선호, 그리고 그 변수들이 미국 시장 내 자금 흐름을 어떻게 바꾸는지 추적합니다.</p>
+            </article>
 
-            <button class="media-tile" onclick="openMedia('comedy')" aria-label="Open Wall Street Observatory Comedy Bureau preview">
-              <article class="card media-card">
-                <div class="video-thumb">
-                  <img src="images/media-wallstreet-comedy.jpg" alt="Wall Street Observatory Comedy Bureau representative image" loading="lazy" />
+            <article class="card research-card">
+              <div class="kicker">Sector Analysis</div>
+              <h3 class="only-en">Where the industrial map is being redrawn.</h3>
+              <h3 class="only-ko">산업 지도가 다시 그려지는 지점.</h3>
+              <p class="only-en">We study which sectors benefit, stall, or gain strategic relevance when structural bottlenecks and policy shifts appear.</p>
+              <p class="only-ko">구조적 병목과 정책 변화가 나타날 때 어떤 섹터가 수혜를 받고, 정체되며, 전략적 중요성을 얻는지 분석합니다.</p>
+            </article>
+
+            <article class="card research-card">
+              <div class="kicker">Data Insights</div>
+              <h3 class="only-en">Company relevance through data and positioning.</h3>
+              <h3 class="only-ko">데이터와 포지셔닝으로 보는 기업 중요도.</h3>
+              <p class="only-en">We organize public-company exposure, chain position, and scenario relevance without using buy/sell language.</p>
+              <p class="only-ko">매수·매도 표현 없이 상장기업의 노출도, 체인 내 위치, 시나리오 중요도를 정리합니다.</p>
+            </article>
+          </div>
+
+          <article class="card report-article" style="margin-top:18px;">
+            <div class="report-head">
+              <div class="kicker only-en">Featured Research</div>
+              <div class="kicker only-ko">대표 리서치</div>
+              <h3 class="only-en">U.S. Power Infrastructure and Grid Constraint</h3>
+              <h3 class="only-ko">미국 전력 인프라와 그리드 병목</h3>
+            </div>
+
+            <div class="report-meta">
+              <span class="only-en">Title</span><span class="only-ko">Title</span>
+              <span>•</span>
+              <span class="only-en">Executive Summary</span><span class="only-ko">Executive Summary</span>
+              <span>•</span>
+              <span class="only-en">Macro Analysis</span><span class="only-ko">Macro Analysis</span>
+              <span>•</span>
+              <span class="only-en">Sector Analysis</span><span class="only-ko">Sector Analysis</span>
+              <span>•</span>
+              <span class="only-en">Company Insights</span><span class="only-ko">Company Insights</span>
+              <span>•</span>
+              <span class="only-en">Scenario Analysis</span><span class="only-ko">Scenario Analysis</span>
+              <span>•</span>
+              <span class="only-en">Conclusion</span><span class="only-ko">Conclusion</span>
+            </div>
+
+            <div class="report-section">
+              <h4>1. Title</h4>
+              <p class="report-note only-en">U.S. Power Infrastructure and Grid Constraint</p>
+              <p class="report-note only-ko">미국 전력 인프라와 그리드 병목</p>
+            </div>
+
+            <div class="report-section">
+              <h4>2. Executive Summary</h4>
+              <div class="report-note only-en">
+                Grid capacity is becoming a structural constraint where AI infrastructure, electrification, and industrial expansion overlap.<br>
+                Capital may continue to focus on transmission, power equipment, automation, and resilience layers rather than on one narrow headline.<br>
+                The research question is which part of the power chain remains necessary across multiple macro outcomes.
+              </div>
+              <div class="report-note only-ko">
+                AI 인프라, 전기화, 산업 확장이 겹치며 전력망 용량은 구조적 제약으로 부상하고 있습니다.<br>
+                자본은 단일 헤드라인보다 송배전, 전력 장비, 자동화, 회복력 체인에 계속 주목할 가능성이 있습니다.<br>
+                핵심 질문은 여러 거시 결과에서도 어떤 전력 체인이 계속 필요하냐는 점입니다.
+              </div>
+            </div>
+
+            <div class="report-grid report-body">
+              <div>
+                <div class="report-section">
+                  <h4>3. Macro Analysis</h4>
+                  <p class="only-en">The macro backdrop combines data-center power demand, slow utility upgrade cycles, and policy-driven manufacturing expansion. Even when broad market sentiment changes, the need for grid modernization and reliability spending tends to persist.</p>
+                  <p class="only-ko">거시 배경은 데이터센터 전력 수요, 느린 유틸리티 업그레이드 주기, 정책 기반 제조업 확장이 결합된 구조입니다. 광범위한 시장 심리가 바뀌더라도 그리드 현대화와 안정성 투자는 계속 필요해질 가능성이 높습니다.</p>
                 </div>
-                <div class="media-meta">
-                  <span class="channel-tag tag-green only-en">Entertainment</span>
-                  <span class="channel-tag tag-green only-ko">예능 채널</span>
-                  <h3>Wall Street Observatory Comedy Bureau</h3>
-                  <strong class="only-en">Original comedy spin-off</strong>
-                  <strong class="only-ko">오리지널 코미디 스핀오프</strong>
-                  <p class="only-en">Characters, skits, and satire from the same universe.</p>
-                  <p class="only-ko">같은 세계관에서 캐릭터, 스킷, 풍자를 전개합니다.</p>
+
+                <div class="report-section">
+                  <h4>4. Sector Analysis</h4>
+                  <p class="only-en">The relevant map is not one single theme. It spans grid hardware, transmission and distribution, industrial automation, power management, backup generation, and selective storage. Bottlenecks often redirect value across adjacent subsectors.</p>
+                  <p class="only-ko">핵심 지도는 단일 테마가 아닙니다. 그리드 하드웨어, 송배전, 산업 자동화, 전력 관리, 백업 발전, 선택적 저장까지 이어집니다. 병목은 가치가 인접 하위 섹터로 이동하게 만드는 경우가 많습니다.</p>
                 </div>
-              </article>
-            </button>
+              </div>
+
+              <div class="report-body">
+                <div class="report-section">
+                  <h4>5. Company Insights</h4>
+                  <ul class="only-en">
+                    <li>Track companies with durable exposure to utility capex and replacement cycles.</li>
+                    <li>Review firms tied to efficiency, reliability, and power-quality management.</li>
+                    <li>Monitor names linked to resilience spending when grid availability becomes a binding constraint.</li>
+                  </ul>
+                  <ul class="only-ko">
+                    <li>유틸리티 CAPEX와 교체 주기에 지속 노출된 기업을 추적해야 합니다.</li>
+                    <li>효율, 안정성, 전력 품질 관리와 연결된 기업을 점검해야 합니다.</li>
+                    <li>그리드 가용성이 제약이 될수록 회복력 투자와 연결된 종목군을 모니터링해야 합니다.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="report-section">
+              <h4>6. Scenario Analysis (Bull / Base / Bear)</h4>
+              <div class="scenario-grid">
+                <div class="scenario-card">
+                  <h5>Bull</h5>
+                  <p class="only-en">Power demand remains elevated and utility capex accelerates across the chain.</p>
+                  <p class="only-ko">전력 수요가 높게 유지되고 유틸리티 CAPEX가 체인 전반으로 확대되는 경우입니다.</p>
+                </div>
+                <div class="scenario-card">
+                  <h5>Base</h5>
+                  <p class="only-en">Demand stays structurally firm, but capital rotates selectively within the infrastructure stack.</p>
+                  <p class="only-ko">수요는 구조적으로 견조하지만 자본은 인프라 스택 안에서 선별적으로 이동하는 경우입니다.</p>
+                </div>
+                <div class="scenario-card">
+                  <h5>Bear</h5>
+                  <p class="only-en">Growth expectations cool and project timing slips, but bottleneck-critical layers still matter strategically.</p>
+                  <p class="only-ko">성장 기대가 식고 프로젝트 일정이 늦어지지만, 병목 핵심 층위는 여전히 전략적으로 중요하게 남는 경우입니다.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="report-section report-body">
+              <h4>7. Conclusion</h4>
+              <p class="only-en">This report frames a research problem rather than issuing a recommendation. The working conclusion is that reliable electricity remains a recurring constraint across multiple macro paths, making U.S. power infrastructure a useful field for continued observation.</p>
+              <p class="only-ko">이 리포트는 추천이 아니라 리서치 문제를 구조화하기 위한 문서입니다. 현재의 결론은 안정적 전력이 여러 거시 경로에서 반복적으로 제약 요인으로 등장한다는 점이며, 따라서 미국 전력 인프라는 계속 관찰할 가치가 있는 영역입니다.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <h2>Contact</h2>
+            </div>
+            <p class="only-en">For research publication, business, collaboration, or site inquiries.</p>
+            <p class="only-ko">리서치 발행, 비즈니스, 협업, 사이트 관련 문의용입니다.</p>
+          </div>
+
+          <div class="contact-grid">
+            <article class="card card-pad contact-card">
+              <div class="kicker only-en">Research Inquiry</div>
+              <div class="kicker only-ko">리서치 문의</div>
+              <h3 class="only-en">WaveLab18 contact channel.</h3>
+              <h3 class="only-ko">WaveLab18 문의 채널입니다.</h3>
+              <p class="only-en">Use the address below for publication inquiries, structural research discussion, or collaboration requests.</p>
+              <p class="only-ko">발행 문의, 구조적 리서치 논의, 협업 요청은 아래 주소를 사용해 주십시오.</p>
+              <div class="contact-actions" style="margin-top:18px;">
+                <a class="btn btn-primary" href="mailto:treebow85@gmail.com">treebow85@gmail.com</a>
+              </div>
+            </article>
+
+            <aside class="contact-panel">
+              <strong class="only-en">Coverage scope</strong>
+              <strong class="only-ko">문의 범위</strong>
+              <ul class="only-en">
+                <li>Market analysis and sector interpretation</li>
+                <li>Research-format and publication inquiries</li>
+                <li>Business and collaboration discussion</li>
+              </ul>
+              <ul class="only-ko">
+                <li>시장 분석 및 섹터 해석 문의</li>
+                <li>리포트 포맷 및 발행 관련 문의</li>
+                <li>비즈니스 및 협업 논의</li>
+              </ul>
+            </aside>
           </div>
         </div>
       </section>
 
-      <section>
+      <section id="policy">
         <div class="wrap">
           <div class="section-head">
             <div>
-              <h2 class="only-en">Notice</h2>
-              <h2 class="only-ko">안내문</h2>
-              <p class="only-en">Required information</p>
-              <p class="only-ko">필수 안내</p>
+              <h2>Policy</h2>
             </div>
+            <p class="only-en">Disclaimer, privacy, and terms for a research-based media site.</p>
+            <p class="only-ko">리서치 기반 미디어 사이트를 위한 면책, 개인정보, 이용 원칙입니다.</p>
           </div>
 
-          <div class="card notice-card">
-            <div class="notice-grid">
-              <div class="notice-copy">
-                <h3 class="only-en">Independent media, not financial services</h3>
-                <h3 class="only-ko">금융서비스가 아닌 독립 미디어</h3>
-                <ul class="only-en">
-                  <li>Publishes informational and educational media content</li>
-                  <li>Discusses markets, economics, technology, and public companies</li>
-                  <li>Promotes media publications and YouTube channel content</li>
-                </ul>
-                <ul class="only-ko">
-                  <li>정보성·교육형 미디어 콘텐츠를 제작합니다</li>
-                  <li>시장, 경제, 기술, 상장기업 이슈를 다룹니다</li>
-                  <li>유튜브 채널 및 미디어 발행물을 홍보합니다</li>
-                </ul>
+          <div class="policy-grid">
+            <article class="card card-pad policy-copy">
+              <div class="kicker">Disclaimer</div>
+              <h3 class="only-en">Research and educational use only.</h3>
+              <h3 class="only-ko">연구 및 교육 목적 전용.</h3>
+              <div class="policy-box">
+                <p>This website provides information for research and educational purposes only.</p>
+                <p>It does not constitute financial advice, investment recommendation, or solicitation.</p>
+                <p>We analyze market data, trends, and structural changes in the U.S. stock market.</p>
               </div>
-              <div class="notice-copy notice-emphasis">
-                <h3 class="only-en">Important notice</h3>
-                <h3 class="only-ko">중요 안내</h3>
-                <p class="only-en">WaveLab18 does not provide investment advisory, brokerage, lending, insurance, payment processing, asset management, or other regulated financial services. This website and related channels are for informational and educational purposes only.</p>
-                <p class="only-ko">WaveLab18는 투자자문, 중개, 대출, 보험, 결제처리, 자산관리 등 규제 대상 금융서비스를 제공하지 않습니다. 본 웹사이트와 연계 채널의 모든 내용은 정보 제공 및 교육 목적입니다.</p>
+              <ul class="only-en">
+                <li>No buy or sell recommendations are provided.</li>
+                <li>No language is intended to solicit immediate investment action.</li>
+                <li>All market interpretation is published for informational review.</li>
+              </ul>
+              <ul class="only-ko">
+                <li>매수 또는 매도 추천을 제공하지 않습니다.</li>
+                <li>즉각적인 투자 행동을 유도하는 문구를 사용하지 않습니다.</li>
+                <li>모든 시장 해석은 정보 검토용으로 발행됩니다.</li>
+              </ul>
+            </article>
+
+            <article class="card card-pad policy-copy">
+              <div class="kicker">Privacy Policy</div>
+              <h3 class="only-en">Basic privacy handling.</h3>
+              <h3 class="only-ko">기본 개인정보 처리 원칙.</h3>
+              <p class="lead only-en">WaveLab18 does not request sensitive financial information through this website.</p>
+              <p class="lead only-ko">WaveLab18은 이 웹사이트를 통해 민감한 금융정보를 요구하지 않습니다.</p>
+              <ul class="only-en">
+                <li>Contact information sent by email is used only for reply and communication.</li>
+                <li>No user account, trading instruction, or advisory onboarding is provided through this site.</li>
+                <li>Visitors should avoid sending private account credentials or brokerage details.</li>
+              </ul>
+              <ul class="only-ko">
+                <li>이메일로 전달된 연락 정보는 회신 및 커뮤니케이션 목적에 한해 사용합니다.</li>
+                <li>이 사이트는 사용자 계정 개설, 거래 지시, 자문 온보딩 기능을 제공하지 않습니다.</li>
+                <li>방문자는 계좌 비밀번호나 증권계정 세부정보를 보내지 않아야 합니다.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="policy-grid" style="margin-top:18px;">
+            <article class="card card-pad policy-copy">
+              <div class="kicker">Terms of Use</div>
+              <h3 class="only-en">Use of site content.</h3>
+              <h3 class="only-ko">사이트 콘텐츠 이용 원칙.</h3>
+              <ul class="only-en">
+                <li>Content is provided as editorial research material.</li>
+                <li>Users remain solely responsible for their own financial decisions.</li>
+                <li>WaveLab18 may update site structure, wording, or published notes without notice.</li>
+              </ul>
+              <ul class="only-ko">
+                <li>콘텐츠는 편집형 리서치 자료로 제공됩니다.</li>
+                <li>재무적 의사결정의 최종 책임은 사용자 본인에게 있습니다.</li>
+                <li>WaveLab18은 별도 공지 없이 사이트 구조, 문구, 발행 노트를 수정할 수 있습니다.</li>
+              </ul>
+            </article>
+
+            <article class="card card-pad policy-copy">
+              <div class="kicker only-en">Editorial Scope</div>
+              <div class="kicker only-ko">편집 범위</div>
+              <h3 class="only-en">Macro, sector, data, and structural interpretation.</h3>
+              <h3 class="only-ko">거시, 섹터, 데이터, 구조 해석 중심.</h3>
+              <p class="only-en">WaveLab18 covers U.S. equity-market structure, sector rotation, listed-company relevance, geopolitics-to-industry analysis, and crypto-linked asset flow when it intersects with U.S. market structure.</p>
+              <p class="only-ko">WaveLab18은 미국 주식시장 구조, 섹터 순환, 상장기업 중요도, 지정학→산업 구조 분석, 그리고 미국 시장 구조와 연결되는 디지털 자산 흐름을 다룹니다.</p>
+              <div class="policy-links">
+                <a class="btn btn-secondary" href="mailto:treebow85@gmail.com?subject=WaveLab18%20Policy%20Inquiry">Policy Inquiry</a>
+                <a class="btn btn-ghost" href="#research">Back to Research</a>
               </div>
-            </div>
+            </article>
           </div>
         </div>
       </section>
@@ -891,224 +929,44 @@
       <div class="wrap">
         <div class="footer-box">
           <div>
-            <strong>WaveLab18</strong><br />
-            <span class="only-en">Independent media brand for market research and original entertainment.</span>
-            <span class="only-ko">시장 리서치와 오리지널 엔터테인먼트를 아우르는 독립 미디어 브랜드입니다.</span>
+            <strong>WaveLab18</strong><br>
+            <span class="only-en">U.S. market research media for educational and informational use.</span>
+            <span class="only-ko">교육 및 정보 제공용 미국 증시 리서치 미디어.</span>
           </div>
           <div>
-            <a href="https://www.youtube.com/@WaveLAB18" target="_blank" rel="noopener">WaveLAB18</a><br />
-            <a href="https://www.youtube.com/@WallStreetObservatoryComedyBur" target="_blank" rel="noopener">Comedy Bureau</a><br />
-            <a href="mailto:treebow85@gmail.com">treebow85@gmail.com</a>
+            <span>wavelab18.com</span><br>
+            <span class="only-en">Home / About / Research / Contact / Policy</span>
+            <span class="only-ko">Home / About / Research / Contact / Policy</span>
           </div>
         </div>
       </div>
     </footer>
   </div>
 
-  <div class="modal" id="studioModal" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-top">
-        <div>
-          <h3 class="only-en">WaveLab18 Studio Gallery</h3>
-          <h3 class="only-ko">WaveLab18 스튜디오 갤러리</h3>
-        </div>
-        <button class="btn btn-ghost only-en" onclick="closeStudio()">Close</button>
-        <button class="btn btn-ghost only-ko" onclick="closeStudio()">닫기</button>
-      </div>
-      <div class="gallery">
-        <figure>
-          <img src="images/studio-1.jpg" alt="WaveLab18 studio image one" />
-          <figcaption class="only-en">Studio image 1</figcaption>
-          <figcaption class="only-ko">스튜디오 이미지 1</figcaption>
-        </figure>
-        <figure>
-          <img src="images/studio-2.jpg" alt="WaveLab18 studio image two" />
-          <figcaption class="only-en">Studio image 2</figcaption>
-          <figcaption class="only-ko">스튜디오 이미지 2</figcaption>
-        </figure>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal" id="mediaModal" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-top">
-        <div>
-          <h3 id="mediaModalTitle">Media Preview</h3>
-        </div>
-        <button class="btn btn-ghost only-en" onclick="closeMedia()">Close</button>
-        <button class="btn btn-ghost only-ko" onclick="closeMedia()">닫기</button>
-      </div>
-      <div class="video-modal-grid">
-        <div class="video-frame">
-          <iframe id="mediaIframe" src="" title="YouTube media preview" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-        <aside class="video-panel">
-          <div class="only-en">
-            <h4 id="mediaTitleEn"></h4>
-            <p id="mediaDescEn"></p>
-            <ul id="mediaBulletsEn"></ul>
-            <div class="channel-actions" style="margin-top:18px;">
-              <a id="mediaWatchBtnEn" class="btn btn-secondary" href="#" target="_blank" rel="noopener">Watch on YouTube</a>
-              <a id="mediaChannelBtnEn" class="btn btn-primary" href="#" target="_blank" rel="noopener">Visit Channel</a>
-            </div>
-            <p style="margin-top:14px; font-size:14px;">If the preview does not load, use <strong>Watch on YouTube</strong>.</p>
-          </div>
-          <div class="only-ko">
-            <h4 id="mediaTitleKo"></h4>
-            <p id="mediaDescKo"></p>
-            <ul id="mediaBulletsKo"></ul>
-            <div class="channel-actions" style="margin-top:18px;">
-              <a id="mediaWatchBtnKo" class="btn btn-secondary" href="#" target="_blank" rel="noopener">유튜브에서 보기</a>
-              <a id="mediaChannelBtnKo" class="btn btn-primary" href="#" target="_blank" rel="noopener">채널 바로가기</a>
-            </div>
-            <p style="margin-top:14px; font-size:14px;">미리보기가 열리지 않으면 <strong>유튜브에서 보기</strong>를 누르십시오.</p>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </div>
-
   <script>
-    /*
-      이미지 파일명
-      - images/hero-main.jpg  (언어 선택 첫 화면 배경)
-      - images/hero-right.jpg (메인 본문 오른쪽 대표 이미지)
-      - images/studio-1.jpg
-      - images/studio-2.jpg
-      - images/media-wavelab18.jpg
-      - images/media-wallstreet-comedy.jpg
-
-      아래 previewVideoId는 채널 대표 영상 ID로 바꾸면 됩니다.
-      현재 값은 예시/임시값입니다.
-    */
-
-    const mediaConfig = {
-      market: {
-        previewVideoId: 'lHx1-VwfcYQ',
-        channel: 'https://www.youtube.com/@WaveLAB18/',
-        watchUrl: 'https://youtu.be/lHx1-VwfcYQ?si=B3N1d5SCgaEwmqOF',
-        modalTitle: 'WaveLAB18',
-        en: {
-          title: 'WaveLAB18',
-          desc: 'Daily U.S. market reports covering macro, sectors, and listed-company themes.',
-          bullets: [
-            'Daily market reports',
-            'Macro and sector themes',
-            'Listed-company coverage'
-          ]
-        },
-        ko: {
-          title: 'WaveLAB18',
-          desc: '매크로, 섹터, 상장기업 이슈를 다루는 미국 증시 리포트 채널입니다.',
-          bullets: [
-            '미국증시 리포트',
-            '매크로·섹터 해설',
-            '상장기업 이슈'
-          ]
-        }
-      },
-      comedy: {
-        previewVideoId: 'aMqlc1dMnEk',
-        channel: 'https://www.youtube.com/@WallStreetObservatoryComedyBur',
-        watchUrl: 'https://youtu.be/aMqlc1dMnEk?si=sxnbcQvjjK9idv4U',
-        modalTitle: 'Wall Street Observatory Comedy Bureau',
-        en: {
-          title: 'Wall Street Observatory Comedy Bureau',
-          desc: 'Original comedy spin-off built with recurring characters and sketch-driven episodes.',
-          bullets: [
-            'Comedy and sketch content',
-            'Character-driven episodes',
-            'Spin-off channel under the same brand'
-          ]
-        },
-        ko: {
-          title: 'Wall Street Observatory Comedy Bureau',
-          desc: '캐릭터와 스킷 중심으로 전개되는 오리지널 코미디 스핀오프 채널입니다.',
-          bullets: [
-            '코미디·스킷 콘텐츠',
-            '캐릭터 중심 에피소드',
-            '같은 브랜드의 스핀오프 채널'
-          ]
-        }
-      }
-    };
-
     function setLanguage(lang) {
       document.body.setAttribute('data-lang', lang);
-      document.documentElement.lang = lang === 'ko' ? 'ko' : 'en';
+      localStorage.setItem('wavelab18-lang', lang);
     }
 
     function enterSite(lang) {
       setLanguage(lang);
-      document.getElementById('langGate').classList.add('hidden');
-      document.getElementById('siteShell').classList.add('ready');
+      const gate = document.getElementById('langGate');
+      const shell = document.getElementById('siteShell');
+      localStorage.setItem('wavelab18-entered', 'yes');
+      gate.classList.add('hidden');
+      shell.classList.add('ready');
     }
 
-    function buildEmbedUrl(videoId) {
-      return `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`;
-    }
-
-    function openStudio() {
-      const modal = document.getElementById('studioModal');
-      modal.classList.add('show');
-      modal.setAttribute('aria-hidden', 'false');
-    }
-
-    function closeStudio() {
-      const modal = document.getElementById('studioModal');
-      modal.classList.remove('show');
-      modal.setAttribute('aria-hidden', 'true');
-    }
-
-    function openMedia(key) {
-      const media = mediaConfig[key];
-      if (!media) return;
-
-      document.getElementById('mediaModalTitle').textContent = media.modalTitle;
-      document.getElementById('mediaIframe').src = buildEmbedUrl(media.previewVideoId);
-
-      document.getElementById('mediaTitleEn').textContent = media.en.title;
-      document.getElementById('mediaDescEn').textContent = media.en.desc;
-      document.getElementById('mediaTitleKo').textContent = media.ko.title;
-      document.getElementById('mediaDescKo').textContent = media.ko.desc;
-
-      const enList = document.getElementById('mediaBulletsEn');
-      const koList = document.getElementById('mediaBulletsKo');
-      enList.innerHTML = media.en.bullets.map(item => `<li>${item}</li>`).join('');
-      koList.innerHTML = media.ko.bullets.map(item => `<li>${item}</li>`).join('');
-
-      document.getElementById('mediaChannelBtnEn').href = media.channel;
-      document.getElementById('mediaChannelBtnKo').href = media.channel;
-      document.getElementById('mediaWatchBtnEn').href = media.watchUrl;
-      document.getElementById('mediaWatchBtnKo').href = media.watchUrl;
-
-      const modal = document.getElementById('mediaModal');
-      modal.classList.add('show');
-      modal.setAttribute('aria-hidden', 'false');
-    }
-
-    function closeMedia() {
-      const modal = document.getElementById('mediaModal');
-      modal.classList.remove('show');
-      modal.setAttribute('aria-hidden', 'true');
-      document.getElementById('mediaIframe').src = '';
-    }
-
-    document.getElementById('studioModal').addEventListener('click', function (e) {
-      if (e.target === this) closeStudio();
-    });
-
-    document.getElementById('mediaModal').addEventListener('click', function (e) {
-      if (e.target === this) closeMedia();
-    });
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        closeStudio();
-        closeMedia();
+    (function boot() {
+      const savedLang = localStorage.getItem('wavelab18-lang');
+      const visited = localStorage.getItem('wavelab18-entered');
+      if (savedLang) document.body.setAttribute('data-lang', savedLang);
+      if (visited === 'yes') {
+        document.getElementById('langGate').classList.add('hidden');
+        document.getElementById('siteShell').classList.add('ready');
       }
-    });
+    })();
   </script>
 </body>
 </html>
