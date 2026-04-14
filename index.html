@@ -4,9 +4,184 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WaveLab18</title>
+
+<style>
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  background:#0b1a2a;
+  color:#ffffff;
+}
+
+/* ===== 대문 ===== */
+.overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#0b1a2a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+.overlay-box{
+  text-align:center;
+}
+
+.overlay h1{
+  font-size:clamp(26px,5vw,44px);
+  white-space:nowrap;
+}
+
+.lang-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px 28px;
+  margin:10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.2);
+  cursor:pointer;
+}
+
+/* ===== 메인 ===== */
+.container{
+  max-width:1300px;
+  margin:0 auto;
+  padding:60px 20px;
+}
+
+.main-title{
+  font-size:clamp(26px,4vw,48px);
+  text-align:center;
+  white-space:nowrap;
+}
+
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:30px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 22px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.2);
+  text-decoration:none;
+  color:#fff;
+  white-space:nowrap;
+}
+
+/* ===== 미디어 ===== */
+.media{
+  margin-top:80px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:#0f2438;
+  padding:22px;
+  border-radius:12px;
+}
+
+.card h3{
+  margin-bottom:12px;
+}
+
+.card a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 16px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.2);
+  text-decoration:none;
+  color:#fff;
+}
+
+/* ===== footer ===== */
+.footer{
+  margin-top:80px;
+  text-align:center;
+  font-size:13px;
+  color:#cfd8e3;
+}
+</style>
 </head>
+
 <body>
-<h1>WaveLab18 Index Ready</h1>
-<p>Download and rename to index.html</p>
+
+<!-- 대문 -->
+<div class="overlay" id="overlay">
+  <div class="overlay-box">
+    <h1>WaveLab18</h1>
+    <div>
+      <button class="lang-btn" onclick="enter('en')">English</button>
+      <button class="lang-btn" onclick="enter('ko')">한국어</button>
+    </div>
+  </div>
+</div>
+
+<!-- 메인 -->
+<div class="container" id="main" style="display:none;">
+
+  <h1 class="main-title" id="title">
+    U.S. Market Research Media
+  </h1>
+
+  <div class="buttons">
+    <a href="#" class="btn">Research</a>
+    <a href="#" class="btn">About</a>
+    <a href="/landing.html" class="btn">Platform Info</a>
+  </div>
+
+  <div class="media">
+    <div class="card">
+      <h3>월가관측소</h3>
+      <a href="https://youtu.be/lHx1-VwfcYQ?si=B3N1d5SCgaEwmqOF" target="_blank">
+        Watch Video
+      </a>
+    </div>
+
+    <div class="card">
+      <h3>월가관측소 코믹부</h3>
+      <a href="https://youtu.be/aMqlc1dMnEk?si=sxnbcQvjjK9idv4U" target="_blank">
+        Watch Video
+      </a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>
+      This website provides information for research and educational purposes only.<br>
+      It does not constitute financial advice, investment recommendation, or solicitation.<br>
+      We analyze market data, trends, and structural changes in the U.S. stock market.
+    </p>
+    <p>Contact: contact@wavelab18.com</p>
+  </div>
+
+</div>
+
+<script>
+function enter(lang){
+  document.getElementById("overlay").style.display="none";
+  document.getElementById("main").style.display="block";
+
+  if(lang==="ko"){
+    document.getElementById("title").innerText="미국 증시 리서치 미디어";
+  }
+}
+</script>
+
 </body>
 </html>
