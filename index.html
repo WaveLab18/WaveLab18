@@ -121,54 +121,6 @@
       box-shadow:var(--shadow);
     }
 
-    .lang-gate{
-      position:fixed;
-      inset:0;
-      z-index:1200;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
-      background:
-        linear-gradient(rgba(1,8,15,.72), rgba(1,8,15,.82)),
-        url('images/hero-main.jpg') center/cover no-repeat;
-    }
-    .gate-card{
-      width:min(920px, 100%);
-      container-type:inline-size;
-      text-align:center;
-      padding:42px 32px 34px;
-      border-radius:32px;
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(4,12,23,.93), rgba(3,11,21,.95));
-      box-shadow:var(--shadow);
-    }
-    .gate-title{
-      margin:22px 0 14px;
-      font-size:clamp(22px, 7.4cqw, 64px);
-      line-height:1.02;
-      letter-spacing:-.045em;
-      white-space:nowrap;
-      text-align:center;
-    }
-    .gate-copy{
-      max-width:720px;
-      margin:0 auto 24px;
-      color:var(--muted);
-      font-size:clamp(16px, 2.2cqw, 22px);
-      line-height:1.6;
-    }
-    .gate-actions{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .site-blur{filter:blur(0);transition:.2s ease}
-    body.gate-open .site-blur{filter:blur(0)}
-
     header{
       position:sticky;
       top:0;
@@ -324,10 +276,41 @@
     .hi-green{color:var(--green)}
     .hi-red{color:var(--red)}
 
-    .hero-visual{padding:14px}
+    .hero-visual{
+      padding:14px;
+      display:grid;
+      grid-template-rows:auto 1fr;
+      gap:14px;
+    }
+    .hero-side-copy{
+      padding:18px 20px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(180deg, rgba(12,29,48,.96), rgba(8,20,35,.96));
+    }
+    .hero-side-copy h2{
+      margin:0 0 10px;
+      font-size:clamp(28px, 3vw, 52px);
+      line-height:1.04;
+      letter-spacing:-.03em;
+    }
+    .hero-side-copy .sub{
+      margin:0 0 14px;
+      color:var(--green);
+      font-size:15px;
+      font-weight:800;
+      letter-spacing:.02em;
+    }
+    .hero-side-copy p{
+      margin:0 0 12px;
+      color:#dbe6f1;
+      font-size:16px;
+      line-height:1.7;
+    }
     .hero-frame{
       height:100%;
-      min-height:760px;
+      min-height:360px;
+      max-height:420px;
       border-radius:24px;
       overflow:hidden;
       border:1px solid rgba(255,255,255,.08);
@@ -488,7 +471,7 @@
     @media (max-width: 1320px){
       .hero-grid,
       .report-layout{grid-template-columns:1fr}
-      .hero-frame{min-height:620px}
+      .hero-frame{min-height:340px;max-height:400px}
     }
 
     @media (max-width: 1080px){
@@ -502,7 +485,7 @@
       .grid-2,
       .modal-grid,
       .media-card{grid-template-columns:1fr}
-      .hero-frame{min-height:520px}
+      .hero-frame{min-height:300px;max-height:360px}
       .media-thumb{height:220px}
     }
 
@@ -528,28 +511,14 @@
       .pill,
       .lang-chip,
       .media-btn{min-height:48px;padding:0 18px;font-size:14px}
-      .hero-frame{min-height:420px}
+      .hero-frame{min-height:260px;max-height:320px}
       .section-head{align-items:flex-start;flex-direction:column}
       .modal-card{padding:16px}
     }
   </style>
 </head>
-<body data-lang="en" class="gate-open">
-  <div class="lang-gate" id="langGate" aria-label="Language selection overlay">
-    <div class="gate-card">
-      <div class="badge">WaveLab18</div>
-      <h1 class="gate-title show-en block">U.S. Market Research Media</h1>
-      <h1 class="gate-title show-ko block">미국 증시 리서치 미디어</h1>
-      <p class="gate-copy show-en block">Select your preferred language to enter the WaveLab18 research site.</p>
-      <p class="gate-copy show-ko block">WaveLab18 리서치 사이트에 입장할 언어를 선택해 주십시오.</p>
-      <div class="gate-actions">
-        <button class="btn btn-primary" type="button" onclick="enterSite('en')">English</button>
-        <button class="btn" type="button" onclick="enterSite('ko')">한국어</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="site-shell site-blur" id="siteShell">
+<body data-lang="en">
+  <div class="site-shell" id="siteShell">
     <header>
       <div class="wrap topbar">
         <a href="#home" class="brand" aria-label="WaveLab18 home">
@@ -646,11 +615,29 @@
             </div>
           </div>
 
+          
           <div class="panel hero-visual">
+            <div class="hero-side-copy">
+              <h2>WaveLab18</h2>
+              <p class="sub show-en block">media and research platform</p>
+              <p class="sub show-ko block">미디어 및 리서치 플랫폼</p>
+
+              <p class="show-en block">WaveLab18 is an independent media and research platform focused on financial markets and macroeconomic trends.</p>
+              <p class="show-ko block">WaveLab18은 금융시장과 거시경제 흐름에 집중하는 독립 미디어·리서치 플랫폼입니다.</p>
+
+              <p class="show-en block">We provide informational and educational content only. We do not offer investment advice, brokerage, lending, or any regulated financial services.</p>
+              <p class="show-ko block">본 플랫폼은 정보 제공 및 교육 목적의 콘텐츠만 제공합니다. 투자 자문, 중개, 대출 또는 규제 금융서비스를 제공하지 않습니다.</p>
+
+              <p class="show-en block">All content is intended for a broad audience and does not constitute financial decision-making guidance.</p>
+              <p class="show-ko block">모든 콘텐츠는 일반 대중을 위한 것이며 개별 금융 의사결정 지침에 해당하지 않습니다.</p>
+
+              <p><strong>Contact:</strong> <a href="mailto:contact@wavelab18.com">contact@wavelab18.com</a></p>
+            </div>
             <div class="hero-frame">
-              <img src="images/hero-right.jpg" alt="WaveLab18 hero visual" onerror="this.src='images/hero-main.jpg'">
+              <img src="images/hero-right.jpg" alt="Wall Street Observatory visual" onerror="this.src='images/hero-main.jpg'">
             </div>
           </div>
+
         </div>
       </section>
 
@@ -1014,7 +1001,6 @@
     };
 
     const body = document.body;
-    const gate = document.getElementById('langGate');
     const modal = document.getElementById('mediaModal');
     const frame = document.getElementById('mediaFrame');
     const modalTitle = document.getElementById('modalTitle');
@@ -1035,8 +1021,6 @@
 
     function enterSite(lang){
       setLanguage(lang);
-      gate.classList.add('hidden');
-      body.classList.remove('gate-open');
     }
 
     function openMedia(key){
