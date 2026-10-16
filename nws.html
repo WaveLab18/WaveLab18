@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="NEW WORLD STRATEGY AI — 국제정세 신호를 수집하고 시나리오와 예측을 검증하는 WaveLab18 전략정보 엔진.">
+  <meta name="theme-color" content="#04111f">
+  <title>NWS Engine | WaveLab18</title>
+  <style>
+    :root{
+      --bg:#020a13; --panel:#071727; --panel2:#0a2033; --line:rgba(155,205,236,.16);
+      --text:#f4f8fc; --muted:#9db1c5; --cyan:#79f4dc; --blue:#70b9ff; --gold:#e7c47b;
+      --shadow:0 28px 80px rgba(0,0,0,.38); --radius:28px; --max:1240px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; min-height:100vh; color:var(--text);
+      font-family:Inter,"Pretendard","Noto Sans KR",system-ui,-apple-system,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 16% 12%,rgba(30,113,177,.24),transparent 28%),
+        radial-gradient(circle at 84% 20%,rgba(44,211,180,.12),transparent 24%),
+        linear-gradient(155deg,#020912 0%,#061728 52%,#020b14 100%);
+      background-attachment:fixed;
+    }
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.2;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,#000,transparent 80%)}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 36px),var(--max));margin:0 auto;position:relative}
+    header{position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(2,10,19,.8);backdrop-filter:blur(18px)}
+    .topbar{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:850;letter-spacing:-.02em}
+    .mark{width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(121,244,220,.32);border-radius:13px;background:linear-gradient(145deg,rgba(121,244,220,.18),rgba(112,185,255,.08));color:var(--cyan);font-size:12px;box-shadow:0 0 28px rgba(121,244,220,.09)}
+    .nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .nav a,.button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 17px;border:1px solid rgba(255,255,255,.13);border-radius:999px;color:#dce8f3;font-weight:750;font-size:14px;background:rgba(255,255,255,.035);transition:.2s ease}
+    .nav a:hover,.button:hover{transform:translateY(-1px);border-color:rgba(121,244,220,.4)}
+    .nav .active,.button.primary{color:#03131d;border-color:transparent;background:linear-gradient(135deg,var(--cyan),var(--blue));box-shadow:0 12px 34px rgba(74,186,220,.18)}
+    main{padding:52px 0 84px}
+    .hero{display:grid;grid-template-columns:1.12fr .88fr;gap:20px;align-items:stretch}
+    .panel{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(155deg,rgba(9,27,45,.94),rgba(4,15,27,.96));box-shadow:var(--shadow)}
+    .hero-copy{padding:clamp(26px,4.8vw,62px)}
+    .eyebrow{display:flex;align-items:center;gap:10px;color:var(--cyan);font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+    .pulse{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 7px rgba(121,244,220,.09),0 0 24px rgba(121,244,220,.8)}
+    h1{margin:22px 0 18px;font-size:clamp(46px,6.2vw,86px);line-height:.96;letter-spacing:-.055em}
+    h1 span{display:block;color:transparent;background:linear-gradient(90deg,var(--cyan),#d2ebff 72%);background-clip:text;-webkit-background-clip:text}
+    .lead{max-width:760px;margin:0;color:#bdccda;font-size:clamp(17px,2vw,21px);line-height:1.75}
+    .actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:28px}
+    .button{min-height:52px;padding:0 22px}
+    .access-note{margin-top:18px;color:#839bb1;font-size:13px;line-height:1.65}
+    .radar{padding:24px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative;min-height:470px}
+    .radar::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;right:-100px;top:-80px;background:repeating-radial-gradient(circle,transparent 0 48px,rgba(121,244,220,.1) 49px 50px),conic-gradient(from 210deg,transparent,rgba(121,244,220,.18),transparent 32%);animation:scan 9s linear infinite}
+    @keyframes scan{to{transform:rotate(360deg)}}
+    .radar-top{position:relative;z-index:1;display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+    .radar-title{font-size:14px;color:#b7c8d8;font-weight:800;letter-spacing:.08em}
+    .status{display:inline-flex;gap:8px;align-items:center;padding:8px 11px;border:1px solid rgba(121,244,220,.22);border-radius:999px;color:var(--cyan);font-size:12px;font-weight:800;background:rgba(0,20,28,.48)}
+    .status i{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 13px var(--cyan)}
+    .signal-list{position:relative;z-index:1;display:grid;gap:10px;margin-top:160px}
+    .signal{display:grid;grid-template-columns:44px 1fr auto;gap:13px;align-items:center;padding:13px;border:1px solid rgba(255,255,255,.08);border-radius:17px;background:rgba(3,15,26,.76);backdrop-filter:blur(8px)}
+    .signal-icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:rgba(112,185,255,.1);color:var(--blue);font-weight:900}
+    .signal strong{display:block;font-size:14px}.signal small{display:block;color:#8095aa;margin-top:4px}.score{color:var(--gold);font-size:13px;font-weight:900}
+    .section{padding-top:44px}
+    .section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:18px}
+    .section-head h2{margin:0;font-size:clamp(29px,4vw,46px);letter-spacing:-.04em}.section-head p{margin:0;max-width:600px;color:var(--muted);line-height:1.7}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .card{padding:23px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(160deg,rgba(10,31,50,.9),rgba(4,15,27,.94));min-height:210px}
+    .num{color:var(--cyan);font-size:12px;font-weight:900;letter-spacing:.13em}.card h3{margin:22px 0 10px;font-size:23px;letter-spacing:-.025em}.card p{margin:0;color:var(--muted);line-height:1.72;font-size:15px}
+    .timeline{display:grid;grid-template-columns:repeat(7,1fr);gap:9px;padding:18px}.time{padding:18px 9px;text-align:center;border:1px solid rgba(255,255,255,.08);border-radius:17px;background:rgba(255,255,255,.025)}.time strong{display:block;color:var(--cyan);font-size:18px}.time span{display:block;margin-top:7px;color:#8ea4b9;font-size:12px}
+    .final{margin-top:44px;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:22px}.final h2{margin:0 0 8px;font-size:clamp(25px,3vw,38px)}.final p{margin:0;color:var(--muted);line-height:1.7}.final .actions{margin:0;flex-shrink:0}
+    footer{padding:24px 0 52px;color:#70879d;font-size:13px;text-align:center}
+    @media(max-width:980px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.radar{min-height:400px}.signal-list{margin-top:110px}.timeline{grid-template-columns:repeat(4,1fr)}}
+    @media(max-width:640px){.wrap{width:min(calc(100% - 22px),var(--max))}.topbar{padding:10px 0;align-items:flex-start}.brand span:last-child{display:none}.nav{gap:6px}.nav a{padding:0 12px;font-size:12px}.hero-copy{padding:28px 21px}h1{font-size:clamp(43px,15vw,65px)}.lead{font-size:16px}.button{width:100%}.radar{min-height:370px;padding:18px}.signal-list{margin-top:100px}.grid{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column}.timeline{grid-template-columns:repeat(2,1fr)}.final{align-items:flex-start;flex-direction:column}.final .actions{width:100%}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.radar::before{animation:none}.nav a,.button{transition:none}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap topbar">
+      <a class="brand" href="/"><span class="mark">WL18</span><span>WaveLab18</span></a>
+      <nav class="nav" aria-label="주요 메뉴">
+        <a href="/">WaveLab18</a>
+        <a href="/#research">리서치</a>
+        <a class="active" href="/nws.html" aria-current="page">NWS 엔진</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="panel hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> Strategic intelligence system</div>
+        <h1>NEW WORLD<span>STRATEGY AI</span></h1>
+        <p class="lead">현재 세계의 사건과 역사적 배경, 경제·전략 변수를 연결해 여러 시간대의 구체적 예측을 만들고 실제 결과로 반복 검증하는 전략정보 엔진입니다.</p>
+        <div class="actions">
+          <a class="button primary" href="https://sangkang.tail59a39b.ts.net:8443/">승인된 기기에서 엔진 접속</a>
+          <a class="button" href="#method">분석 구조 보기</a>
+        </div>
+        <p class="access-note">NWS AI는 OWNER 승인 회원과 승인된 네트워크에서만 이용할 수 있습니다. 접속 화면이 열리지 않으면 해당 기기가 Tailscale 네트워크에 연결되어 있는지 확인해 주세요.</p>
+      </div>
+
+      <aside class="panel radar" aria-label="NWS 엔진 신호 구조">
+        <div class="radar-top"><span class="radar-title">GLOBAL SIGNAL MAP</span><span class="status"><i></i> PRIVATE ENGINE</span></div>
+        <div class="signal-list">
+          <div class="signal"><span class="signal-icon">A</span><div><strong>제도·권력 연속성</strong><small>Model A · 구조 변화 감시</small></div><span class="score">CORE</span></div>
+          <div class="signal"><span class="signal-icon">B</span><div><strong>사건·패턴 빈도</strong><small>Model B · 신호 변화 감지</small></div><span class="score">LIVE</span></div>
+          <div class="signal"><span class="signal-icon">Ω</span><div><strong>게임이론·전략 자문</strong><small>경쟁 행위자와 파급 경로</small></div><span class="score">META</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="method">
+      <div class="section-head"><h2>자료에서 검증까지</h2><p>수집한 사실을 바로 결론으로 단정하지 않습니다. 독립된 모델과 전략 자문을 비교하고, 예측 시점과 파급 경로를 기록한 뒤 실제 결과로 판정합니다.</p></div>
+      <div class="grid">
+        <article class="card"><span class="num">01 · COLLECT</span><h3>세계 신호 수집</h3><p>전쟁, 금융, 에너지, 질병, 문화, 환율과 국가별 시장 자료를 출처와 시각을 함께 저장합니다.</p></article>
+        <article class="card"><span class="num">02 · ANALYZE</span><h3>다중 모델 비교</h3><p>Model A·B, 게임이론, 로컬 분석과 선택적 전략 자문의 일치와 충돌을 드러냅니다.</p></article>
+        <article class="card"><span class="num">03 · FORECAST</span><h3>파급 경로 예측</h3><p>구체적 사건과 예상 시점, 1차·2차·3차 영향을 연결해 META-FORECAST로 종합합니다.</p></article>
+        <article class="card"><span class="num">04 · VERIFY</span><h3>실제 결과 검증</h3><p>기존 예측을 지우지 않고 결과와 비교합니다. 적중·실패·판정불가 기록이 다음 예측에 반영됩니다.</p></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>일곱 개의 예측 시간대</h2><p>긴급 변화부터 세계질서의 장기 이동까지 같은 사건을 서로 다른 시간축에서 추적합니다.</p></div>
+      <div class="panel timeline">
+        <div class="time"><strong>7일</strong><span>즉시 신호</span></div><div class="time"><strong>30일</strong><span>단기 전개</span></div><div class="time"><strong>90일</strong><span>정책 반응</span></div><div class="time"><strong>1년</strong><span>구조 변화</span></div><div class="time"><strong>3년</strong><span>세력 재편</span></div><div class="time"><strong>5년</strong><span>질서 전환</span></div><div class="time"><strong>10년</strong><span>장기 전망</span></div>
+      </div>
+    </section>
+
+    <section class="panel final">
+      <div><h2>결론부터 보는 전략 브리핑</h2><p>가장 긴박한 상황과 주목할 요인, 예상되는 다음 변화가 먼저 표시되고 근거·자료·방법론은 아래에서 확인할 수 있습니다.</p></div>
+      <div class="actions"><a class="button primary" href="https://sangkang.tail59a39b.ts.net:8443/">NWS 엔진 열기</a></div>
+    </section>
+  </main>
+
+  <footer class="wrap">WaveLab18 · NEW WORLD STRATEGY AI · Research and educational use only</footer>
+</body>
+</html>

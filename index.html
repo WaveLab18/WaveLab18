@@ -35,6 +35,19 @@
         radial-gradient(circle at 18% 14%, rgba(19,78,170,.18), transparent 24%),
         radial-gradient(circle at 88% 16%, rgba(24,94,164,.10), transparent 22%),
         linear-gradient(180deg, #02101d 0%, #041425 48%, #020c17 100%);
+      background-attachment:fixed;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.22;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size:48px 48px;
+      mask-image:linear-gradient(to bottom, #000, transparent 72%);
     }
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%}
@@ -166,8 +179,31 @@
       color:#cbd7e5;
       font-size:14px;
       font-weight:700;
+      padding:10px 4px;
+      position:relative;
+    }
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:4px;
+      right:4px;
+      bottom:3px;
+      height:2px;
+      border-radius:2px;
+      background:var(--gold);
+      transform:scaleX(0);
+      transition:transform .2s ease;
     }
     .nav-links a:hover{color:#fff}
+    .nav-links a:hover::after{transform:scaleX(1)}
+    .nav-links .nav-engine{
+      color:#07111d;
+      padding:11px 16px;
+      border-radius:999px;
+      background:linear-gradient(135deg, #7fffd4, #72b7ff);
+      box-shadow:0 0 28px rgba(91,210,255,.2);
+    }
+    .nav-links .nav-engine::after{display:none}
     .lang-switch{
       display:flex;
       justify-content:flex-end;
@@ -514,6 +550,9 @@
       .hero-frame{min-height:260px;max-height:320px}
       .section-head{align-items:flex-start;flex-direction:column}
       .modal-card{padding:16px}
+      .nav-links{gap:4px 12px}
+      .nav-links a{font-size:13px}
+      .nav-links .nav-engine{order:-1;width:100%;max-width:230px}
     }
   </style>
 </head>
@@ -533,6 +572,7 @@
           <a href="#contact" class="show-en inline">Contact</a>
           <a href="#policy" class="show-en inline">Policy</a>
           <a href="/landing.html" class="show-en inline">Platform Info</a>
+          <a href="/nws.html" class="show-en inline nav-engine">NWS Engine</a>
 
           <a href="#home" class="show-ko inline">홈</a>
           <a href="#about" class="show-ko inline">소개</a>
@@ -540,6 +580,7 @@
           <a href="#contact" class="show-ko inline">문의</a>
           <a href="#policy" class="show-ko inline">정책</a>
           <a href="/landing.html" class="show-ko inline">플랫폼 정보</a>
+          <a href="/nws.html" class="show-ko inline nav-engine">NWS 엔진</a>
         </nav>
 
         <div class="lang-switch" aria-label="Language switch">
@@ -589,6 +630,9 @@
 
               <a class="pill show-en inline-flex" href="/landing.html">Platform Info</a>
               <a class="pill show-ko inline-flex" href="/landing.html">플랫폼 정보</a>
+
+              <a class="pill primary show-en inline-flex" href="/nws.html">Open NWS Engine</a>
+              <a class="pill primary show-ko inline-flex" href="/nws.html">NWS 엔진 열기</a>
 
               <a class="pill email inline-flex" href="mailto:contact@wavelab18.com">contact@wavelab18.com</a>
             </div>
