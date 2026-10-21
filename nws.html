@@ -98,7 +98,7 @@
         <h1>NEW WORLD<span>STRATEGY AI</span></h1>
         <p class="lead">현재 세계의 사건과 역사적 배경, 경제·전략 변수를 연결해 여러 시간대의 구체적 예측을 만들고 실제 결과로 반복 검증하는 전략정보 엔진입니다.</p>
         <div class="actions">
-          <a class="button primary" href="https://wallstrategy-ai.tail59a39b.ts.net:8443/">회원 로그인 · 가입 신청</a>
+          <a class="button primary" data-nws-entry href="https://browsing-sponsors-warranty-dresses.trycloudflare.com/">회원 로그인 · 가입 신청</a>
           <a class="button" href="#method">분석 구조 보기</a>
         </div>
         <p class="access-note">인터넷에서 누구나 가입을 신청할 수 있습니다. 계정은 OWNER가 최종 승인한 뒤에만 활성화되며, 로그인 전에는 NWS 자료와 API를 볼 수 없습니다.</p>
@@ -133,10 +133,19 @@
 
     <section class="panel final">
       <div><h2>결론부터 보는 전략 브리핑</h2><p>가장 긴박한 상황과 주목할 요인, 예상되는 다음 변화가 먼저 표시되고 근거·자료·방법론은 아래에서 확인할 수 있습니다.</p></div>
-      <div class="actions"><a class="button primary" href="https://wallstrategy-ai.tail59a39b.ts.net:8443/">로그인 · 가입 신청</a></div>
+      <div class="actions"><a class="button primary" data-nws-entry href="https://browsing-sponsors-warranty-dresses.trycloudflare.com/">로그인 · 가입 신청</a></div>
     </section>
   </main>
 
   <footer class="wrap">WSO · Wall Street Observatory · NEW WORLD STRATEGY AI · Research and educational use only</footer>
+  <script>
+    fetch('/nws-endpoint.json?ts=' + Date.now(), { cache: 'no-store' })
+      .then((response) => response.ok ? response.json() : Promise.reject())
+      .then((config) => {
+        if (!config || !/^https:\/\/[a-z0-9.-]+\/?$/i.test(config.url || '')) return;
+        document.querySelectorAll('[data-nws-entry]').forEach((link) => { link.href = config.url; });
+      })
+      .catch(() => {});
+  </script>
 </body>
 </html>
