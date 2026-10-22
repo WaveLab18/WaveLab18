@@ -34,19 +34,23 @@
       .then(async config => {
         if (config.status !== 'active' || config.provider !== 'tailscale_funnel' ||
             config.url !== 'https://wallstrategy-ai.tail59a39b.ts.net/') throw Error('endpoint unavailable');
+        const entry=document.getElementById('wallai-entry');
+        entry.href=config.url; entry.classList.remove('disabled'); entry.removeAttribute('aria-disabled');
+        entry.textContent='월AI 로그인 · 회원 접속';
+        const status=document.getElementById('endpoint-status');
+        status.textContent='공개 HTTPS 주소 준비됨 · 서버 확인 중';
         const controller = new AbortController();
         const timeout = setTimeout(() => controller.abort(), 8000);
         try {
           const response = await fetch(config.url + 'api/health',
             {mode:'no-cors', cache:'no-store', signal:controller.signal});
           if (response.type !== 'opaque' && !response.ok) throw Error('service unavailable');
+          status.textContent='월AI 서버 연결 확인 완료';
+        } catch {
+          status.textContent='공개 주소 준비됨 · 실시간 상태 확인 불가';
         } finally { clearTimeout(timeout); }
-        const entry=document.getElementById('wallai-entry');
-        entry.href=config.url; entry.classList.remove('disabled'); entry.removeAttribute('aria-disabled');
-        entry.textContent='월AI 로그인 · 회원 접속';
-        document.getElementById('endpoint-status').textContent='월AI 서버 연결 확인 완료';
       })
-      .catch(() => {document.getElementById('endpoint-status').textContent='현재 월AI 서버에 연결할 수 없습니다.';
+      .catch(() => {document.getElementById('endpoint-status').textContent='현재 공개 접속 주소를 확인할 수 없습니다.';
                     document.getElementById('wallai-entry').textContent='접속 준비 중';});
   </script>
 </body>
