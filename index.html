@@ -268,7 +268,7 @@
     .hero-heading{
       margin:10px 0 18px;
       max-width:920px;
-      font-size:clamp(40px, 3.5vw, 58px);
+      font-size:clamp(38px, 3vw, 44px);
       line-height:1.08;
       letter-spacing:-.045em;
       text-wrap:balance;
@@ -618,7 +618,7 @@
     }
   </style>
 </head>
-<body data-lang="en">
+<body data-lang="ko">
   <div class="site-shell" id="siteShell">
     <header>
       <div class="wrap topbar" id="topbar">
@@ -665,7 +665,7 @@
             <div class="show-en flex"><span class="badge">WSO Research Desk</span></div>
             <div class="show-ko flex"><span class="badge">월가관측소 리서치 데스크</span></div>
 
-            <h1 class="hero-heading show-en block"><span class="headline-line">Market data and <span class="hi-yellow">structural change.</span></span><span class="headline-line"><span class="hi-green">Scenario-based</span> interpretation.</span></h1>
+            <h1 class="hero-heading show-en block"><span class="headline-line">Market data.</span><span class="headline-line hi-yellow">Structural change.</span><span class="headline-line"><span class="hi-green">Scenario-based</span> interpretation.</span></h1>
             <h1 class="hero-heading show-ko block"><span class="headline-line">시장 데이터와 <span class="hi-yellow">구조 변화.</span></span><span class="headline-line"><span class="hi-green">시나리오 기반</span> 해석.</span></h1>
 
             <p class="hero-text show-en block">Wall Street Observatory is a research media platform focused on U.S. market data, trend interpretation, sector rotation, and structural change. We organize market signals into readable reports for research and educational use.</p>
@@ -1226,7 +1226,7 @@
 
     (function init(){
       const saved = localStorage.getItem('wavelab18_lang');
-      const lang = saved === 'ko' ? 'ko' : 'en';
+      const lang = saved === 'en' ? 'en' : 'ko';
       setLanguage(lang);
       showScreen(screenFromUrl());
     })();
