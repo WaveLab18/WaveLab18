@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Wall Street Observatory (WSO) is a U.S. market research media platform focused on market data, structural change, and sector interpretation for research and educational purposes." />
+  <meta name="description" content="Wall Street Observatory (WSO) is an independent U.S. market intelligence platform researching growth stocks, emerging high-tech industries, macroeconomics, and structural market change through WallAI, NWS AI, and two media channels." />
   <title>WSO | Wall Street Observatory</title>
   <style>
     :root{
@@ -439,6 +439,131 @@
       text-transform:uppercase;
     }
 
+    .about-hero{
+      padding:34px;
+      background:
+        radial-gradient(circle at 88% 14%, rgba(231,196,123,.14), transparent 27%),
+        radial-gradient(circle at 8% 88%, rgba(121,244,220,.08), transparent 30%),
+        linear-gradient(135deg, rgba(9,26,43,.98), rgba(5,15,28,.98));
+    }
+    .about-eyebrow{
+      margin-bottom:14px;
+      color:var(--gold);
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    .about-title{
+      max-width:1040px;
+      margin:0 0 20px;
+      font-size:clamp(32px, 3.2vw, 52px);
+      line-height:1.18;
+      letter-spacing:-.045em;
+      text-wrap:balance;
+    }
+    .about-copy{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:22px;
+      max-width:1280px;
+    }
+    .about-copy p{
+      margin:0;
+      color:#c2d1df;
+      font-size:18px;
+      line-height:1.78;
+    }
+    .about-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+    .about-tag{
+      display:inline-flex;
+      align-items:center;
+      min-height:36px;
+      padding:0 14px;
+      border:1px solid rgba(231,196,123,.25);
+      border-radius:999px;
+      color:#dce7f1;
+      background:rgba(255,255,255,.025);
+      font-size:13px;
+      font-weight:750;
+    }
+    .about-section{margin-top:24px}
+    .about-section-head{margin:0 0 14px}
+    .about-section-head h3{margin:0 0 7px;font-size:26px;line-height:1.25}
+    .about-section-head p{margin:0;color:var(--muted);font-size:16px;line-height:1.7}
+    .about-work-grid{display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));gap:14px}
+    .about-work-card{min-height:224px;padding:24px}
+    .about-number{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:38px;
+      height:38px;
+      margin-bottom:18px;
+      border-radius:12px;
+      color:#08111a;
+      background:linear-gradient(135deg, var(--green), #70b9ff);
+      font-size:13px;
+      font-weight:900;
+    }
+    .about-work-card h4{margin:0 0 10px;font-size:21px;line-height:1.35}
+    .about-work-card p{margin:0;color:var(--muted);font-size:15px;line-height:1.72}
+    .engine-grid{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:16px}
+    .engine-card{padding:27px;min-height:248px}
+    .engine-card.wallai{border-color:rgba(112,185,255,.28)}
+    .engine-card.nws{border-color:rgba(121,244,220,.28)}
+    .engine-label{margin-bottom:14px;color:var(--gold);font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+    .engine-card h4{margin:0 0 12px;font-size:29px;line-height:1.2}
+    .engine-card p{margin:0;color:#b4c5d5;font-size:16px;line-height:1.75}
+    .engine-card ul{margin:16px 0 0;padding-left:20px;color:#dce7f1;font-size:15px;line-height:1.75}
+    .about-flow{
+      display:grid;
+      grid-template-columns:repeat(5, minmax(0, 1fr));
+      gap:10px;
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.018);
+    }
+    .flow-step{
+      position:relative;
+      min-height:96px;
+      padding:16px 22px 16px 16px;
+      border-radius:17px;
+      background:rgba(8,29,46,.76);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+    .flow-step:not(:last-child)::after{
+      content:"→";
+      position:absolute;
+      right:-12px;
+      top:50%;
+      z-index:2;
+      color:var(--gold);
+      font-weight:900;
+      transform:translateY(-50%);
+    }
+    .flow-step strong{font-size:15px;line-height:1.35}
+    .flow-step span{margin-top:5px;color:#879db2;font-size:12px;line-height:1.45}
+    .channel-grid{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:16px}
+    .channel-card{padding:27px;min-height:270px;display:flex;flex-direction:column}
+    .channel-card h4{margin:0 0 12px;font-size:27px;line-height:1.25}
+    .channel-card p{margin:0;color:var(--muted);font-size:16px;line-height:1.75}
+    .channel-topics{margin:16px 0 20px;color:#dce7f1;font-size:14px;font-weight:750;line-height:1.7}
+    .channel-card .btn{align-self:flex-start;margin-top:auto}
+    .about-principle{
+      margin-top:18px;
+      padding:20px 22px;
+      border-radius:18px;
+      border:1px solid rgba(231,196,123,.2);
+      background:rgba(231,196,123,.04);
+      color:#b7c7d6;
+      font-size:14px;
+      line-height:1.72;
+    }
+
     .report-layout{
       display:grid;
       grid-template-columns:1.06fr .94fr;
@@ -571,6 +696,9 @@
       .media-card{grid-template-columns:1fr}
       .hero-frame{min-height:300px;max-height:360px}
       .media-thumb{height:220px}
+      .about-work-grid{grid-template-columns:repeat(2, minmax(0, 1fr))}
+      .about-flow{grid-template-columns:1fr}
+      .flow-step:not(:last-child)::after{content:"↓";right:18px;top:auto;bottom:-17px;transform:none}
     }
 
     @media (max-width: 720px){
@@ -612,6 +740,17 @@
       .hero-frame{min-height:260px;max-height:320px}
       .section-head{align-items:flex-start;flex-direction:column}
       .modal-card{padding:16px}
+      .about-hero{padding:24px 19px}
+      .about-title{font-size:clamp(30px, 9vw, 40px);line-height:1.22}
+      .about-copy,
+      .about-work-grid,
+      .engine-grid,
+      .channel-grid{grid-template-columns:1fr}
+      .about-copy{gap:13px}
+      .about-copy p{font-size:16px;line-height:1.72}
+      .about-work-card{min-height:auto;padding:21px}
+      .engine-card,.channel-card{min-height:auto;padding:22px 20px}
+      .about-flow{padding:12px}
     }
     @media (prefers-reduced-motion:reduce){
       html{scroll-behavior:auto}
@@ -670,8 +809,8 @@
             <h1 class="hero-heading show-en block"><span class="headline-line">Market data.</span><span class="headline-line hi-yellow">Structural change.</span><span class="headline-line"><span class="hi-green">Scenario-based</span> interpretation.</span></h1>
             <h1 class="hero-heading show-ko block"><span class="headline-line">시장 데이터와 <span class="hi-yellow">구조 변화.</span></span><span class="headline-line"><span class="hi-green">시나리오 기반</span> 해석.</span></h1>
 
-            <p class="hero-text show-en block">Wall Street Observatory is a research media platform focused on U.S. market data, trend interpretation, sector rotation, and structural change. We organize market signals into readable reports for research and educational use.</p>
-            <p class="hero-text show-ko block">월가관측소는 미국 증시 데이터, 흐름 해석, 섹터 순환, 구조 변화에 집중하는 리서치 미디어입니다. 시장 신호를 연구 및 교육 목적에 맞는 읽기 쉬운 리포트 구조로 정리합니다.</p>
+            <p class="hero-text show-en block">Wall Street Observatory discovers emerging U.S. growth and high-tech companies and interprets markets through macroeconomics, liquidity, policy, corporate performance, and industry data. WallAI and NWS AI connect global structural change to market, sector, and company-level signals.</p>
+            <p class="hero-text show-ko block">월가관측소는 미국 성장주와 신흥 하이테크 기업을 발굴하고, 거시경제·유동성·정책·기업 실적·산업 데이터로 시장을 해석합니다. 월AI와 NWS AI를 통해 세계의 구조 변화를 시장·섹터·기업 신호로 연결합니다.</p>
 
             <div class="hero-note">
               <div class="hero-note-title show-en block">Latest focus</div>
@@ -736,22 +875,22 @@
           <div class="panel hero-visual">
             <div class="hero-side-copy">
               <h2>Wall Street Observatory</h2>
-              <p class="sub show-en block">media and research platform</p>
-              <p class="sub show-ko block">미디어 및 리서치 플랫폼</p>
+              <p class="sub show-en block">U.S. Market Intelligence · Research · Media</p>
+              <p class="sub show-ko block">미국 시장 인텔리전스 · 리서치 · 미디어</p>
 
-              <p class="show-en block">Wall Street Observatory is an independent media and research platform focused on financial markets and macroeconomic trends.</p>
-              <p class="show-ko block">월가관측소는 금융시장과 거시경제 흐름에 집중하는 독립 미디어·리서치 플랫폼입니다.</p>
+              <p class="show-en block">We research U.S. growth stocks, newly emerging high-tech companies, and future industries by reading macroeconomics and market structure together.</p>
+              <p class="show-ko block">미국 성장주, 새롭게 부상하는 하이테크 기업과 미래산업을 발굴하고 거시경제와 시장 구조를 함께 연구합니다.</p>
 
-              <p class="show-en block">We provide informational and educational content only. We do not offer investment advice, brokerage, lending, or any regulated financial services.</p>
-              <p class="show-ko block">본 플랫폼은 정보 제공 및 교육 목적의 콘텐츠만 제공합니다. 투자 자문, 중개, 대출 또는 규제 금융서비스를 제공하지 않습니다.</p>
+              <p class="show-en block">WallAI and NWS AI organize data, compare scenarios, and support the reasoning behind market, sector, and company-level research.</p>
+              <p class="show-ko block">월AI와 NWS AI는 데이터를 구조화하고 시나리오를 비교해 시장·섹터·기업 단위 리서치의 판단 근거를 만듭니다.</p>
 
-              <p class="show-en block">All content is intended for a broad audience and does not constitute financial decision-making guidance.</p>
-              <p class="show-ko block">모든 콘텐츠는 일반 대중을 위한 것이며 개별 금융 의사결정 지침에 해당하지 않습니다.</p>
+              <p class="show-en block">The work is published through reports, the Wall Street Observatory analysis channel, and the separate Archive X storytelling channel.</p>
+              <p class="show-ko block">연구 결과는 리포트와 월가관측소 분석 채널, 별도의 아카이브X 스토리텔링 채널을 통해 발행합니다.</p>
 
               <p><strong>Contact:</strong> <a href="mailto:contact@wavelab18.com">contact@wavelab18.com</a></p>
             </div>
             <div class="hero-frame">
-              <img src="images/hero-right.jpg" alt="Wall Street Observatory visual" onerror="this.src='images/hero-main.jpg'">
+              <img src="images/wso-gold-facade.png" alt="Wall Street Observatory gold emblem on a dark stone facade" onerror="this.src='images/hero-right.jpg'">
             </div>
           </div>
 
@@ -759,35 +898,155 @@
       </section>
 
       <section id="about" data-screen="about">
-        <div class="section-head">
-          <div>
-            <h2 class="show-en block">About</h2>
-            <h2 class="show-ko block">소개</h2>
+        <article class="card about-hero">
+          <div class="about-eyebrow">Who we are · Wall Street Observatory</div>
+          <h2 class="about-title show-en block">An independent AI intelligence platform built to read what moves the U.S. market next.</h2>
+          <h2 class="about-title show-ko block">미국 시장의 다음 변화를 읽기 위해 만든 독립 AI 인텔리전스 플랫폼</h2>
+
+          <div class="about-copy">
+            <p class="show-en block">Wall Street Observatory researches the U.S. equity market with a particular focus on growth stocks and emerging high-tech industries. We look beyond daily price action to identify companies and industrial changes with the potential to create the next growth cycle.</p>
+            <p class="show-ko block">월가관측소는 미국 주식시장, 특히 성장주와 신흥 하이테크 산업을 연구합니다. 매일의 가격 등락만 따라가기보다 다음 성장 주기를 만들 가능성이 있는 신규 기술 기업과 산업 변화를 발굴합니다.</p>
+
+            <p class="show-en block">Macroeconomics, liquidity, policy, valuation, corporate performance, technology cycles, and industry data are read together. WallAI and NWS AI are developed and operated to connect global structural change with market, sector, and company-level signals; the resulting research is published through reports and two distinct YouTube channels.</p>
+            <p class="show-ko block">거시경제, 유동성, 정책, 밸류에이션, 기업 실적, 기술 사이클과 산업 데이터를 함께 분석합니다. 세계의 구조 변화가 시장·섹터·기업 신호로 이어지는 경로를 추적하기 위해 월AI와 NWS AI를 직접 개발·운영하며, 축적한 리서치는 보고서와 서로 다른 성격의 두 유튜브 채널로 확장합니다.</p>
           </div>
-          <p class="show-en block">Wall Street Observatory is positioned as an independent research media platform. We do not provide investment advice, recommendations, or solicitation. We analyze how capital, policy, and industrial structure interact in the U.S. market.</p>
-          <p class="show-ko block">월가관측소는 독립 리서치 미디어 플랫폼입니다. 투자 자문, 추천, 권유를 제공하지 않으며 미국 시장에서 자본, 정책, 산업 구조가 어떻게 맞물리는지 분석합니다.</p>
+
+          <div class="about-tags" aria-label="Core areas">
+            <span class="about-tag show-en inline-flex">U.S. Growth Stocks</span>
+            <span class="about-tag show-ko inline-flex">미국 성장주</span>
+            <span class="about-tag show-en inline-flex">Emerging High Tech</span>
+            <span class="about-tag show-ko inline-flex">신흥 하이테크</span>
+            <span class="about-tag show-en inline-flex">Macro &amp; Market Structure</span>
+            <span class="about-tag show-ko inline-flex">거시경제·시장 구조</span>
+            <span class="about-tag">WallAI · NWS AI</span>
+            <span class="about-tag show-en inline-flex">Research &amp; Media</span>
+            <span class="about-tag show-ko inline-flex">리서치·미디어</span>
+          </div>
+        </article>
+
+        <div class="about-section">
+          <div class="about-section-head">
+            <h3 class="show-en block">What we do</h3>
+            <h3 class="show-ko block">월가관측소가 하는 일</h3>
+            <p class="show-en block">Research, development, verification, and publishing operate as one continuous system.</p>
+            <p class="show-ko block">발굴·분석·개발·검증·발행을 하나의 연속된 관측 체계로 운영합니다.</p>
+          </div>
+
+          <div class="about-work-grid">
+            <article class="card about-work-card">
+              <span class="about-number">01</span>
+              <h4 class="show-en block">Discover growth and high-tech companies</h4>
+              <h4 class="show-ko block">성장주·하이테크 기업 발굴</h4>
+              <p class="show-en block">We track technologies, demand, capital expenditure, and commercialization to find companies and industries that may define the next market cycle.</p>
+              <p class="show-ko block">기술 변화가 실제 수요·투자·사업화로 이어지는 경로를 추적해 다음 시장 주기를 만들 수 있는 기업과 산업을 찾습니다.</p>
+            </article>
+
+            <article class="card about-work-card">
+              <span class="about-number">02</span>
+              <h4 class="show-en block">Interpret markets through macroeconomics</h4>
+              <h4 class="show-ko block">거시경제 기반 시장 분석</h4>
+              <p class="show-en block">Rates, liquidity, policy, energy, supply chains, and capital flows are mapped to their effects on the U.S. market, sectors, and valuations.</p>
+              <p class="show-ko block">금리·유동성·정책·에너지·공급망·자금 흐름이 미국 시장과 섹터, 밸류에이션에 어떻게 전달되는지 분석합니다.</p>
+            </article>
+
+            <article class="card about-work-card">
+              <span class="about-number">03</span>
+              <h4 class="show-en block">Build intelligence engines</h4>
+              <h4 class="show-ko block">AI 인텔리전스 엔진 개발</h4>
+              <p class="show-en block">WallAI and NWS AI organize fragmented data, compare scenarios, and preserve the reasoning path behind each market interpretation.</p>
+              <p class="show-ko block">월AI와 NWS AI가 흩어진 데이터를 구조화하고 시나리오를 비교하며 시장 해석의 근거와 추론 경로를 축적합니다.</p>
+            </article>
+
+            <article class="card about-work-card">
+              <span class="about-number">04</span>
+              <h4 class="show-en block">Turn research into media</h4>
+              <h4 class="show-ko block">리서치를 미디어로 확장</h4>
+              <p class="show-en block">Analysis becomes accessible reports, market videos, future-industry coverage, and a separate archive of investigative storytelling.</p>
+              <p class="show-ko block">분석 결과를 읽기 쉬운 리포트와 시장·미래산업 영상으로 만들고, 별도의 탐사형 스토리텔링 아카이브까지 운영합니다.</p>
+            </article>
+          </div>
         </div>
 
-        <div class="grid-3">
-          <article class="card content-card">
-            <h3 class="show-en block">Research media</h3>
-            <h3 class="show-ko block">리서치 기반 미디어</h3>
-            <p class="show-en block">We organize analysis into readable reports for research and educational use.</p>
-            <p class="show-ko block">분석 결과를 연구 및 교육 목적의 읽기 쉬운 리포트로 정리합니다.</p>
-          </article>
-          <article class="card content-card">
-            <h3 class="show-en block">Data and structure</h3>
-            <h3 class="show-ko block">데이터와 구조</h3>
-            <p class="show-en block">The key question is not just what moved, but why the structure moved underneath it.</p>
-            <p class="show-ko block">핵심 질문은 무엇이 움직였는가가 아니라 그 아래 구조가 왜 바뀌었는가입니다.</p>
-          </article>
-          <article class="card content-card">
-            <h3 class="show-en block">No recommendation</h3>
-            <h3 class="show-ko block">추천 금지 원칙</h3>
-            <p class="show-en block">We present possibilities and scenario paths rather than buy-or-sell language.</p>
-            <p class="show-ko block">매수·매도 문구 대신 가능성과 시나리오 경로를 제시합니다.</p>
-          </article>
+        <div class="about-section">
+          <div class="about-section-head">
+            <h3 class="show-en block">Two engines, one observation system</h3>
+            <h3 class="show-ko block">두 엔진, 하나의 관측 체계</h3>
+            <p class="show-en block">NWS AI reads the world; WallAI translates that structure into U.S. market intelligence.</p>
+            <p class="show-ko block">NWS AI가 세계의 변화를 읽고, 월AI가 그 구조를 미국 시장의 신호로 연결합니다.</p>
+          </div>
+
+          <div class="engine-grid">
+            <article class="card engine-card nws">
+              <div class="engine-label">NWS AI · Strategic Intelligence</div>
+              <h4 class="show-en block">Read the forces that reshape the world</h4>
+              <h4 class="show-ko block">세계를 바꾸는 구조적 힘을 읽다</h4>
+              <p class="show-en block">NWS AI connects geopolitics, policy, energy, technology, institutions, and historical context to build multi-horizon scenarios.</p>
+              <p class="show-ko block">지정학·정책·에너지·기술·제도·역사적 맥락을 연결해 단기 사건 너머의 구조 변화와 여러 시간대의 시나리오를 정리합니다.</p>
+              <ul class="show-en block"><li>Global events and structural change</li><li>Scenario comparison and verification</li></ul>
+              <ul class="show-ko block"><li>글로벌 사건과 구조 변화</li><li>시나리오 비교와 사후 검증</li></ul>
+            </article>
+
+            <article class="card engine-card wallai">
+              <div class="engine-label">WallAI · Market Intelligence</div>
+              <h4 class="show-en block">Translate structure into market signals</h4>
+              <h4 class="show-ko block">구조 변화를 시장 신호로 번역하다</h4>
+              <p class="show-en block">WallAI combines macro conditions, market data, sector rotation, company fundamentals, and valuation to support U.S. market research.</p>
+              <p class="show-ko block">거시 환경·시장 데이터·섹터 순환·기업 펀더멘털·밸류에이션을 함께 보며 미국 증시 리서치와 기업 발굴을 지원합니다.</p>
+              <ul class="show-en block"><li>Growth-stock and future-industry monitoring</li><li>Market, sector, and company-level interpretation</li></ul>
+              <ul class="show-ko block"><li>성장주·미래산업 모니터링</li><li>시장·섹터·기업 단위 해석</li></ul>
+            </article>
+          </div>
         </div>
+
+        <div class="about-section">
+          <div class="about-section-head">
+            <h3 class="show-en block">From the world to the market—and back to verification</h3>
+            <h3 class="show-ko block">세계의 변화에서 시장 해석과 검증까지</h3>
+          </div>
+          <div class="about-flow">
+            <div class="flow-step"><strong class="show-en block">Global change</strong><strong class="show-ko block">세계·정책 변화</strong><span class="show-en block">Geopolitics · energy · technology</span><span class="show-ko block">지정학·에너지·기술</span></div>
+            <div class="flow-step"><strong>NWS AI</strong><span class="show-en block">Structural scenarios</span><span class="show-ko block">구조적 시나리오</span></div>
+            <div class="flow-step"><strong class="show-en block">U.S. market signals</strong><strong class="show-ko block">미국 시장 신호</strong><span class="show-en block">Liquidity · sectors · valuation</span><span class="show-ko block">유동성·섹터·밸류에이션</span></div>
+            <div class="flow-step"><strong>WallAI</strong><span class="show-en block">Company and industry research</span><span class="show-ko block">기업·산업 리서치</span></div>
+            <div class="flow-step"><strong class="show-en block">Publish &amp; verify</strong><strong class="show-ko block">발행·사후 검증</strong><span class="show-en block">Reports · media · review</span><span class="show-ko block">리포트·미디어·리뷰</span></div>
+          </div>
+        </div>
+
+        <div class="about-section">
+          <div class="about-section-head">
+            <h3 class="show-en block">Two channels, two distinct roles</h3>
+            <h3 class="show-ko block">두 채널, 서로 다른 역할</h3>
+            <p class="show-en block">The research channel and the storytelling archive are clearly separated by purpose and format.</p>
+            <p class="show-ko block">미국 시장을 분석하는 본 채널과 미확인 기록을 탐사하는 창작 채널을 목적과 형식에 따라 분명히 구분해 운영합니다.</p>
+          </div>
+
+          <div class="channel-grid">
+            <article class="card channel-card">
+              <div class="engine-label">Market Research Channel</div>
+              <h4>월가관측소</h4>
+              <p class="show-en block">The main analysis channel studies what actually moves U.S. equities by comparing macroeconomics, earnings, valuation, and industry data rather than merely summarizing the news.</p>
+              <p class="show-ko block">미국증시를 움직이는 본질을 읽는 메인 분석 채널입니다. 단순 뉴스 요약이 아니라 거시경제·기업 실적·밸류에이션·산업 데이터를 비교해 판단 기준을 정리합니다.</p>
+              <div class="channel-topics show-en block">Growth stocks · Quantum computing · Energy · AI infrastructure · Nasdaq scenarios</div>
+              <div class="channel-topics show-ko block">성장주 · 양자컴퓨팅 · 에너지 · AI 인프라 · 나스닥 시나리오</div>
+              <a class="btn btn-primary show-en inline-flex" href="https://www.youtube.com/@WaveLAB18" target="_blank" rel="noopener noreferrer">Visit Wall Street Observatory</a>
+              <a class="btn btn-primary show-ko inline-flex" href="https://www.youtube.com/@WaveLAB18" target="_blank" rel="noopener noreferrer">월가관측소 채널 보기</a>
+            </article>
+
+            <article class="card channel-card">
+              <div class="engine-label">Investigative Storytelling Archive</div>
+              <h4>월가관측소 아카이브 X</h4>
+              <p class="show-en block">A separate storytelling channel that follows mysteries, hidden records, unexplained events, forgotten history, and recurring patterns at the boundary between fact and hypothesis—without claiming a single final answer.</p>
+              <p class="show-ko block">미스터리·숨겨진 기록·설명되지 않는 사건·잊힌 역사·반복되는 이상한 패턴을 탐사형 스토리텔링으로 다루는 별도 채널입니다. 정답을 단정하지 않고 사실과 가설의 경계에서 단서를 추적합니다.</p>
+              <div class="channel-topics show-en block">Mysteries · Unidentified records · Forgotten history · Office stories</div>
+              <div class="channel-topics show-ko block">미스터리 · 미확인 기록 · 잊힌 역사 · 오피스 스토리</div>
+              <a class="btn btn-ghost show-en inline-flex" href="https://www.youtube.com/@wallga_archivex" target="_blank" rel="noopener noreferrer">Visit Archive X</a>
+              <a class="btn btn-ghost show-ko inline-flex" href="https://www.youtube.com/@wallga_archivex" target="_blank" rel="noopener noreferrer">아카이브X 채널 보기</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="about-principle show-en block"><strong>Editorial principle.</strong> Wall Street Observatory provides research and educational content, not personalized investment advice or guaranteed forecasts. We state assumptions, compare scenarios, and revisit outcomes so that the reasoning—not the certainty of a headline—can be evaluated.</div>
+        <div class="about-principle show-ko block"><strong>운영 원칙.</strong> 월가관측소는 개인 맞춤형 투자 자문이나 확정적 예측이 아닌 연구·교육 콘텐츠를 제공합니다. 가정을 밝히고 시나리오를 비교하며 결과를 다시 검증해, 단정적인 문구보다 판단 과정 자체를 평가할 수 있도록 합니다.</div>
       </section>
 
       <section id="research" data-screen="research">
@@ -917,8 +1176,8 @@
               <div class="kicker show-ko block">주요 미디어</div>
               <h3 class="show-en block">Wall Street Observatory</h3>
               <h3 class="show-ko block">월가관측소</h3>
-              <p class="show-en block">Primary research channel focused on U.S. market data, structural interpretation, sector rotation, and listed-company relevance.</p>
-              <p class="show-ko block">미국 시장 데이터, 구조 해석, 섹터 순환, 상장기업 중요도에 집중하는 핵심 리서치 채널입니다.</p>
+              <p class="show-en block">The main analysis channel reads what moves U.S. equities by comparing macroeconomics, corporate performance, valuation, and industry data—not merely summarizing the news.</p>
+              <p class="show-ko block">미국증시를 움직이는 본질을 읽는 메인 분석 채널입니다. 단순 뉴스 요약이 아니라 거시경제·기업 실적·밸류에이션·산업 데이터를 비교해 판단 기준을 정리합니다.</p>
               <div class="media-actions">
                 <button class="media-btn primary show-en inline-flex" type="button" onclick="event.stopPropagation(); openMedia('wavelab18')">Watch Video</button>
                 <button class="media-btn primary show-ko inline-flex" type="button" onclick="event.stopPropagation(); openMedia('wavelab18')">영상 보기</button>
@@ -932,15 +1191,15 @@
 
           <article class="card content-card media-card" onclick="openMedia('comedy')">
             <div class="media-thumb">
-              <img src="images/media-wallstreet-comedy.jpg" alt="Wall Street Observatory Comedy Bureau" onerror="this.src='images/studio-2.jpg'">
+              <img src="images/media-wallstreet-comedy.jpg" alt="Wall Street Observatory Archive X" onerror="this.src='images/studio-2.jpg'">
             </div>
             <div class="media-copy">
-              <div class="kicker show-en block">Creative spin-off</div>
-              <div class="kicker show-ko block">크리에이티브 스핀오프</div>
+              <div class="kicker show-en block">Investigative storytelling archive</div>
+              <div class="kicker show-ko block">탐사형 스토리텔링 아카이브</div>
               <h3 class="show-en block">Wall Street Observatory Archive X</h3>
               <h3 class="show-ko block">월가관측소 아카이브X</h3>
-              <p class="show-en block">Separate comedy spin-off channel built around characters, office satire, and original entertainment linked to the Wall Street Observatory brand.</p>
-              <p class="show-ko block">월가관측소 브랜드와 연결된 캐릭터, 오피스 풍자, 오리지널 엔터테인먼트 중심의 코믹 스핀오프 채널입니다.</p>
+              <p class="show-en block">A separate channel exploring mysteries, hidden records, unexplained events, forgotten history, and recurring patterns through investigative storytelling at the boundary between fact and hypothesis.</p>
+              <p class="show-ko block">미스터리·숨겨진 기록·설명되지 않는 사건·잊힌 역사·반복되는 패턴을 사실과 가설의 경계에서 추적하는 별도의 탐사형 스토리텔링 채널입니다.</p>
               <div class="media-actions">
                 <button class="media-btn primary show-en inline-flex" type="button" onclick="event.stopPropagation(); openMedia('comedy')">Watch Video</button>
                 <button class="media-btn primary show-ko inline-flex" type="button" onclick="event.stopPropagation(); openMedia('comedy')">영상 보기</button>
@@ -1084,17 +1343,17 @@
         embed: 'https://www.youtube.com/embed/lHx1-VwfcYQ?rel=0',
         video: 'https://youtu.be/lHx1-VwfcYQ?si=B3N1d5SCgaEwmqOF',
         channel: 'https://www.youtube.com/@WaveLAB18/',
-        descEn: 'Primary research channel focused on U.S. market data, structural interpretation, sector rotation, and listed-company relevance.',
-        descKo: '미국 시장 데이터, 구조 해석, 섹터 순환, 상장기업 중요도에 집중하는 핵심 리서치 채널입니다.',
+        descEn: 'The main analysis channel reads what moves U.S. equities by comparing macroeconomics, corporate performance, valuation, and industry data—not merely summarizing the news.',
+        descKo: '미국증시를 움직이는 본질을 읽는 메인 분석 채널입니다. 단순 뉴스 요약이 아니라 거시경제·기업 실적·밸류에이션·산업 데이터를 비교해 판단 기준을 정리합니다.',
         bulletsEn: [
-          'U.S. market structure and macro interpretation',
-          'Sector and company relevance through data',
-          'Scenario-based reading instead of recommendation language'
+          'U.S. growth stocks and emerging high-tech companies',
+          'Macroeconomics, earnings, valuation, and industry data',
+          'Future industries and Nasdaq scenario analysis'
         ],
         bulletsKo: [
-          '미국 시장 구조와 거시 해석',
-          '데이터 기반 섹터 및 기업 중요도 정리',
-          '추천 문구 대신 시나리오 기반 해석'
+          '미국 성장주와 신흥 하이테크 기업 발굴',
+          '거시경제·실적·밸류에이션·산업 데이터 분석',
+          '미래산업과 나스닥 시나리오 연구'
         ]
       },
       comedy: {
@@ -1103,17 +1362,17 @@
         embed: 'https://www.youtube.com/embed/9LFLdhRpoGo?rel=0',
         video: 'https://www.youtube.com/watch?v=9LFLdhRpoGo&t=1s',
         channel: 'https://www.youtube.com/@wallga_archivex',
-        descEn: 'Separate spin-off channel built around mystery, conspiracy theory, and original entertainment linked to the Wall Street Observatory brand.',
-        descKo: '월가관측소 브랜드와 연결된 미스터리, 음모론, 오리지널 엔터테인먼트 중심의 스핀오프 채널입니다.',
+        descEn: 'A separate channel following mysteries, hidden records, unexplained events, forgotten history, and recurring patterns through investigative storytelling at the boundary between fact and hypothesis.',
+        descKo: '미스터리·숨겨진 기록·설명되지 않는 사건·잊힌 역사·반복되는 패턴을 사실과 가설의 경계에서 추적하는 별도의 탐사형 스토리텔링 채널입니다.',
         bulletsEn: [
-          'Mystery and conspiracy-themed original content',
-          'Archive-style narrative structure',
-          'Entertainment layer kept separate from research positioning'
+          'Mysteries, unidentified records, and unexplained events',
+          'Forgotten history and recurring anomalies',
+          'Questions and evidence presented without claiming one final answer'
         ],
         bulletsKo: [
-          '미스터리·음모론 테마 오리지널 콘텐츠',
-          '아카이브 스타일 내러티브 구조',
-          '리서치 포지셔닝과 분리된 엔터테인먼트 레이어'
+          '미스터리·미확인 기록·설명되지 않는 사건',
+          '잊힌 역사와 반복되는 이상한 패턴',
+          '정답을 단정하지 않고 질문과 단서를 따라가는 구성'
         ]
       }
     };
