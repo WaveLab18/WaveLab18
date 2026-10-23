@@ -18,7 +18,7 @@
       --gold:#e7c47b;
       --yellow:#a8d9ff;
       --green:#79f4dc;
-      --red:#ff7474;
+      --red:#80cfff;
       --shadow:0 20px 50px rgba(0,0,0,.34);
       --radius:22px;
       --max:1560px;
@@ -60,6 +60,7 @@
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%}
     button{font:inherit}
+    h1,h2,h3,h4{word-break:keep-all;overflow-wrap:normal}
 
     .wrap{width:min(calc(100% - 44px), var(--max));margin:0 auto}
     .site-shell{position:relative;min-height:100vh;background:linear-gradient(180deg,rgba(2,10,19,.08),rgba(2,10,19,.76))}
@@ -124,8 +125,9 @@
     .lang-chip.primary,
     .media-btn.primary{
       color:#08111a;
-      border-color:rgba(255,255,255,.45);
-      background:linear-gradient(180deg, #f7f9fc, #dfe6ef);
+      border-color:transparent;
+      background:linear-gradient(135deg, var(--green), #70b9ff);
+      box-shadow:0 12px 30px rgba(75,187,219,.16);
     }
     .btn-ghost,
     .pill.ghost,
@@ -179,8 +181,9 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      background:linear-gradient(180deg, #3b4756, #1d2431);
-      color:#fff;
+      border:1px solid rgba(121,244,220,.34);
+      background:linear-gradient(145deg,rgba(121,244,220,.16),rgba(112,185,255,.07));
+      color:var(--green);
       font-size:12px;
       font-weight:900;
     }
@@ -212,6 +215,8 @@
     }
     .nav-links a:hover{color:#fff}
     .nav-links a:hover::after{transform:scaleX(1)}
+    .nav-links a[aria-current="page"]{color:#fff}
+    .nav-links a[aria-current="page"]::after{transform:scaleX(1)}
     .nav-links .nav-engine{
       display:inline-flex;
       align-items:center;
@@ -250,6 +255,9 @@
 
     main{padding:32px 0 84px}
     section{padding:34px 0}
+    main > section[data-screen]{display:none}
+    main > section[data-screen].active-screen{display:block;animation:screen-in .34s ease both}
+    @keyframes screen-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
     .hero-grid{
       display:grid;
       grid-template-columns:1.08fr .92fr;
@@ -259,10 +267,15 @@
     .hero-copy{padding:30px 30px 26px}
     .hero-heading{
       margin:10px 0 18px;
-      font-size:clamp(44px, 4.8vw, 88px);
-      line-height:1.02;
+      max-width:920px;
+      font-size:clamp(40px, 3.5vw, 58px);
+      line-height:1.08;
       letter-spacing:-.045em;
+      text-wrap:balance;
+      word-break:keep-all;
+      overflow-wrap:normal;
     }
+    .headline-line{display:block;white-space:nowrap}
     .hero-text{
       margin:0 0 18px;
       max-width:820px;
@@ -304,7 +317,7 @@
       gap:12px;
       flex-wrap:wrap;
     }
-    .hero-actions{margin-top:22px}
+    .hero-actions{margin-top:22px;justify-content:flex-start}
     .feature-grid{
       display:grid;
       grid-template-columns:repeat(3, 1fr);
@@ -327,8 +340,8 @@
     .feature-card:hover,.content-card:hover,.scenario:hover{transform:translateY(-2px);border-color:rgba(121,244,220,.27);background:rgba(9,35,50,.55)}
     .feature-card h3{
       margin:0 0 12px;
-      font-size:28px;
-      line-height:1.1;
+      font-size:23px;
+      line-height:1.2;
     }
     .feature-card p{
       margin:0;
@@ -398,7 +411,7 @@
     }
     .section-head h2{
       margin:0;
-      font-size:clamp(34px, 3vw, 52px);
+      font-size:clamp(30px, 2.7vw, 44px);
       line-height:1.08;
       letter-spacing:-.03em;
     }
@@ -414,7 +427,7 @@
     .grid-2{display:grid;grid-template-columns:repeat(2, 1fr);gap:18px}
 
     .content-card{padding:24px}
-    .content-card h3{margin:0 0 10px;font-size:28px;line-height:1.15}
+    .content-card h3{margin:0 0 10px;font-size:24px;line-height:1.2}
     .content-card p{margin:0;color:var(--muted);font-size:17px;line-height:1.75}
     .content-card ul{margin:10px 0 0;padding-left:22px;color:#dbe6f1;line-height:1.8;font-size:16px}
     .kicker{
@@ -438,7 +451,7 @@
     }
     .report-block:first-child{margin-top:0;padding-top:0;border-top:none}
     .report-block h4{margin:0 0 10px;font-size:20px}
-    .report-card-title{margin:0 0 14px;font-size:36px;line-height:1.12}
+    .report-card-title{margin:0 0 14px;font-size:32px;line-height:1.16}
     .scenario-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:14px;margin-top:12px}
     .scenario{
       min-height:188px;
@@ -577,7 +590,8 @@
       .gate-title{font-size:clamp(18px, 8.2cqw, 40px)}
       .gate-copy{font-size:15px}
       .hero-copy{padding:22px 18px 20px}
-      .hero-heading{font-size:clamp(36px, 11vw, 58px)}
+      .hero-heading{font-size:clamp(34px, 9.8vw, 48px);line-height:1.13}
+      .headline-line{white-space:normal}
       .hero-text,
       .section-head p,
       .content-card p,
@@ -587,8 +601,8 @@
       .media-copy h3,
       .report-card-title,
       .policy-box h3,
-      .contact-box h3,
-      .modal-copy h4{font-size:28px}
+      .contact-box h3{font-size:23px}
+      .modal-copy h4{font-size:27px}
       .btn,
       .pill,
       .lang-chip,
@@ -608,7 +622,7 @@
   <div class="site-shell" id="siteShell">
     <header>
       <div class="wrap topbar" id="topbar">
-        <a href="#home" class="brand" aria-label="Wall Street Observatory · 월가관측소 홈">
+        <a href="/" class="brand" data-screen-link="home" aria-label="Wall Street Observatory · 월가관측소 홈">
           <span class="brand-mark">WSO</span>
           <span class="brand-copy"><strong>Wall Street Observatory</strong><small>월가관측소</small></span>
         </a>
@@ -616,20 +630,22 @@
         <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="메뉴 열기">☰</button>
 
         <nav class="nav-links" id="main-nav" aria-label="Main navigation">
-          <a href="#home" class="show-en inline">Home</a>
-          <a href="#about" class="show-en inline">About</a>
-          <a href="#research" class="show-en inline">Research</a>
-          <a href="#contact" class="show-en inline">Contact</a>
-          <a href="#policy" class="show-en inline">Policy</a>
+          <a href="/" data-screen-link="home" class="show-en inline">Home</a>
+          <a href="/?screen=about" data-screen-link="about" class="show-en inline">About</a>
+          <a href="/?screen=research" data-screen-link="research" class="show-en inline">Research</a>
+          <a href="/?screen=media" data-screen-link="media" class="show-en inline">Media</a>
+          <a href="/?screen=contact" data-screen-link="contact" class="show-en inline">Contact</a>
+          <a href="/?screen=policy" data-screen-link="policy" class="show-en inline">Policy</a>
           <a href="/landing.html" class="show-en inline">Platform Info</a>
           <a href="/nws.html" class="show-en inline nav-engine">NWS Engine</a>
           <a href="/wallai.html" class="show-en inline nav-engine">WALLAI</a>
 
-          <a href="#home" class="show-ko inline">홈</a>
-          <a href="#about" class="show-ko inline">소개</a>
-          <a href="#research" class="show-ko inline">리서치</a>
-          <a href="#contact" class="show-ko inline">문의</a>
-          <a href="#policy" class="show-ko inline">정책</a>
+          <a href="/" data-screen-link="home" class="show-ko inline">홈</a>
+          <a href="/?screen=about" data-screen-link="about" class="show-ko inline">소개</a>
+          <a href="/?screen=research" data-screen-link="research" class="show-ko inline">리서치</a>
+          <a href="/?screen=media" data-screen-link="media" class="show-ko inline">미디어</a>
+          <a href="/?screen=contact" data-screen-link="contact" class="show-ko inline">문의</a>
+          <a href="/?screen=policy" data-screen-link="policy" class="show-ko inline">정책</a>
           <a href="/landing.html" class="show-ko inline">플랫폼 정보</a>
           <a href="/nws.html" class="show-ko inline nav-engine">NWS 엔진</a>
           <a href="/wallai.html" class="show-ko inline nav-engine">월AI</a>
@@ -643,14 +659,14 @@
     </header>
 
     <main class="wrap">
-      <section id="home">
+      <section id="home" data-screen="home">
         <div class="hero-grid">
           <div class="panel hero-copy">
             <div class="show-en flex"><span class="badge">WSO Research Desk</span></div>
             <div class="show-ko flex"><span class="badge">월가관측소 리서치 데스크</span></div>
 
-            <h1 class="hero-heading show-en block">Market data, <span class="hi-yellow">structural change</span>, and <span class="hi-green">scenario-based</span> interpretation.</h1>
-            <h1 class="hero-heading show-ko block">시장 데이터, <span class="hi-yellow">구조 변화</span>, <span class="hi-green">시나리오</span> 기반 해석.</h1>
+            <h1 class="hero-heading show-en block"><span class="headline-line">Market data and <span class="hi-yellow">structural change.</span></span><span class="headline-line"><span class="hi-green">Scenario-based</span> interpretation.</span></h1>
+            <h1 class="hero-heading show-ko block"><span class="headline-line">시장 데이터와 <span class="hi-yellow">구조 변화.</span></span><span class="headline-line"><span class="hi-green">시나리오 기반</span> 해석.</span></h1>
 
             <p class="hero-text show-en block">Wall Street Observatory is a research media platform focused on U.S. market data, trend interpretation, sector rotation, and structural change. We organize market signals into readable reports for research and educational use.</p>
             <p class="hero-text show-ko block">월가관측소는 미국 증시 데이터, 흐름 해석, 섹터 순환, 구조 변화에 집중하는 리서치 미디어입니다. 시장 신호를 연구 및 교육 목적에 맞는 읽기 쉬운 리포트 구조로 정리합니다.</p>
@@ -671,14 +687,14 @@
             </div>
 
             <div class="hero-actions">
-              <a class="pill primary show-en inline-flex" href="#research">View Research</a>
-              <a class="pill primary show-ko inline-flex" href="#research">리서치 보기</a>
+              <a class="pill primary show-en inline-flex" href="/?screen=research" data-screen-link="research">View Research</a>
+              <a class="pill primary show-ko inline-flex" href="/?screen=research" data-screen-link="research">리서치 보기</a>
 
-              <a class="pill show-en inline-flex" href="#about">About WSO</a>
-              <a class="pill show-ko inline-flex" href="#about">월가관측소 소개</a>
+              <a class="pill show-en inline-flex" href="/?screen=about" data-screen-link="about">About WSO</a>
+              <a class="pill show-ko inline-flex" href="/?screen=about" data-screen-link="about">월가관측소 소개</a>
 
-              <a class="pill show-en inline-flex" href="#media">Associated Media</a>
-              <a class="pill show-ko inline-flex" href="#media">운영 미디어</a>
+              <a class="pill show-en inline-flex" href="/?screen=media" data-screen-link="media">Associated Media</a>
+              <a class="pill show-ko inline-flex" href="/?screen=media" data-screen-link="media">운영 미디어</a>
 
               <a class="pill show-en inline-flex" href="/landing.html">Platform Info</a>
               <a class="pill show-ko inline-flex" href="/landing.html">플랫폼 정보</a>
@@ -740,7 +756,7 @@
         </div>
       </section>
 
-      <section id="about">
+      <section id="about" data-screen="about">
         <div class="section-head">
           <div>
             <h2 class="show-en block">About</h2>
@@ -772,7 +788,7 @@
         </div>
       </section>
 
-      <section id="research">
+      <section id="research" data-screen="research">
         <div class="section-head">
           <div>
             <h2 class="show-en block">Research</h2>
@@ -879,7 +895,7 @@
         </article>
       </section>
 
-      <section id="media">
+      <section id="media" data-screen="media">
         <div class="section-head">
           <div>
             <h2 class="show-en block">Associated Media</h2>
@@ -936,7 +952,7 @@
         </div>
       </section>
 
-      <section id="contact">
+      <section id="contact" data-screen="contact">
         <div class="section-head">
           <div>
             <h2 class="show-en block">Contact</h2>
@@ -970,7 +986,7 @@
         </div>
       </section>
 
-      <section id="policy">
+      <section id="policy" data-screen="policy">
         <div class="section-head">
           <div>
             <h2 class="show-en block">Policy</h2>
@@ -1108,6 +1124,12 @@
     const modalBullets = document.getElementById('modalBullets');
     const topbar = document.getElementById('topbar');
     const menuToggle = document.getElementById('menu-toggle');
+    const validScreens = new Set(['home', 'about', 'research', 'media', 'contact', 'policy']);
+
+    function screenFromUrl(){
+      const requested = new URLSearchParams(window.location.search).get('screen') || 'home';
+      return validScreens.has(requested) ? requested : 'home';
+    }
 
     function closeMenu(){
       topbar.classList.remove('menu-open');
@@ -1123,7 +1145,32 @@
       menuToggle.textContent = open ? '×' : '☰';
     });
 
-    document.querySelectorAll('#main-nav a').forEach(link => link.addEventListener('click', closeMenu));
+    function showScreen(screen, updateHistory = false){
+      const next = validScreens.has(screen) ? screen : 'home';
+      document.querySelectorAll('main > section[data-screen]').forEach(section => {
+        const active = section.dataset.screen === next;
+        section.classList.toggle('active-screen', active);
+        section.setAttribute('aria-hidden', String(!active));
+      });
+      document.querySelectorAll('[data-screen-link]').forEach(link => {
+        if(link.dataset.screenLink === next) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+      });
+      if(updateHistory){
+        const url = next === 'home' ? '/' : `/?screen=${next}`;
+        history.pushState({screen: next}, '', url);
+      }
+      closeMenu();
+      window.scrollTo({top: 0, behavior: 'instant'});
+    }
+
+    document.querySelectorAll('[data-screen-link]').forEach(link => link.addEventListener('click', event => {
+      if(event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      showScreen(link.dataset.screenLink, true);
+    }));
+
+    window.addEventListener('popstate', () => showScreen(screenFromUrl()));
 
     function updateLanguageButtons(lang){
       document.getElementById('langEn').classList.toggle('active', lang === 'en');
@@ -1181,6 +1228,7 @@
       const saved = localStorage.getItem('wavelab18_lang');
       const lang = saved === 'ko' ? 'ko' : 'en';
       setLanguage(lang);
+      showScreen(screenFromUrl());
     })();
   </script>
 </body>
