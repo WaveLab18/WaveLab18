@@ -30,7 +30,7 @@
     .wrap{width:min(calc(100% - 36px),var(--max));margin:0 auto;position:relative}
     header{position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(2,10,19,.8);backdrop-filter:blur(18px)}
     .topbar{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-    .brand{display:flex;align-items:center;gap:11px;font-weight:850;letter-spacing:-.02em}
+    .brand{display:flex;align-items:center;gap:11px;min-width:0;letter-spacing:-.02em}.brand-copy{display:flex;flex-direction:column;gap:2px;line-height:1.05}.brand-copy strong{font-size:15px;font-weight:850;white-space:nowrap}.brand-copy small{color:#8097aa;font-size:11px;font-weight:750}
     .mark{width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(121,244,220,.32);border-radius:13px;background:linear-gradient(145deg,rgba(121,244,220,.18),rgba(112,185,255,.08));color:var(--cyan);font-size:12px;box-shadow:0 0 28px rgba(121,244,220,.09)}
     .nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
     .nav a,.button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 17px;border:1px solid rgba(255,255,255,.13);border-radius:999px;color:#dce8f3;font-weight:750;font-size:14px;background:rgba(255,255,255,.035);transition:.2s ease}
@@ -38,6 +38,7 @@
     .nav .active,.button.primary{color:#03131d;border-color:transparent;background:linear-gradient(135deg,var(--cyan),var(--blue));box-shadow:0 12px 34px rgba(74,186,220,.18)}
     .nav .active{gap:8px;animation:engine-breathe 3.8s ease-in-out infinite}
     .nav .active::before{content:"";width:7px;height:7px;border-radius:50%;background:#087a70;box-shadow:0 0 0 5px rgba(3,76,70,.13),0 0 13px rgba(0,94,87,.5);animation:engine-dot 2.2s ease-in-out infinite}
+    .menu-toggle{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.04);color:var(--text);font-size:20px;cursor:pointer}
     main{padding:52px 0 84px}
     .hero{display:grid;grid-template-columns:1.12fr .88fr;gap:20px;align-items:stretch}
     .panel{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(155deg,rgba(9,27,45,.94),rgba(4,15,27,.96));box-shadow:var(--shadow);position:relative;overflow:hidden}
@@ -72,7 +73,7 @@
     .final{margin-top:44px;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:22px}.final h2{margin:0 0 8px;font-size:clamp(25px,3vw,38px)}.final p{margin:0;color:var(--muted);line-height:1.7}.final .actions{margin:0;flex-shrink:0}
     footer{padding:24px 0 52px;color:#70879d;font-size:13px;text-align:center}
     @media(max-width:980px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.radar{min-height:400px}.signal-list{margin-top:110px}.timeline{grid-template-columns:repeat(4,1fr)}}
-    @media(max-width:640px){.wrap{width:min(calc(100% - 22px),var(--max))}.topbar{padding:10px 0;align-items:flex-start}.brand span:last-child{display:none}.nav{gap:6px}.nav a{padding:0 12px;font-size:12px}.hero-copy{padding:28px 21px}h1{font-size:clamp(43px,15vw,65px)}.lead{font-size:16px}.button{width:100%}.radar{min-height:370px;padding:18px}.signal-list{margin-top:100px}.grid{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column}.timeline{grid-template-columns:repeat(2,1fr)}.final{align-items:flex-start;flex-direction:column}.final .actions{width:100%}}
+    @media(max-width:720px){.wrap{width:min(calc(100% - 24px),var(--max))}.topbar{padding:10px 0;flex-wrap:wrap}.menu-toggle{display:grid;place-items:center}.nav{display:none;order:3;width:100%;padding:7px 0 4px;grid-template-columns:1fr 1fr;gap:7px}.topbar.menu-open .nav{display:grid}.nav a{width:100%;min-height:48px;padding:0 10px;font-size:12px}.nav .active{grid-column:1/-1}.brand-copy strong{font-size:14px}.hero-copy{padding:28px 21px}h1{font-size:clamp(43px,15vw,65px)}.lead{font-size:16px}.button{width:100%}.radar{min-height:370px;padding:18px}.signal-list{margin-top:100px}.grid{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column}.timeline{grid-template-columns:repeat(2,1fr)}.final{align-items:flex-start;flex-direction:column}.final .actions{width:100%}}
     @keyframes engine-breathe{0%,100%{box-shadow:0 10px 28px rgba(74,186,220,.14),0 0 30px rgba(121,244,220,.06)}50%{box-shadow:0 12px 38px rgba(74,186,220,.28),0 0 55px rgba(121,244,220,.15)}}
     @keyframes engine-dot{0%,100%{opacity:.62;transform:scale(.86)}50%{opacity:1;transform:scale(1.12)}}
     @keyframes ambient{0%,100%{opacity:.58;transform:translate3d(0,0,0) scale(.96)}50%{opacity:1;transform:translate3d(-2vw,2vh,0) scale(1.06)}}
@@ -82,8 +83,9 @@
 <body>
   <header>
     <div class="wrap topbar">
-      <a class="brand" href="/"><span class="mark">WSO</span><span>Wall Street Observatory</span></a>
-      <nav class="nav" aria-label="주요 메뉴">
+      <a class="brand" href="/" aria-label="Wall Street Observatory · 월가관측소 홈"><span class="mark">WSO</span><span class="brand-copy"><strong>Wall Street Observatory</strong><small>월가관측소</small></span></a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="메뉴 열기">☰</button>
+      <nav class="nav" id="main-nav" aria-label="주요 메뉴">
         <a href="/">WSO</a>
         <a href="/#research">리서치</a>
         <a class="active" href="/nws.html" aria-current="page">NWS 엔진</a>
@@ -140,6 +142,10 @@
 
   <footer class="wrap">WSO · Wall Street Observatory · NEW WORLD STRATEGY AI · Research and educational use only</footer>
   <script>
+    const topbar=document.querySelector('.topbar');
+    const menuToggle=document.getElementById('menu-toggle');
+    menuToggle.addEventListener('click',()=>{const open=topbar.classList.toggle('menu-open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.setAttribute('aria-label',open?'메뉴 닫기':'메뉴 열기');menuToggle.textContent=open?'×':'☰';});
+    document.querySelectorAll('#main-nav a').forEach(link=>link.addEventListener('click',()=>{topbar.classList.remove('menu-open');menuToggle.setAttribute('aria-expanded','false');menuToggle.setAttribute('aria-label','메뉴 열기');menuToggle.textContent='☰';}));
     fetch('/nws-endpoint.json?ts=' + Date.now(), { cache: 'no-store' })
       .then((response) => response.ok ? response.json() : Promise.reject())
       .then((config) => {

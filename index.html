@@ -167,9 +167,11 @@
       display:flex;
       align-items:center;
       gap:12px;
-      font-weight:800;
       letter-spacing:.01em;
     }
+    .brand-copy{display:flex;flex-direction:column;gap:2px;line-height:1.05}
+    .brand-copy strong{font-size:15px;font-weight:850;letter-spacing:-.02em;white-space:nowrap}
+    .brand-copy small{color:#8097aa;font-size:11px;font-weight:750}
     .brand-mark{
       width:36px;
       height:36px;
@@ -227,6 +229,7 @@
       animation:engine-dot 2.2s ease-in-out infinite;
     }
     .nav-links .nav-engine::after{display:none}
+    .menu-toggle{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.04);color:var(--text);font-size:20px;cursor:pointer}
     .lang-switch{
       display:flex;
       justify-content:flex-end;
@@ -559,6 +562,17 @@
 
     @media (max-width: 720px){
       .wrap{width:min(calc(100% - 24px), var(--max))}
+      .topbar{grid-template-columns:1fr auto;justify-items:stretch;gap:8px 12px;padding:10px 0}
+      .brand{min-width:0}
+      .brand-copy strong{font-size:14px}
+      .menu-toggle{display:grid;place-items:center;justify-self:end}
+      .nav-links{display:none;grid-column:1/-1;width:100%;padding:7px 0 2px;grid-template-columns:1fr 1fr;gap:7px}
+      .topbar.menu-open .nav-links{display:grid}
+      .nav-links a{display:flex!important;align-items:center;justify-content:center;width:100%;min-height:48px;padding:0 10px;border:1px solid var(--line);border-radius:999px;font-size:13px;background:rgba(255,255,255,.025)}
+      .nav-links a::after{display:none}
+      .nav-links .nav-engine{order:0;width:100%;max-width:none}
+      .lang-switch{display:none;grid-column:1/-1;justify-content:center;padding:2px 0 4px}
+      .topbar.menu-open .lang-switch{display:flex}
       .gate-card{padding:34px 18px 28px}
       .gate-title{font-size:clamp(18px, 8.2cqw, 40px)}
       .gate-copy{font-size:15px}
@@ -582,9 +596,6 @@
       .hero-frame{min-height:260px;max-height:320px}
       .section-head{align-items:flex-start;flex-direction:column}
       .modal-card{padding:16px}
-      .nav-links{gap:4px 12px}
-      .nav-links a{font-size:13px}
-      .nav-links .nav-engine{order:-1;width:100%;max-width:230px}
     }
     @media (prefers-reduced-motion:reduce){
       html{scroll-behavior:auto}
@@ -596,13 +607,15 @@
 <body data-lang="en">
   <div class="site-shell" id="siteShell">
     <header>
-      <div class="wrap topbar">
-        <a href="#home" class="brand" aria-label="WSO home">
+      <div class="wrap topbar" id="topbar">
+        <a href="#home" class="brand" aria-label="Wall Street Observatory · 월가관측소 홈">
           <span class="brand-mark">WSO</span>
-          <span>Wall Street Observatory</span>
+          <span class="brand-copy"><strong>Wall Street Observatory</strong><small>월가관측소</small></span>
         </a>
 
-        <nav class="nav-links" aria-label="Main navigation">
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="메뉴 열기">☰</button>
+
+        <nav class="nav-links" id="main-nav" aria-label="Main navigation">
           <a href="#home" class="show-en inline">Home</a>
           <a href="#about" class="show-en inline">About</a>
           <a href="#research" class="show-en inline">Research</a>
@@ -1093,6 +1106,24 @@
     const modalTitle = document.getElementById('modalTitle');
     const modalDesc = document.getElementById('modalDesc');
     const modalBullets = document.getElementById('modalBullets');
+    const topbar = document.getElementById('topbar');
+    const menuToggle = document.getElementById('menu-toggle');
+
+    function closeMenu(){
+      topbar.classList.remove('menu-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', '메뉴 열기');
+      menuToggle.textContent = '☰';
+    }
+
+    menuToggle.addEventListener('click', () => {
+      const open = topbar.classList.toggle('menu-open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+      menuToggle.textContent = open ? '×' : '☰';
+    });
+
+    document.querySelectorAll('#main-nav a').forEach(link => link.addEventListener('click', closeMenu));
 
     function updateLanguageButtons(lang){
       document.getElementById('langEn').classList.toggle('active', lang === 'en');
@@ -1104,6 +1135,7 @@
       body.setAttribute('data-lang', lang);
       localStorage.setItem('wavelab18_lang', lang);
       updateLanguageButtons(lang);
+      closeMenu();
     }
 
     function enterSite(lang){
